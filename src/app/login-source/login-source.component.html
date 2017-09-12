@@ -50,7 +50,7 @@
           <div *ngIf="!toLoginUser && forgotSuccess">
               <div class="leftBox box fleft"><h3>We've Sent Your<br>Password to Your<br>Email Address<b class="font_arial">.</b></h3>
 <p class="mrgT10 mrgB10">If you don't receive the email within a few minutes, check your email's spam and junk filters/settings.</p>
-<a href="javascript:void(0);" class="custom-login orangebtn" ng-click="backToLogin()">Sign In</a></div>
+<a href="javascript:void(0);" class="custom-login orangebtn" (click)="backToLogin()">Sign In</a></div>
           </div>
       </div>
       <div class="col-md-6 col-sm-6">

@@ -632,11 +632,6 @@ export class MainService implements OnDestroy {
            this.date=date;
             this.getOperationsSlotsFun(date);
             this.cartCalution();
-            //console.log(this.globals.date+'....'+this.globals.time);
-            //this.globals.onCart();
-           
-            // serverUtilityService.getTipOptions();
-
         }
     };
      getOperationsSlotsFun(d) {
@@ -663,9 +658,6 @@ export class MainService implements OnDestroy {
     self.setStorage(timekey, time);
     self.timeEdit = true;
     self.renderTimeSlots(data.timeslots, self.order_type);
-    
-    //self.renderDateTime(self.order_type);
-    //self.globals.onCartItem();
   }
 
   renderTimeSlotsNoHtml(data, orderType) {
@@ -789,5 +781,60 @@ export class MainService implements OnDestroy {
             var t = (screen.height / 2) - 200;
             window.open(loginURL, 'twitter-login', 'scrollbars=no, resizable=no, width=600, height=400, top=' + t + ', left=' + l);
         };
+        validateEmailNow(input, output) {
+            var hasError = false,
+                    email = $("#" + input),
+                    error = $("." + output);
+            var emailFormat = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            if ($.trim(email.val()) === "") {
+                error.removeClass("hide").html('Hey, you forgot something');
+                hasError = true;
+            } else {
+                if (!emailFormat.test($.trim(email.val()))) {
+                    error.removeClass("hide").html('That don\'t look like any e-mail I ever seen. Maybe the "@" or the "." are in the wrong spot. This isn\'t cubism, put things where they belong!');
+                    hasError = true;
+                } else {
+                    error.addClass("hide");
+                }
+            }
+            return hasError;
+        };
+
+        forgotPass(data) {
+            let self = this;
+            let apiUrl = self.globals.apiBaseUrl + 'user/forgot-password/1';
+            let headers = new Headers();
+            headers.append('content-type', 'application/json');
+            let options = new RequestOptions({ headers: headers });
+           return self._http.put(apiUrl, data, options)
+            .map((response: Response) => <any>response.json());
+
+        }
+        validatePassword(input, output) {
+            var hasError = false,
+                    pass = $("#" + input), error = $("." + output),
+                    passVal = pass.val();
+            if (passVal === '') {
+                error.html("Whoa now, we can't let you go without a password.").fadeIn("slow").removeClass("hide");
+                hasError = true;
+            } else if (passVal.length < 6) {
+                error.html('You need to use at least 6 characters. Try making it a personal catchphrase. Like yabadabadoo. But not that. Seriously Don\'t.').fadeIn("slow").removeClass("hide");
+                hasError = true;
+            } else {
+                error.html("").fadeOut("slow").addClass("hide");
+            }
+            return hasError;
+        };
+
+        login(data) {
+            let self = this;
+            let apiUrl = self.globals.apiBaseUrl + 'user/login';
+            let headers = new Headers();
+            headers.append('content-type', 'application/json');
+            let options = new RequestOptions({ headers: headers });
+           return self._http.post(apiUrl, data, options)
+            .map((response: Response) => <any>response.json());
+
+        }
         
 }
