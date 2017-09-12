@@ -40,6 +40,7 @@ import { OrderItemComponent } from './order-item/order-item.component';
 import { CartTimeComponent } from './cart-time/cart-time.component';
 import { OwlModule } from 'ng2-owl-carousel';
 import { SocialmediaComponent } from './socialmedia/socialmedia.component';
+import { MyaccountComponent } from './myaccount/myaccount.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { SocialmediaComponent } from './socialmedia/socialmedia.component';
     OrderItemComponent,
     CartTimeComponent,
     CheckoutComponent,
-    SocialmediaComponent
+    SocialmediaComponent,
+    MyaccountComponent
   ],
   imports: [
     BrowserModule,
