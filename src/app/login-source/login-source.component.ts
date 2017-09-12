@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MainService } from '../main.service';
 import { Globals } from '../globals';
 
@@ -24,7 +24,14 @@ export class LoginSourceComponent implements OnInit {
   backToLogin() {
     this.toLoginUser = true;
   }
-
+   userRegister(){
+    this.globals.dialogType="register";
+    this.globals.onDialogSet();
+  }
+  userlogin(){
+    this.globals.dialogType="login";
+    this.globals.onDialogSet();
+  }
   fbLogin() {
     this.mservice.facebookRegister();
     this.openPopup();

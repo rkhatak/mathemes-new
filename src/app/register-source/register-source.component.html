@@ -4,13 +4,14 @@
   <div class="_p30 _popupregister">
     <div class="sectiontitle _mb40">
       register now
-      <p class="_fs12 _fontarial">Already registered? <a href="javascript:void(0)" class="txtlink y-login" ng-click="userlogin()">Sign in</a></p>
+      <p class="_fs12 _fontarial">Already registered? <a href="javascript:void(0)" class="txtlink y-login" (click)="userlogin()">Sign in</a></p>
     </div>
     <div class="btn_soicalmedia">
-      <a href="javascript:void(0);" class="sbtn btn_fb" id="r_socialFacebookBtn" ng-click="fbLogin()"><i class="gi i_fb"></i>Connect with Facebook</a>
-      <a href="javascript:void(0);" class="sbtn btn_google" id="r_i_gplus" ng-click="gpLogin()"><i class="gi i_google"></i>Connect with Google +</a>
-      <a href="javascript:void(0);" class="sbtn btn_twitter" id="r_socialTwitterBtn" ng-click="twLogin()"><i class="gi i_twitter"></i>Connect with Twitter</a>
+      <a href="javascript:void(0);" class="sbtn btn_fb" id="r_socialFacebookBtn" (click)="fbLogin()"><i class="gi i_fb"></i>Connect with Facebook</a>
+      <a href="javascript:void(0);" class="sbtn btn_google" id="r_i_gplus" (click)="gpLogin()"><i class="gi i_google"></i>Connect with Google +</a>
+      <a href="javascript:void(0);" class="sbtn btn_twitter" id="r_socialTwitterBtn" (click)="twLogin()"><i class="gi i_twitter"></i>Connect with Twitter</a>
     </div>
+    <span id="r_inactive_user" class="error-message hide"></span>
     <p class="title_checkout">register with your email address</p>
 
     <div class="_fontarial registerpopup">
