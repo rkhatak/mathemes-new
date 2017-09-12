@@ -6,7 +6,14 @@
 /out-tsc
 
 # dependencies
-/node_modules
+node_modules/*
+package.json
+.angular-cli.json
+.editorconfig
+tslint.json
+tsconfig.json
+protractor.conf.js
+package-lock.json
 
 # IDEs and editors
 /.idea

@@ -1,0 +1,171 @@
+<div class="_960px" *ngIf="dishes">
+                    <p class="sectiontitle">menu</p>            
+                    
+                    <div class="t-menu-render menutab">
+                        <div class="navbarcontainer active">
+                            <div>
+                                <ul class="unstyled navbar nav md-hide r_menu_navbar">
+                                    <li class="tab_{{dis.category_id}} tabs {{isDMDeal(dis.category_name)}}" *ngFor="let dis of dishes"><a (click)="showTab(dis.category_id,dis.category_name);" id="{{dis.category_id}}" href="javascript:;" class="tablink" [innerHtml]="dis.category_name"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div *ngIf="menuDeals" class="y_sticky_deal sticky_deal text-align-center"> 
+                            <div *ngFor="let deal of restaurantDeal">
+                                <p class="title_sticky_deal text-uppercase"><span class="color_red">{{deal.title}}</span></p>
+                                <p class="tnc_sticky_deal">Offer valid through {{startDate(deal.start_on)}}. {{deal.condition}}</p>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="res_menu y-menu-section">
+                                <div *ngFor="let dis of dishes" class="{{isDMDeal(dis.category_name)}}">
+                                    <div class="tabs mobilemenutabs xs-hide tab_{{dis.category_id}}">
+                                        <a href="javascript:;" class="tablink" [innerHtml]="dis.category_name" (click)="showTab(dis.category_id,dis.category_name);"></a>
+                                    </div>
+                                    <div class="menu_{{dis.category_id}} menu_container">
+                                    <div *ngFor="let di of dis.sub_categories">
+                                        <div class="subcategories_level1 sectiontitle" [innerHtml]="di.category_name"></div>
+                                        <div class="menubox" *ngFor="let di_sub of di.sub_categories">
+                                            <div class="subcategories sectiontitle" [innerHtml]="di_sub.category_name"></div>
+                                            <div class="item_menupanel">
+                                                <div class="item_menu t_order_{{di_sub2.online_order_allowed}}" (click)="addToOrder(di_sub2)" *ngFor="let di_sub2 of di_sub.sub_categories">
+                                                    <div class="img_menu" *ngIf="di_sub2.item_image_url" >
+                                                        <div [style.background]="menuImageSafe(imagePath,di_sub2.item_image_url)"></div>
+                                                    </div>
+                                                    <div class="item_contentpanel">
+                                                        <p class="txt_restitle"><span [innerHtml]="di_sub2.item_name"></span></p>
+                                                        <p class="txt_resdes"><span [innerHtml]="di_sub2.item_desc"></span></p>
+                                                        <p class="txt_price">${{di_sub2.prices[0].value}}</p>
+                                                        <a href="javascript:void(0)" class="ubtn btn_addtocard btn_addtoorder"><span>ADD TO CART</span></a>
+                                                    </div>
+                                                </div>
+                                                <div class="item_menu t_order_{{items.online_order_allowed}}" (click)="addToOrder(items)" *ngFor="let items of di_sub.category_items">
+                                                    <div class="img_menu" *ngIf="items.item_image_url">
+                                                        <div [style.backgroundImage]="menuImageSafe(imagePath,items.item_image_url)"></div>
+                                                    </div>
+                                                    <div class="item_contentpanel">
+                                                        <p class="txt_restitle"><span [innerHtml]="items.item_name"></span></p>
+                                                        <p class="txt_resdes"><span [innerHtml]="items.item_desc"></span></p>
+                                                        <p class="txt_price">${{items.prices[0].value}}</p>
+                                                        <a href="javascript:void(0)" class="ubtn btn_addtocard btn_addtoorder"><span>ADD TO CART</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item_menupanel">
+                                            <div class="item_menu t_order_{{items.online_order_allowed}}" (click)="addToOrder(items)" *ngFor="let items of di.category_items">
+                                                <div class="img_menu" *ngIf="items.item_image_url">
+                                                    <div [style.backgroundImage]="menuImageSafe(imagePath,items.item_image_url)"></div>
+                                                </div>
+                                                <div class="item_contentpanel">
+                                                    <p class="txt_restitle"><span [innerHtml]="items.item_name"></span></p>
+                                                    <p class="txt_resdes"><span [innerHtml]="items.item_desc"></span></p>
+                                                    <p class="txt_price">${{items.prices[0].value}}</p>
+                                                    <a href="javascript:void(0)" class="ubtn btn_addtocard btn_addtoorder"><span>ADD TO CART</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item_menupanel">
+                                        <div class="item_menu t_order_{{items.online_order_allowed}}" (click)="addToOrder(items)" *ngFor="let items of dis.category_items">
+                                            <div class="img_menu" *ngIf="items.item_image_url">
+                                                <div [style.backgroundImage]="menuImageSafe(imagePath,items.item_image_url)"></div>
+                                            </div>
+                                            <div class="item_contentpanel">
+                                                <p class="txt_restitle"><span [innerHtml]="items.item_name"></span></p>
+                                                <p class="txt_resdes"><span [innerHtml]="items.item_desc"></span></p>
+                                                <p class="txt_price">${{items.prices[0].value}}</p>
+                                                <a href="javascript:void(0)" class="ubtn btn_addtocard btn_addtoorder"><span>ADD TO CART</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="box_ordersummary ordersummarystep1">
+                                <div class="text-align-right">
+                                  <a href="javascript:void(0)" class="y-backtomenu sm-hide"><i class="i_close">+</i></a>
+                                </div>
+                                <p class="txt_ordersummary">order summary</p>
+                                <div id="menu_ordersection">
+                                    <input type="radio" name="munchservices" (click)='getCheckDelivery()' value="delivery" id="t_delivery" hidden>
+                                    <input type="radio" name="munchservices" (click)='getCheckTakeout()' value="takeout" id="t_takeout" checked="checked" hidden>
+                                    <label class="ubtn blackbtn btn_service" for="t_delivery">Delivery</label>
+                                    <label class="ubtn btn_service" for="t_takeout">takeout</label>
+                                    <div class="t-orderDateTimePanel">
+                                        <app-cart-time [globalObj]="globalObj"></app-cart-time>
+                                    </div>
+                                    <div class="ordersummary_delivery ordersummary_service">
+                                        <div *ngIf="deliveryOrderCart" class="box_expectedtime _fs12 _mt35 ordertype_location">
+                                            <p class="_fontarial txt_minhours t_distance_text"></p>
+                                            <p class="_fs14 txt_upper t_delivery_address">{{setDeliveryAddress}}</p>
+                                            <p><a href="javascript:void(0)" class="txtlink t_change_address" title="Edit Address" ng-click="editAddress()">Change</a></p>
+                                        </div>
+                                        <p ng-if="deliveryOrderCart" class="_mt10 txt_rightalign _fs12 y-deleiver-yes"><i class="i_right i_circle"></i>Good News! This restaurant will deliver to you.</p>
+<!--                                        <p  ng-if="wrongAddress" class="_mt10 txt_rightalign y-deleiver-no"><i class="i_circle i_wrong">+</i>Sorry, you&#180;re outside this restaurant&#180;s delivery zone.</p>-->
+                                    </div>
+                                    <div class="ordersummary_takeout ordersummary_service">
+                                        <!--Takeout-->
+                                    </div>
+                                    <div class="_mt35">
+                                        <p *ngIf="!cartLenth" class="txt_bs_noorder t-no-order">There are currently no items in your order. Click on items from the menu to add them to your order.</p>
+                                        <div *ngIf="cartLenthMinOrder" class="txt_bs_noorder _mt10 t-min-order">
+                                            Minimum order must exceed: 
+                                            <strong>$<span class="t_min_order">{{dishes.minDelivery}}</span>*</strong>
+                                            <p class="_fs9">(*excluding tax, tip and delivery charges)</p>
+                                        </div>
+                                    </div>
+                                    <div class="box_orderitem _mt35">
+                                        <p class="title_bs_order">your order</p>
+                                        <div class="container">
+                                            <div *ngIf="cartItemDisplay" class="yourorder_box">
+                                                <app-order-item [cartItems]="cartItems" (updateCart)="updateToOrder($event)"></app-order-item>
+                                            </div>
+                                            <div class="row txt_bs_item _mt35">
+                                                <div class="col-md-8 col-xs-8 text-uppercase">Subtotal</div>
+                                                <div class="col-md-4 col-xs-4 text-align-right">$<span class="order_subtotal">0.00</span></div>
+                                            </div>
+                                            <div class="row txt_bs_item t-deliverycharge">
+                                                <div class="col-md-8 col-xs-8 text-uppercase">Delivery</div>
+                                                <div class="col-md-4 col-xs-4 text-align-right">$<span class="deliverycharge_amount">0.00</span></div>
+                                            </div>
+                                            <div class="row txt_bs_item y-discount hide">
+                                                <div class="col-md-8 col-xs-8 text-uppercase">Discount</div>
+                                                <div class="col-md-4 col-xs-4 text-align-right">- $<span class="discount_amount">0.00</span></div>
+                                            </div>
+                                            <div class="row txt_bs_item">
+                                                <div class="col-md-8 col-xs-8 text-uppercase">Tax</div>
+                                                <div class="col-md-4 col-xs-4 text-align-right">$<span class="order_tax">0.00</span></div>
+                                            </div>
+                                            <div class="row txt_bs_item y-tip" ng-if="deliveryOrderCart">
+                                                <div class="col-md-8 col-xs-8 text-uppercase _pt3">Tip Amount</div>
+                                                <div class="col-md-4 col-xs-4 text-align-right"><select class="t-tip-percent" ng-change="updateTipOrder(selectedTip)" ng-model="selectedTip"></select></div>
+                                            </div>                              
+                                            <div class="_mt35" ng-if="deliveryOrderCart">
+                                                <p class="txt_bs_noorder txt_bs_item y-tip-desc">You may be asked to sign a receipt at the time of delivery. You do not need to re-enter the tip.</p>
+                                            </div>
+                                            <div class="promo_code _mt35">
+                                              <p class="title_bs_order _pb10">your promo code</p>
+                                              <div class="row y-promocode">
+                                                  <div class="col-md-8 col-xs-8"><input type="text" id="promocode" value=""></div>
+                                                  <div class="col-md-4 col-xs-4"><a href="javascript:void(0)" class="ubtn" ng-click="promocode()">Enter</a></div>
+                                              </div>
+                                              <div class="row y-promocode-apply _fs14 hide">
+                                                <strong class="col-md-8 col-xs-8 y-promocode-coupan text-uppercase"></strong>
+                                                <strong class="col-md-4 col-xs-8 text-align-right">- $<span class="y-promocode-amount"></span></strong>
+                                              </div>
+                                              <p class="error-message hide">Invalid Promo code</p>
+                                            </div>
+                                            <div class="row txt_bs_total totalCls">
+                                                <div class="col-md-8 col-xs-8 text-uppercase">Total</div>
+                                                <div class="col-md-4 col-xs-4 text-align-right">$<span class="order_total">0.00</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-align-center _mt35">
+                                        <a href="javascript:void(0)" class="ubtn blackbtn" (click)="checkOut($event)">checkout</a> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>               

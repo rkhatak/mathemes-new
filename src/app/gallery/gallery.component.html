@@ -1,0 +1,9 @@
+<owl-carousel
+[options]="{items: 1, dots: true, navigation: true,nav:true}"
+[items]="galleries"
+[carouselClasses]="['owl-theme', 'row', 'sliding']">
+<div class="item" *ngFor="let image of galleries;let i = index">
+    <div class="thumbnail-image" ><img src="{{image.imgurl}}" width="100%"/></div>
+</div>
+</owl-carousel>
+
