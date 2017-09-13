@@ -1,3 +1,49 @@
-<p>
-  order-details works!
-</p>
+<div class="activitytitle mymunchado _p30">
+    <p class="title_mymunchado txt_mypoints">Order Summery</p> 
+    <div class="row order_list" >
+        <p class="col-md-6">Order No.</p>
+        <p class="col-md-6 text-align-center">{{details.receipt_no}}</p>
+    </div>
+    <div class="row order_list" >
+        <p class="col-md-6">Order Type</p>
+        <p class="col-md-6 text-align-center">{{details.order_Type}}</p>
+    </div>
+    
+    <div class="row order_list" >
+        <p class="col-md-6">Time Of Order</p>
+        <p class="col-md-6 text-align-center">{{details.time_of_order}}</p>
+    </div>
+    <div class="row order_list" >
+        <p class="col-md-6">Time Of Delivery</p>
+        <p class="col-md-6 text-align-center">{{details.time_of_delivery}}</p>
+    </div>
+    <div class="row order_list" >
+        <p class="col-md-6">Address</p>
+        <p class="col-md-6 text-align-center">{{details.delivery_address}}</p>
+    </div>
+    <div class="row order_list" >
+        <p class="col-md-6">Order Details</p>
+     </div>
+     <div class="row order_list" *ngFor="let ord of details.order_details">
+        <p class="col-md-6">{{ord.item}}</p>
+        <p class="col-md-2">{{ord.quantity}}</p>
+        <p class="col-md-4">{{ord.total_item_amt}}</p>
+     </div>
+     <div class="row order_list" >
+        <p class="col-md-6">SubTotal</p>
+        <p class="col-md-6 text-align-center">{{details.order_amount}}</p>
+    </div>
+    <div class="row order_list" >
+        <p class="col-md-6">Tax</p>
+        <p class="col-md-6 text-align-center">{{details.tax}}</p>
+    </div>
+  
+    <div class="row order_list" >
+        <p class="col-md-6">Tip</p>
+        <p class="col-md-6 text-align-center">{{details.tip_amount}}</p>
+    </div>
+    <div class="row order_list" >
+        <p class="col-md-6">Total</p>
+        <p class="col-md-6 text-align-center">{{details.total_amount}}</p>
+    </div>
+</div>

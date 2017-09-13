@@ -875,5 +875,10 @@ export class MainService implements OnDestroy {
         return self._http.get(apiUrl)
             .map((response: Response) => <any>response.json());
     } 
-
+    getOrderDetails(id){
+        let self = this;
+        let apiUrl = self.getApiUrl('user/order/'+id+'?type=order');
+        return self._http.get(apiUrl)
+            .map((response: Response) => <any>response.json());
+    }
 }
