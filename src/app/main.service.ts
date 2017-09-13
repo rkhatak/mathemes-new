@@ -862,6 +862,23 @@ export class MainService implements OnDestroy {
         let options = new RequestOptions({ headers: headers });
         return self._http.post(apiUrl, data, options)
             .map((response: Response) => <any>response.json());
-    }    
-
+    }
+    getPointDetails(task) {
+        let self = this;
+        let apiUrl = self.getApiUrl('user/point-detail?type=' + task);
+        return self._http.get(apiUrl)
+            .map((response: Response) => <any>response.json());
+    }
+    getOrderlist(task,restId) {
+        let self = this;
+        let apiUrl = self.getApiUrl('user/order?restaurantid='+restId+'&type=' + task);
+        return self._http.get(apiUrl)
+            .map((response: Response) => <any>response.json());
+    } 
+    getOrderDetails(id){
+        let self = this;
+        let apiUrl = self.getApiUrl('user/order/'+id+'?type=order');
+        return self._http.get(apiUrl)
+            .map((response: Response) => <any>response.json());
+    }
 }

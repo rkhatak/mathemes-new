@@ -43,6 +43,7 @@ import { SocialmediaComponent } from './socialmedia/socialmedia.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { TermComponent } from './term/term.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { FormattedDatePipe } from './formatted-date.pipe';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { PrivacyComponent } from './privacy/privacy.component';
     SocialmediaComponent,
     MyaccountComponent,
     TermComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    FormattedDatePipe
   ],
   imports: [
     BrowserModule,
@@ -153,6 +155,10 @@ import { PrivacyComponent } from './privacy/privacy.component';
         component: SocialmediaComponent
       },
       {
+        path: 'myaccount',
+        component: MyaccountComponent
+      },
+      {
         path: 'terms',
         component: TermComponent
       },
@@ -164,6 +170,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
         path: '',
         component: HomeComponent
       },
+
     ])
   ],
   providers: [

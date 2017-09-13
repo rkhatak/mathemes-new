@@ -36,7 +36,8 @@ export class Globals {
     onCartChange = new Subject<any>()
     onCartItemChange = new Subject<any>()
     onLoginChange = new Subject<any>()
-
+    redeemable_point:any;
+    
     public onThemeSet(){
         this.onThemeSetEvent.next();
     }
