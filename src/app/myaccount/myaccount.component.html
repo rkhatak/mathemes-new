@@ -27,22 +27,22 @@
      <p class="title_mymunchado">past orders</p>
      
      <div *ngFor="let order of liveList" class="row order_list display-flex-none-xs display-flex">
-        <div class="col-md-5" ng-bind-html="order.description | htmlToPlaintext"></div>
+        <div class="col-md-5">{{order.description}}</div>
         <div class="col-md-2 col-xs-6 _pol">{{order.delivery_time}}</div>
         <strong class="col-md-2 col-xs-6 _m0-xs text-align-xs-right  _pol">$ {{order.total_amount}}</strong>
         <div class="col-md-3 text-align-md-right text-align-xs-center"><a href="javascript:void(0)" class="ubtn blackbtn" data-id="{{order.id}}" ng-click="viewOrder($event)">View</a></div>
      </div>
      
-     <div class="row order_list display-flex-none-xs display-flex" *ngFor="let order of archiveList">
-        <div class="col-md-5" ng-bind-html="order.description | htmlToPlaintext"></div>
-        <div class="col-md-2 col-xs-6 _pol">{{order.delivery_time}}</div>
-        <strong class="col-md-2 col-xs-6 _m0-xs text-align-xs-right  _pol">$ {{order.total_amount}}</strong>
-        <div class="col-md-3 text-align-md-right text-align-xs-center"><a href="javascript:void(0)" class="ubtn blackbtn" data-id="{{order.id}}" ng-click="viewOrder($event)">View</a></div>
-        <div class="col-md-3 text-align-md-right text-align-xs-center"><a href="javascript:void(0)" class="ubtn blackbtn" data-id="{{order.id}}" ng-click="rReorder($event)">reorder</a></div>
-        <p class="r_error_{{order.id}}"></p>
+     <div class="row order_list display-flex-none-xs display-flex" *ngFor="let orders of archiveList">
+        <div class="col-md-5">{{orders.description}}</div>
+        <div class="col-md-2 col-xs-6 _pol">{{orders.delivery_time}}</div>
+        <strong class="col-md-2 col-xs-6 _m0-xs text-align-xs-right  _pol">$ {{orders.total_amount}}</strong>
+        <div class="col-md-3 text-align-md-right text-align-xs-center"><a href="javascript:void(0)" class="ubtn blackbtn" data-id="{{orders.id}}" ng-click="viewOrder($event)">View</a></div>
+        <div class="col-md-3 text-align-md-right text-align-xs-center"><a href="javascript:void(0)" class="ubtn blackbtn" data-id="{{orders.id}}" ng-click="rReorder($event)">reorder</a></div>
+        <p class="r_error_{{orders.id}}"></p>
      </div>
-     <div class="row order_list display-flex-none-xs display-flex" ng-show="!archiveorderData.length && !liveorderData.length">
-        <div class="col-md-5">No Record Found</div>
+     <div class="row order_list display-flex-none-xs display-flex" *ngIf="!archiveList.length && !liveList.length">
+        <div class="col-md-5">No Record Found {{archiveList.length}} </div>
      </div>
 
 

@@ -15,8 +15,8 @@ export class MyaccountComponent implements OnInit,OnDestroy {
   total_point:any = 0;
   restID:any = 0;
   cash:any = 0;
-  liveList:any=[] ;
-  archiveList:any=[];
+  liveList:any="" ;
+  archiveList:any="";
   
   ngOnInit() {
     if(this.globals.globalRestaurantId){
@@ -34,18 +34,13 @@ export class MyaccountComponent implements OnInit,OnDestroy {
   }
 getData(){
   this.restID=this.globals.globalRestaurantId;
-  console.log(this.restID);
   this.mservice.getPointDetails('points').subscribe((data) =>this.setData(data));
-  this.mservice.getOrderlist('archive',this.restID).subscribe((data) =>this.liveList=data);
+  this.mservice.getOrderlist('live',this.restID).subscribe((data) =>this.liveList=data);
   this.mservice.getOrderlist('archive',this.restID).subscribe((data) =>this.archiveList=data);
 }
   ngOnDestroy(){
     this.onThemeSetEvent$Subscription.unsubscribe();
-
-  }
-  setRestData(data){
-    console.log(data);
-  }
+  }  
   setData(d){
     this.redeemable_point = d.points - d.redeemed_points;
     this.redeemed_point= d.redeemed_points;

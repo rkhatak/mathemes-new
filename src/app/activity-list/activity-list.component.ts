@@ -8,8 +8,8 @@ import {MainService} from '../main.service';
 export class ActivityListComponent implements OnInit {
 
   constructor(private mservice:MainService) { }
-
+  activityList:any=""; 
   ngOnInit() {
+    this.mservice.getPointDetails('archive_list').subscribe((data) =>this.activityList = data);
   }
-
 }

@@ -1,3 +1,19 @@
-<p>
-  activity-list works!
-</p>
+<div class="activitytitle mymunchado _p30" *ngIf="activityList"> 
+
+  <div class="box_activitydate row order_list">
+    <strong class="col-md-6">Activity Archive</strong>
+    <p class="col-md-2 text-align-center">Date</p>
+    <p class="col-md-2 text-align-center">Earned</p>
+    <p class="col-md-2 text-align-right">Redeemed</p>
+  </div>
+  <div class="row order_list" *ngFor="let act of activityList">
+    <p class="col-md-6">{{act.points_descriptions}}</p>
+    <p class="col-md-2 text-align-center">{{act.readable_created_on}}</p>
+    <p class="col-md-2 text-align-center">{{act.points}}</p>
+    <p class="col-md-2 text-align-right">{{act.redeemPoints}}</p>
+  </div>
+  <div *ngIf="!activityList.length" class="row order_list">
+    <p class="col-md-6">No activity found.</p>
+  </div>
+</div>
+ 
