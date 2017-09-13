@@ -104,7 +104,7 @@ p, body{margin:0;}
 /****modal_changes***/
 .a_modal_open{overflow:hidden;}
 .modalwatchvideo, .a_modal{background:rgba(0, 0, 0, 0.9);position:fixed;width:100%;height:100%;top:0;left:0;z-index:10;}
-.a_modal-dialog{background:#fff;max-height:90%;margin:5vh auto 0;overflow-y:auto;max-width:700px;position:relative;min-height:100px;width:90%;}
+.a_modal-dialog{background:#fff;max-height:90%;margin:5vh auto 0;overflow-y:auto;max-width:840px;position:relative;min-height:100px;width:90%;}
 .a_modal .i_close{position:absolute;top:5px;right:11px;}
 .modalwatchvideo iframe{width:95%;background-color:#000;background-repeat:no-repeat;background-size:cover;}
 /**icons**/
@@ -166,7 +166,7 @@ select:focus, input:focus{outline:0;}
 .error-message-dine-in, .error-invalid-register, .error-message{color:red;font-style:italic;font-size:0.75rem;}
 .error-color{color:red;}
 /*global width*/
-._960px{margin:0px auto;max-width:1300px;width:96.7262%}
+._960px{margin:0px auto;max-width:1300px;width:96.7262%;padding:100px 0;}
 /***title***/
 .sectiontitle{font-size:2.125em;font-weight:700;text-transform:uppercase;text-align:center;color:#000;letter-spacing:2px;}
 ._popupregister._popuptwitter .sectiontitle{font-size:1em;max-width:90%;margin:0 auto 30px;}
@@ -203,6 +203,7 @@ a.txtlink:hover{color:#000}
 .contact_resaddress{color:#939393;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px;min-height:39px;}
 .contact_resphoneno{font-style: italic;font-size:0.75em;padding:0 0 27px;}
 .hide-tablet{display:none;}
+#viewmap { margin-top: 55px; }
 
 .txt_homepage .ubtn.whitebtn, .btn_readourstory, .dine-more .ubtn{min-width:173px;}
 
@@ -227,7 +228,8 @@ a.txtlink:hover{color:#000}
 .headertooltip .txt:before{margin:-39px -18px 0 0;float:right;font-family:arial;}
 .added_item{text-transform:uppercase;font-family:"Raleway", "Adobe Blank", sans-serif;font-weight:700;letter-spacing:2px;}
 /**footer**/
-.footer{background:rgb(237, 28, 36);padding:10px 0;}
+.footer{background:rgb(237, 28, 36);padding:10px 0; position:fixed; left:0; bottom: 0; z-index: 9; width: 100%;}
+.footer ._960px { padding: 0; }
 .footer a:hover{opacity:0.7;}
 .brandfooterlogo{float:left;}
 .brandfooterlogo img{display:block;}
@@ -520,7 +522,7 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 .greenP_Weekend_Brunch_Icon{background-position:-237px -761px}
 .greenP_Breakfast_Brunch_Icon{background-position:-234px -810px}
 .greenP_kids_Menu_Icon{background-position:-237px -710px}
-.storysection{font:0.875em/24px arial;max-width:960px;padding-bottom:35px;}
+.storysection{font:0.875em/24px arial;max-width:960px;padding-bottom:110px;}
 .storydividedtxt{-moz-column-count:2;-webkit-column-count:2;column-count:2;-moz-column-gap:30px;-webkit-column-gap:30px;column-gap:30px;}
 [ng-repeat="story in stories"]:nth-child(2n) .display-flex{flex-direction: row-reverse;}
 [ng-repeat="story in stories"]:nth-child(2n) .display-flex > *:first-child{margin-right:0;}
@@ -703,9 +705,17 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 .mymunchado .point_panel ._fontarial{font-weight:bold;line-height:40px;margin-top:17px;}
 .mymunchado ._960px{max-width:960px;}
 
+.t_c p{font-size: 12px;line-height: 20px;padding-top:15px;}
+.t_c p u { font-weight:600; }
+.t_c p a { color: #ff8d02; }
+.t_c p a:hover { text-decoration:none; }
+.t_c li { font-size: 12px;line-height: 20px; }
+#promocode { padding-top:11px;padding-bottom: 10px; }
+.t-menu-render.menutab { padding-top: 20px; }
+
 /***Target small screen***/
 @media (max-width: 991px){
-	._960px{width:100%;padding:0 10px;}	
+	._960px{width:100%;padding:70px 10px;}	
 	/**Global Grid**/
 	.row{width:100%}
 	.row:after,.row:before{content:" ";clear:both;display:block;}
@@ -716,7 +726,7 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 	.col-xs-3{width:24.21052%}
 	.col-xs-4{width:32.63157%}
 	.col-xs-5{width:41.05263%}
-	.col-xs-6{width:49.47368%;}
+	.col-xs-6{width:49.47368%}
 	.col-xs-7{width:57.89473%}
 	.col-xs-8{width:66.31578%}
 	.col-xs-9{width:74.73684%}
