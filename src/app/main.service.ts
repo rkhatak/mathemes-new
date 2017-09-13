@@ -35,20 +35,20 @@ export class MainService implements OnDestroy {
 
     private onCartChange$Subscription: Subscription;
 
-    chainRes(){
-        let path=location.pathname;
-        let rootArr=path.split('/');
-        let rootId=(typeof rootArr[1]!=='undefined')?rootArr[1]:'';
-        let rootPage=(typeof rootArr[2]!=='undefined')?rootArr[2]:'';
-        for(let i=0;i<=this.pages.length;i++){
-            if(rootId==this.pages[i]){
-               rootPage=this.pages[i]; 
+    chainRes() {
+        let path = location.pathname;
+        let rootArr = path.split('/');
+        let rootId = (typeof rootArr[1] !== 'undefined') ? rootArr[1] : '';
+        let rootPage = (typeof rootArr[2] !== 'undefined') ? rootArr[2] : '';
+        for (let i = 0; i <= this.pages.length; i++) {
+            if (rootId == this.pages[i]) {
+                rootPage = this.pages[i];
             }
         }
-        return {'rootId':rootId,'rootPage':rootPage};
+        return { 'rootId': rootId, 'rootPage': rootPage };
 
     }
-    
+
     postToken(): Observable<any> {
         let self = this;
         let apiUrl = self.globals.apiBaseUrl + 'auth/token';
@@ -84,7 +84,7 @@ export class MainService implements OnDestroy {
         let self = this;
         return self._http.get(themeUrl)
             .map((response: Response) => <any>response.json());
-            //.do(data => console.log(JSON.stringify(data)));
+        //.do(data => console.log(JSON.stringify(data)));
     }
 
     getRestaurantDetails(resid) {
@@ -94,16 +94,16 @@ export class MainService implements OnDestroy {
             .map((response: Response) => <any>response.json());
     }
     setLocation() {
-            let data={city_id:18848,token: this.getStorage('oauth.token')};
-            let self = this;
-            let apiUrl = self.globals.apiBaseUrl + 'user/location';
-            let headers = new Headers();
-            headers.append('content-type', 'application/json');
-            let options = new RequestOptions({ headers: headers });
-           return self._http.post(apiUrl, data, options)
+        let data = { city_id: 18848, token: this.getStorage('oauth.token') };
+        let self = this;
+        let apiUrl = self.globals.apiBaseUrl + 'user/location';
+        let headers = new Headers();
+        headers.append('content-type', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return self._http.post(apiUrl, data, options)
             .map((response: Response) => <any>response.json());
 
-        }
+    }
     getUserDetails() {
         let self = this;
         let apiUrl = self.getApiUrl('user/details');
@@ -118,8 +118,8 @@ export class MainService implements OnDestroy {
             .map((response: Response) => <any>response.json());
     }
 
-    
-    
+
+
     getRestaurantOverview(resid) {
         let self = this;
         let apiUrl = self.getApiUrl('restaurant/overview/' + resid);
@@ -162,7 +162,7 @@ export class MainService implements OnDestroy {
         let self = this;
         return self._http.get(themeUrl)
             .map((response: Response) => <any>response.json());
-            //.do(data => console.log(JSON.stringify(data)));
+        //.do(data => console.log(JSON.stringify(data)));
     }
     getChainRestaurant(_theme) {
         let themeUrl = 'assets/data/' + _theme + '.restaurant.json'
@@ -191,7 +191,7 @@ export class MainService implements OnDestroy {
         return self._http.get(apiUrl)
             .map((response: Response) => <any>response.json());
 
-    };   
+    };
 
     digitToString(digit) {
         digit = parseInt(digit, 10);
@@ -266,7 +266,7 @@ export class MainService implements OnDestroy {
         return self._http.get(apiUrl)
             .map((response) => <any>response.json());
     }
-    candeliver(restId,lat,lng){
+    candeliver(restId, lat, lng) {
         var self = this;
         let apiUrl = self.getApiUrl(`restaurant/candeliver/${restId}?lat=${lat}&lng=${lng}`);
         return self._http.get(apiUrl)
@@ -533,7 +533,7 @@ export class MainService implements OnDestroy {
         return workingDates;
     }
 
-    
+
     editRenderDateTime(orderType: any): void {
         let restId = this.globals.globalRestaurantId;
         let timeslots = this.getDateSlot(orderType);
@@ -553,20 +553,20 @@ export class MainService implements OnDestroy {
                 $('#t_takeout').removeAttr("checked");
                 $('#t_delivery').prop('checked', 'checked');
             }
-            
+
             this.globals.order_type = orderType;
-          
+
             this.order_type = orderType;
-           
-                    var firstSlot = _.first(timeslots);
-                    date = firstSlot.value;
-               
-                this.getDefaultTimeSlots(restId, orderType, date)
-                    .subscribe((data) => {
-                        this.prepareTimeSlot(data);
-                    });
-           
-           
+
+            var firstSlot = _.first(timeslots);
+            date = firstSlot.value;
+
+            this.getDefaultTimeSlots(restId, orderType, date)
+                .subscribe((data) => {
+                    this.prepareTimeSlot(data);
+                });
+
+
             this.getOperationsSlotsFun(date);
             this.cartCalution();
         }
@@ -591,11 +591,11 @@ export class MainService implements OnDestroy {
                 $('#t_takeout').removeAttr("checked");
                 $('#t_delivery').prop('checked', 'checked');
             }
-            
+
             this.globals.order_type = orderType;
             this.globals.date = date;
             this.globals.time = time;
-            
+
             this.globals.selectedDate = (date == '') ? timeslots[0].value : date;
             this.globals.selectedTime = time;
             this.globals.dates = timeslots;
@@ -607,234 +607,261 @@ export class MainService implements OnDestroy {
             this.dates = timeslots;
             this.timeEdit = false;
             this.order_type = orderType;
-           
+
             //$rootScope.hours=hours;
             // if (typeof date != "undefined" && typeof time != "undefined" && !_.isEmpty(date) && !_.isEmpty(time)) {
             //     this.globals.timeEdit = true;
             //     this.timeEdit = true;
             // } else {
-                this.globals.timeEdit = true;
-                this.timeEdit = true;
-                if (date == '' || date == "undefined") {
-                    var firstSlot = _.first(timeslots);
-                    date = firstSlot.value;
-                }
-                this.getDefaultTimeSlots(restId, orderType, date)
-                    .subscribe((data) => {
-                        this.prepareTimeSlot(data);
-                    });
+            this.globals.timeEdit = true;
+            this.timeEdit = true;
+            if (date == '' || date == "undefined") {
+                var firstSlot = _.first(timeslots);
+                date = firstSlot.value;
+            }
+            this.getDefaultTimeSlots(restId, orderType, date)
+                .subscribe((data) => {
+                    this.prepareTimeSlot(data);
+                });
             //}
             // if (date == '' || date == "undefined") {
             //         var firstSlot = _.first(timeslots);
             //         date = firstSlot.value;
-                    
+
             //     }
-           this.date=date;
+            this.date = date;
             this.getOperationsSlotsFun(date);
             this.cartCalution();
         }
     };
-     getOperationsSlotsFun(d) {
-    let restId = this.globals.globalRestaurantId;
-    this.getOperationsSlots(restId, d).subscribe((data) => {
-      var slots = data.delivery;
-      if (slots == '') {
-        slots = data.reservation;
-      }
-      this.globals.cartTimeEdit=slots.toString(", ");
-      this.globals.onCart();
-    })
+    getOperationsSlotsFun(d) {
+        let restId = this.globals.globalRestaurantId;
+        this.getOperationsSlots(restId, d).subscribe((data) => {
+            var slots = data.delivery;
+            if (slots == '') {
+                slots = data.reservation;
+            }
+            this.globals.cartTimeEdit = slots.toString(", ");
+            this.globals.onCart();
+        })
 
-  }
+    }
 
     prepareTimeSlot(data: any) {
-    let self = this;
-    var times = data.timeslots,
-      time = _.first(times);
-    let restId = this.globals.globalRestaurantId;
-    var datekey = this.order_type === 'delivery' ? 'delivery_order_date_' + restId : 'takeout_order_date_' + restId;
-    var timekey = this.order_type === 'delivery' ? 'delivery_order_time_' + restId : 'takeout_order_time_' + restId;
-    self.setStorage(datekey, this.date);
-    self.setStorage(timekey, time);
-    self.timeEdit = true;
-    self.renderTimeSlots(data.timeslots, self.order_type);
-  }
-
-  renderTimeSlotsNoHtml(data, orderType) {
-    let self = this;
-    let options = '';
-    let notSelected = "";
-    var resId = self.globals.globalRestaurantId;
-   
-      options = notSelected + options;
-      if (orderType === 'takeout') {
-        self.setStorage('takeout_order_time_' + resId, '');
-      } else {
-        self.setStorage('delivery_order_time_' + resId, '');
-      }
-   
-    self.globals.cartTime=data;
-   // console.log(self.globals.cartTime);
-    self.globals.onCart();
-    //$('.t-order-time').html(options);
-  };
-
-  renderTimeSlots(data, orderType) {
-    let self = this;
-    let options = '';
-    let notSelected = "";
-    var resId = self.globals.globalRestaurantId;
-
-    var selected = self.getStorage('delivery_order_time_' + resId) ? self.getStorage('delivery_order_time_' + resId) : '';
-    if (orderType === 'takeout') {
-      selected = self.getStorage('takeout_order_time_' + resId) ? self.getStorage('takeout_order_time_' + resId) : '';
+        let self = this;
+        var times = data.timeslots,
+            time = _.first(times);
+        let restId = this.globals.globalRestaurantId;
+        var datekey = this.order_type === 'delivery' ? 'delivery_order_date_' + restId : 'takeout_order_date_' + restId;
+        var timekey = this.order_type === 'delivery' ? 'delivery_order_time_' + restId : 'takeout_order_time_' + restId;
+        self.setStorage(datekey, this.date);
+        self.setStorage(timekey, time);
+        self.timeEdit = true;
+        self.renderTimeSlots(data.timeslots, self.order_type);
     }
-    if (selected === '') {
-      options += '<option value="">Select Time</option>';
-    }
-    
-    _.each(data, function (item) {
-      var select = '';
-      if (item == selected) {
-        select = ' selected';
-        notSelected = select;
-      }
 
-      options += '<option value="' + item + '"' + select + '>' + self.get12HourTime(item) + '</option>';
-    });
-    if (notSelected === '') {
-      if (selected !== '') {
-        notSelected = '<option value="">Select Time</option>';
-      }
-      options = notSelected + options;
-      if (orderType === 'takeout') {
-        self.setStorage('takeout_order_time_' + resId, '');
-      } else {
-        self.setStorage('delivery_order_time_' + resId, '');
-      }
-    }
-    self.globals.cartTime=options;
-   // console.log(self.globals.cartTime);
-    self.globals.onCart();
-    //$('.t-order-time').html(options);
-  };
+    renderTimeSlotsNoHtml(data, orderType) {
+        let self = this;
+        let options = '';
+        let notSelected = "";
+        var resId = self.globals.globalRestaurantId;
 
-  getFormattedDateText (date) {
-            let self = this;
-            var tempDate = this.parseDate(date);
-            var tempDate2 = this.parseDate(self.globals.currentRestaurantDetail.current_dateTime);
-            if (tempDate.getDate() === tempDate2.getDate()) {
-                return 'Today';
+        options = notSelected + options;
+        if (orderType === 'takeout') {
+            self.setStorage('takeout_order_time_' + resId, '');
+        } else {
+            self.setStorage('delivery_order_time_' + resId, '');
+        }
+
+        self.globals.cartTime = data;
+        // console.log(self.globals.cartTime);
+        self.globals.onCart();
+        //$('.t-order-time').html(options);
+    };
+
+    renderTimeSlots(data, orderType) {
+        let self = this;
+        let options = '';
+        let notSelected = "";
+        var resId = self.globals.globalRestaurantId;
+
+        var selected = self.getStorage('delivery_order_time_' + resId) ? self.getStorage('delivery_order_time_' + resId) : '';
+        if (orderType === 'takeout') {
+            selected = self.getStorage('takeout_order_time_' + resId) ? self.getStorage('takeout_order_time_' + resId) : '';
+        }
+        if (selected === '') {
+            options += '<option value="">Select Time</option>';
+        }
+
+        _.each(data, function (item) {
+            var select = '';
+            if (item == selected) {
+                select = ' selected';
+                notSelected = select;
+            }
+
+            options += '<option value="' + item + '"' + select + '>' + self.get12HourTime(item) + '</option>';
+        });
+        if (notSelected === '') {
+            if (selected !== '') {
+                notSelected = '<option value="">Select Time</option>';
+            }
+            options = notSelected + options;
+            if (orderType === 'takeout') {
+                self.setStorage('takeout_order_time_' + resId, '');
             } else {
-                return this.weekdays[tempDate.getDay()] + ", " + this.months[tempDate.getMonth()] + " " + tempDate.getDate();
+                self.setStorage('delivery_order_time_' + resId, '');
             }
         }
+        self.globals.cartTime = options;
+        // console.log(self.globals.cartTime);
+        self.globals.onCart();
+        //$('.t-order-time').html(options);
+    };
 
-        getCheckTakeout() {
-            let self=this;
-            var restId =self.globals.globalRestaurantId;
-            self.setStorage('order_type_' + restId, 'takeout');
-            self.setStorage("select_delivery_" + restId, 'takeout');
-            $("#t_delivery").prop("checked", false);
-            $('#t_takeout').prop("checked", true);
-            self.globals.deliveryOrderCart = false;
-            self.globals.onCart();
-            self.renderDateTime('takeout');
-            self.hidePopUp();
-            if (self.getStorage('addtoOrder_' + restId) && self.getStorage('addtoOrder_' + restId) !== '') {
-                self.setStorage('addtoOrder_' + restId, '');
-            }
-            if (self.getStorage('select_delivery_' + restId) && self.getStorage('select_delivery_' + restId) !== '') {
-                self.setStorage('select_delivery_' + restId, '');
-            }
-            // ga('send', 'event', 'Order Summary', "Order Takeout" , "Click_on_order_takeout_Button", 1, true);
+    getFormattedDateText(date) {
+        let self = this;
+        var tempDate = this.parseDate(date);
+        var tempDate2 = this.parseDate(self.globals.currentRestaurantDetail.current_dateTime);
+        if (tempDate.getDate() === tempDate2.getDate()) {
+            return 'Today';
+        } else {
+            return this.weekdays[tempDate.getDay()] + ", " + this.months[tempDate.getMonth()] + " " + tempDate.getDate();
         }
+    }
 
-        facebookRegister() {
-            var returnUrl = window.location.host;
-            var host =window.location.host;
-            var protocol =window.location.protocol;
-            host=protocol+'//'+host;
-            var loginURL = this.getApiUrl('user/login/fb?token=' + this.getStorage('oauth.token') + '&return_url=' + host+'&host_name='+host);
-            var l = (screen.width / 2) - 300;
-            var t = (screen.height / 2) - 200;
-            window.open(loginURL, 'facebook-login', 'scrollbars=no, resizable=no, width=600, height=400, top=' + t + ', left=' + l);
-        };
-        googlePlusRegister() {
-            var returnUrl = window.location.host;
-            var host =window.location.host;
-            var protocol =window.location.protocol;
-            host=protocol+'//'+host;
-            var loginURL = this.getApiUrl('user/login/google?token=' + this.getStorage('oauth.token') + '&return_url=' + host+'&host_name='+host);
-            var l = (screen.width / 2) - 300;
-            var t = (screen.height / 2) - 200;
-            window.open(loginURL, 'googlelogin', 'scrollbars=no, resizable=no, width=600, height=400, top=' + t + ', left=' + l);
-        };
-        twitterRegister() {
-            var self = this;
-            //var returnUrl = window.location.host;
-            var host =window.location.host;
-            var protocol =window.location.protocol;
-            host=protocol+'//'+host;
-            var loginURL = this.getApiUrl('user/login/twitter?token=' + this.getStorage('oauth.token') + '&return_url=' + host+'&host_name='+host);
-            var l = (screen.width / 2) - 300;
-            var t = (screen.height / 2) - 200;
-            window.open(loginURL, 'twitter-login', 'scrollbars=no, resizable=no, width=600, height=400, top=' + t + ', left=' + l);
-        };
-        validateEmailNow(input, output) {
+    getCheckTakeout() {
+        let self = this;
+        var restId = self.globals.globalRestaurantId;
+        self.setStorage('order_type_' + restId, 'takeout');
+        self.setStorage("select_delivery_" + restId, 'takeout');
+        $("#t_delivery").prop("checked", false);
+        $('#t_takeout').prop("checked", true);
+        self.globals.deliveryOrderCart = false;
+        self.globals.onCart();
+        self.renderDateTime('takeout');
+        self.hidePopUp();
+        if (self.getStorage('addtoOrder_' + restId) && self.getStorage('addtoOrder_' + restId) !== '') {
+            self.setStorage('addtoOrder_' + restId, '');
+        }
+        if (self.getStorage('select_delivery_' + restId) && self.getStorage('select_delivery_' + restId) !== '') {
+            self.setStorage('select_delivery_' + restId, '');
+        }
+        // ga('send', 'event', 'Order Summary', "Order Takeout" , "Click_on_order_takeout_Button", 1, true);
+    }
+
+    facebookRegister() {
+        var returnUrl = window.location.host;
+        var host = window.location.host;
+        var protocol = window.location.protocol;
+        host = protocol + '//' + host;
+        var loginURL = this.getApiUrl('user/login/fb?token=' + this.getStorage('oauth.token') + '&return_url=' + host + '&host_name=' + host);
+        var l = (screen.width / 2) - 300;
+        var t = (screen.height / 2) - 200;
+        window.open(loginURL, 'facebook-login', 'scrollbars=no, resizable=no, width=600, height=400, top=' + t + ', left=' + l);
+    };
+    googlePlusRegister() {
+        var returnUrl = window.location.host;
+        var host = window.location.host;
+        var protocol = window.location.protocol;
+        host = protocol + '//' + host;
+        var loginURL = this.getApiUrl('user/login/google?token=' + this.getStorage('oauth.token') + '&return_url=' + host + '&host_name=' + host);
+        var l = (screen.width / 2) - 300;
+        var t = (screen.height / 2) - 200;
+        window.open(loginURL, 'googlelogin', 'scrollbars=no, resizable=no, width=600, height=400, top=' + t + ', left=' + l);
+    };
+    twitterRegister() {
+        var self = this;
+        //var returnUrl = window.location.host;
+        var host = window.location.host;
+        var protocol = window.location.protocol;
+        host = protocol + '//' + host;
+        var loginURL = this.getApiUrl('user/login/twitter?token=' + this.getStorage('oauth.token') + '&return_url=' + host + '&host_name=' + host);
+        var l = (screen.width / 2) - 300;
+        var t = (screen.height / 2) - 200;
+        window.open(loginURL, 'twitter-login', 'scrollbars=no, resizable=no, width=600, height=400, top=' + t + ', left=' + l);
+    };
+    validateEmailNow(input, output) {
+        var hasError = false,
+            email = $("#" + input),
+            error = $("." + output);
+        var emailFormat = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        if ($.trim(email.val()) === "") {
+            error.removeClass("hide").html('Hey, you forgot something');
+            hasError = true;
+        } else {
+            if (!emailFormat.test($.trim(email.val()))) {
+                error.removeClass("hide").html('That don\'t look like any e-mail I ever seen. Maybe the "@" or the "." are in the wrong spot. This isn\'t cubism, put things where they belong!');
+                hasError = true;
+            } else {
+                error.addClass("hide");
+            }
+        }
+        return hasError;
+    };
+
+    forgotPass(data) {
+        let self = this;
+        let apiUrl = self.globals.apiBaseUrl + 'user/forgot-password/1';
+        let headers = new Headers();
+        headers.append('content-type', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return self._http.put(apiUrl, data, options)
+            .map((response: Response) => <any>response.json());
+
+    }
+    validatePassword(input, output) {
+        var hasError = false,
+            pass = $("#" + input), error = $("." + output),
+            passVal = pass.val();
+        if (passVal === '') {
+            error.html("Whoa now, we can't let you go without a password.").fadeIn("slow").removeClass("hide");
+            hasError = true;
+        } else if (passVal.length < 6) {
+            error.html('You need to use at least 6 characters. Try making it a personal catchphrase. Like yabadabadoo. But not that. Seriously Don\'t.').fadeIn("slow").removeClass("hide");
+            hasError = true;
+        } else {
+            error.html("").fadeOut("slow").addClass("hide");
+        }
+        return hasError;
+    };
+
+    login(data) {
+        let self = this;
+        let apiUrl = self.globals.apiBaseUrl + 'user/login';
+        let headers = new Headers();
+        headers.append('content-type', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return self._http.post(apiUrl, data, options)
+            .map((response: Response) => <any>response.json());
+    }
+    getCapcha() {
+        let self = this;
+        let apiUrl = self.getApiUrl('user/captcha');
+        return self._http.get(apiUrl)
+            .map((response) => <any>response.json());
+
+    }
+
+    validateField(input, output) {
             var hasError = false,
-                    email = $("#" + input),
+                    field = $("#" + input),
                     error = $("." + output);
-            var emailFormat = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-            if ($.trim(email.val()) === "") {
+            if ($.trim(field.val()) === "") {
                 error.removeClass("hide").html('Hey, you forgot something');
                 hasError = true;
-            } else {
-                if (!emailFormat.test($.trim(email.val()))) {
-                    error.removeClass("hide").html('That don\'t look like any e-mail I ever seen. Maybe the "@" or the "." are in the wrong spot. This isn\'t cubism, put things where they belong!');
-                    hasError = true;
-                } else {
-                    error.addClass("hide");
-                }
             }
             return hasError;
         };
 
-        forgotPass(data) {
-            let self = this;
-            let apiUrl = self.globals.apiBaseUrl + 'user/forgot-password/1';
-            let headers = new Headers();
-            headers.append('content-type', 'application/json');
-            let options = new RequestOptions({ headers: headers });
-           return self._http.put(apiUrl, data, options)
+    newRegister(data) {
+        let self = this;
+        let apiUrl = self.globals.apiBaseUrl + 'user/details';
+        let headers = new Headers();
+        headers.append('content-type', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        return self._http.post(apiUrl, data, options)
             .map((response: Response) => <any>response.json());
+    }    
 
-        }
-        validatePassword(input, output) {
-            var hasError = false,
-                    pass = $("#" + input), error = $("." + output),
-                    passVal = pass.val();
-            if (passVal === '') {
-                error.html("Whoa now, we can't let you go without a password.").fadeIn("slow").removeClass("hide");
-                hasError = true;
-            } else if (passVal.length < 6) {
-                error.html('You need to use at least 6 characters. Try making it a personal catchphrase. Like yabadabadoo. But not that. Seriously Don\'t.').fadeIn("slow").removeClass("hide");
-                hasError = true;
-            } else {
-                error.html("").fadeOut("slow").addClass("hide");
-            }
-            return hasError;
-        };
-
-        login(data) {
-            let self = this;
-            let apiUrl = self.globals.apiBaseUrl + 'user/login';
-            let headers = new Headers();
-            headers.append('content-type', 'application/json');
-            let options = new RequestOptions({ headers: headers });
-           return self._http.post(apiUrl, data, options)
-            .map((response: Response) => <any>response.json());
-
-        }
-        
 }

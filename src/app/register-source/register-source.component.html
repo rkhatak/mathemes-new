@@ -42,7 +42,6 @@
       <div class="_mb15 row">
         <label class="col-md-4 col-sm-4 text-align-md-right text-align-sm-right txt_checkoutlabel _pr0">Enter the number</label>
         <div class="col-md-8 col-sm-8">
-
         <div class="panel_captch">
          <div id="r_capcha_filter">{{capcha}}</div>
         <input type="text" id="r_captcha" maxlength="3">
@@ -55,9 +54,9 @@
         <div class="col-md-8 col-sm-8">
         <p class="error-invalid-register hide"></p>
         <p class="_fs12 _mb15 txt_terms">
-                  By registering, you accept our <a href="https://munchado.com/terms" target="_blank">Terms</a> and the <a href="https://munchado.com/privacy" target="_blank">Privacy Policy</a>.
+                  By registering, you accept our <a routerLink="/terms" target="_blank">Terms</a> and the <a routerLink="/privacy" target="_blank">Privacy Policy</a>.
                </p>
-        <a href="javascript:void(0)" class="ubtn blackbtn r_btn_registration" ng-click="normalRegister()">REGISTER</a>
+        <a href="javascript:void(0)" class="ubtn blackbtn r_btn_registration" (click)="normalRegister()">REGISTER</a>
         <span class="lineloader register_loader hide">  <span></span><span></span><span></span></span>
         
     </div>
