@@ -41,6 +41,8 @@ import { CartTimeComponent } from './cart-time/cart-time.component';
 import { OwlModule } from 'ng2-owl-carousel';
 import { SocialmediaComponent } from './socialmedia/socialmedia.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
+import { TermComponent } from './term/term.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 
 @NgModule({
@@ -75,7 +77,9 @@ import { MyaccountComponent } from './myaccount/myaccount.component';
     CartTimeComponent,
     CheckoutComponent,
     SocialmediaComponent,
-    MyaccountComponent
+    MyaccountComponent,
+    TermComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
@@ -151,6 +155,14 @@ import { MyaccountComponent } from './myaccount/myaccount.component';
       {
         path: 'myaccount',
         component: MyaccountComponent
+      },
+      {
+        path: 'terms',
+        component: TermComponent
+      },
+      {
+        path: 'privacy',
+        component: PrivacyComponent
       },
       {
         path: '',

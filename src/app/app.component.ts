@@ -95,6 +95,7 @@ ngOnDestroy() {
   }
   setRestaurantDetails(d) {
     this.globals.currentRestaurantDetail = d;
+    this.globals.loyalty_code=d.name.charAt(0)+d.id+'00';
     this.globals.onThemeSet();
   }
 

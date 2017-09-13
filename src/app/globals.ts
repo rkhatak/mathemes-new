@@ -30,6 +30,7 @@ export class Globals {
     cartTime:any;
     cartTimeEdit:any;
     tooltipselecttime:boolean=false;
+    loyalty_code:any="";
     onThemeSetEvent = new Subject<object>()
     onDialogType = new Subject<object>()
     onCartChange = new Subject<any>()

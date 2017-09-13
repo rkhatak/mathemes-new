@@ -1,4 +1,4 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit,OnDestroy,ChangeDetectorRef } from '@angular/core';
 import {MainService} from '../main.service';
 import { Globals } from '../globals';
 import {Subscription} from 'rxjs/Subscription';
@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class MyaccountComponent implements OnInit,OnDestroy {
   onThemeSetEvent$Subscription: Subscription;
-  constructor(private mservice:MainService,public globals: Globals) { }
+  constructor(private mservice:MainService,public globals: Globals,private changeDetectorRef:ChangeDetectorRef) { }
   redeemable_point:any = 0;
   redeemed_point:any = 0;
   total_point:any = 0;

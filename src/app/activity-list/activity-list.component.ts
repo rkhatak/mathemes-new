@@ -6,10 +6,18 @@ import {MainService} from '../main.service';
   styleUrls: ['./activity-list.component.css']
 })
 export class ActivityListComponent implements OnInit {
-
-  constructor(private mservice:MainService) { }
   activityList:any=""; 
-  ngOnInit() {
-    this.mservice.getPointDetails('archive_list').subscribe((data) =>this.activityList = data);
+  constructor(private mservice:MainService) { 
+    this.mservice.getPointDetails('archive_list').subscribe((data) =>this.getActivity(data));
   }
+  
+  ngOnInit() {
+    this.mservice.getPointDetails('archive_list').subscribe((data) =>this.getActivity(data));
+  }
+  getActivity(d){
+  
+    
+    this.activityList = d;
+  }
+
 }
