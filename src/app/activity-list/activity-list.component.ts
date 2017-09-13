@@ -13,7 +13,6 @@ export class ActivityListComponent implements OnInit {
     this.mservice.getPointDetails('archive_list').subscribe((data) =>this.getActivity(data));
   }
   getActivity(d){
-    console.log(d);
     this.activityList = d;
     this.changeDetectorRef.detectChanges();
   }
