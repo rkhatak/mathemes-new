@@ -39,7 +39,9 @@ getData(){
   this.mservice.getOrderlist('archive',this.restID).subscribe((data) =>this.archiveList=data);
 }
   ngOnDestroy(){
-    this.onThemeSetEvent$Subscription.unsubscribe();
+    if(this.onThemeSetEvent$Subscription){
+      this.onThemeSetEvent$Subscription.unsubscribe();
+    }
   }  
   setData(d){
     this.redeemable_point = d.points - d.redeemed_points;
