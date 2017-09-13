@@ -149,9 +149,14 @@ import { MyaccountComponent } from './myaccount/myaccount.component';
         component: SocialmediaComponent
       },
       {
+        path: 'myaccount',
+        component: MyaccountComponent
+      },
+      {
         path: '',
         component: HomeComponent
       },
+
     ])
   ],
   providers: [

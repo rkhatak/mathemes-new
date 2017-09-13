@@ -789,5 +789,17 @@ export class MainService implements OnDestroy {
             var t = (screen.height / 2) - 200;
             window.open(loginURL, 'twitter-login', 'scrollbars=no, resizable=no, width=600, height=400, top=' + t + ', left=' + l);
         };
+        getPointDetails(task) {
+            let self = this;
+            let apiUrl = self.getApiUrl('user/point-detail?type=' + task);
+            return self._http.get(apiUrl)
+                .map((response: Response) => <any>response.json());
+        }
+        getOrderlist(task,restId) {
+            let self = this;
+            let apiUrl = self.getApiUrl('user/order?restaurantid='+restId+'&type=' + task);
+            return self._http.get(apiUrl)
+                .map((response: Response) => <any>response.json());
+        }
         
 }

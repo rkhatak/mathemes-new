@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {MainService} from '../main.service';
 @Component({
   selector: 'app-activity-list',
   templateUrl: './activity-list.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mservice:MainService) { }
 
   ngOnInit() {
   }
