@@ -9,9 +9,10 @@ import { MainService } from '../main.service';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit, OnDestroy {
-
+  _id:number;
   constructor(private global:Globals,private mservice: MainService,private changeDetectorRef: ChangeDetectorRef) {
-    this.global.onDialogType.subscribe(()=>{
+    this.global.onDialogType.subscribe((d?:any)=>{
+      this._id=d.id;
       changeDetectorRef.detach();
       this.dialogType=this.global.dialogType;
     })
@@ -22,11 +23,11 @@ export class DialogComponent implements OnInit, OnDestroy {
   @Input() sendToPop ;
   ngOnInit() {
     if (!this.onDialogType$Subscription) {
-    this.global.onDialogType.subscribe(()=>{
+    this.global.onDialogType.subscribe((d?:any)=>{
+      this._id=d.id;
       this.changeDetectorRef.detach();
       this.changeDetectorRef.detectChanges();
       this.dialogType=this.global.dialogType;
-      console.log(this.sendToPop)
       this.mservice.showPopUp();
     })
   }  

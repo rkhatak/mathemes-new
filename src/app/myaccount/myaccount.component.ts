@@ -57,6 +57,6 @@ getData(){
   }
   viewOrder(id){
     this.globals.dialogType="orderDetail";
-    this.globals.onDialogSet();
+    this.globals.onDialogSet(id);
   }
 }

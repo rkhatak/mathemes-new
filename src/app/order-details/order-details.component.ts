@@ -1,4 +1,4 @@
-import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef,Input} from '@angular/core';
 import { Globals } from '../globals';
 import {MainService} from '../main.service';
 import {Subscription} from 'rxjs/Subscription';
@@ -11,8 +11,9 @@ export class OrderDetailsComponent implements OnInit {
   onThemeSetEvent$Subscription: Subscription;
   constructor(private mservice:MainService,public globals: Globals,private changeDetectorRef:ChangeDetectorRef) { }
   details:any="";
+  @Input() _id;
   ngOnInit() {
-    let ids=328;
+    let ids=this._id;
     this.mservice.getOrderDetails(ids).subscribe((data) =>this.getDetail(data));
   }
   getDetail(d){
