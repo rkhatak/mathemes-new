@@ -17,6 +17,7 @@ export class MyaccountComponent implements OnInit,OnDestroy {
   cash:any = 0;
   liveList:any="" ;
   archiveList:any="";
+  sendToPop:any;
   
   ngOnInit() {
     if(this.globals.globalRestaurantId){
@@ -44,13 +45,18 @@ getData(){
     }
   }  
   setData(d){
-    this.redeemable_point = d.points - d.redeemed_points;
-    this.redeemed_point= d.redeemed_points;
+    this.globals.redeemable_point=this.redeemable_point = d.points - d.redeemed_points;
+    this.redeemed_point = d.redeemed_points;
     this.total_point= d.points;
     this.cash = d.points * .01 ;
+    
   }
   getActivityArchive(){
     this.globals.dialogType="myActivity";
+    this.globals.onDialogSet();
+  }
+  viewOrder(id){
+    this.globals.dialogType="orderDetail";
     this.globals.onDialogSet();
   }
 }

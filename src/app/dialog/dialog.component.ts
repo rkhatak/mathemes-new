@@ -1,4 +1,4 @@
-import { Component, OnInit,OnDestroy,ChangeDetectorRef} from '@angular/core';
+import { Component, OnInit,OnDestroy,ChangeDetectorRef,Input} from '@angular/core';
 import { Globals } from '../globals';
 import { Subscription } from 'rxjs/Subscription';
 import { MainService } from '../main.service';
@@ -17,13 +17,16 @@ export class DialogComponent implements OnInit, OnDestroy {
     })
    }
   public dialogType:string='loader';
+  
   onDialogType$Subscription: Subscription;
+  @Input() sendToPop ;
   ngOnInit() {
     if (!this.onDialogType$Subscription) {
     this.global.onDialogType.subscribe(()=>{
       this.changeDetectorRef.detach();
       this.changeDetectorRef.detectChanges();
       this.dialogType=this.global.dialogType;
+      console.log(this.sendToPop)
       this.mservice.showPopUp();
     })
   }  
