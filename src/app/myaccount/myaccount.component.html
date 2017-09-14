@@ -38,7 +38,7 @@
         <div class="col-md-2 col-xs-6 _pol">{{orders.created_at}} {{orders.requested_delivery_time}}</div>
         <strong class="col-md-2 col-xs-6 _m0-xs text-align-xs-right  _pol">$ {{orders.total_amount}}</strong>
         <div class="col-md-3 text-align-md-right text-align-xs-center"><a href="javascript:void(0)" class="ubtn blackbtn" (click)="viewOrder(orders.id)">View</a></div>
-        <div class="col-md-3 text-align-md-right text-align-xs-center"><a href="javascript:void(0)" class="ubtn blackbtn" data-id="{{orders.id}}" ng-click="rReorder($event)">reorder</a></div>
+        <div class="col-md-3 text-align-md-right text-align-xs-center"><a href="javascript:void(0)" class="ubtn blackbtn" (click)="reOrder(orders.id)">reorder</a></div>
         <p class="r_error_{{orders.id}}"></p>
      </div>
      <div class="row order_list display-flex-none-xs display-flex" *ngIf="!archiveList.length && !liveList.length">

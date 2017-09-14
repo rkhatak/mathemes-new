@@ -57,4 +57,10 @@ getData(){
     this.globals.dialogType="orderDetail";
     this.globals.onDialogSet();
   }
+  reOrder(id){
+    this.mservice.getReOrderDetails(id).subscribe((data) =>this.setReData(data));
+  }
+  setReData(data){
+    console.log(data);
+  }
 }
