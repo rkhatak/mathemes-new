@@ -540,7 +540,7 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 .galleryslider{position:relative;background:#000;}
 .galleryslider .item{text-align:center;}
 .owl-carousel,.owl-carousel .owl-item{-webkit-tap-highlight-color:transparent;position:relative}
-.owl-carousel{display:none;width:100%;z-index:1}
+.owl-carousel{display:none;width:100%;z-index:1;margin-top:55px;}
 .owl-carousel .owl-stage{position:relative;-ms-touch-action:pan-Y;-moz-backface-visibility:hidden}
 .owl-carousel .owl-stage:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
 .owl-carousel .owl-stage-outer{position:relative;overflow:hidden;-webkit-transform:translate3d(0,0,0)}
@@ -692,7 +692,8 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 .loginpopup .btn_soicalmedia .sbtn:after{content:'';width:1px;height:100%;position:absolute;top:0;left:35px;background:rgba(0, 0, 0, 0.1);}
 .loginpopup .btn_soicalmedia .btn_google i{top:6px;left:7px;}
 
-.mymunchado .pageheader{background:#000;position:static;}
+.mymunchado .pageheader{ background:#000; position:static; } 
+.mymunchado ._960px { padding: 0; }
 .mymunchado .txt_redeempoint{font:bold 0.875em arial;background:#000;padding:10px;text-align:center;color:rgba(255, 255, 255, 0.9);margin:50px 0;}
 .mymunchado .title_mymunchado{text-transform:uppercase;padding:15px 0;letter-spacing:2px;font-weight:700;color:#000;}
 .mymunchado .order_list{border-top:1px dotted rgba(0, 0, 0, 0.3);padding:15px 0;align-items:center;font-size:0.875em;letter-spacing:0.5px;}
