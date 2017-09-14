@@ -41,8 +41,8 @@ export class Globals {
     public onThemeSet(){
         this.onThemeSetEvent.next();
     }
-    public onDialogSet(){
-        this.onDialogType.next();
+    public onDialogSet(data?:object){
+        this.onDialogType.next(data);
     }
     public onCart(){
         this.onCartChange.next();

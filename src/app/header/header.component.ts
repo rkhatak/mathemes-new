@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit,OnDestroy {
 headermenu:any='';
 public is_login:boolean=false;
 public headerLogo:string=''; 
-onThemeSetEvent$Subscription: Subscription;
+onThemeSetEventHeader$Subscription: Subscription;
 private restaurantAddress: object;
 public multipleAddress:boolean=false;
 public _currentRestaurant:any;
@@ -23,20 +23,16 @@ private long:any;
 public rootId:any;
 public rootPage:any;   
 constructor(private router:Router,public globals:Globals,private mservice:MainService,@Inject(DOCUMENT) private document: any, private changeDetectorRef: ChangeDetectorRef) {
-  this.globals.onLoginChange.subscribe(
-        (data) => {
-           console.log(data);
-        }
-      );
 }
 
  ngOnInit() {
      if(this.globals.globalTheme){
       this.loadTheme();
       this.getContact();
+      alert('test');
     }else{
-    if(!this.onThemeSetEvent$Subscription){
-      this.onThemeSetEvent$Subscription = this.globals.onThemeSetEvent.subscribe(
+    if(!this.onThemeSetEventHeader$Subscription){
+      this.onThemeSetEventHeader$Subscription = this.globals.onThemeSetEvent.subscribe(
         (data) => {
            this.loadTheme();
            this.getContact();
@@ -46,11 +42,11 @@ constructor(private router:Router,public globals:Globals,private mservice:MainSe
     }
 }
   ngOnDestroy() {
-    alert('header destroyed');
-    if(this.onThemeSetEvent$Subscription){
-      this.onThemeSetEvent$Subscription.unsubscribe();
+    if(this.onThemeSetEventHeader$Subscription){
+      this.onThemeSetEventHeader$Subscription.unsubscribe();
     }
   }
+
  private getContact(): void {
     let _theme = this.globals.globalTheme;
     this._currentRestaurant=this.globals.currentRestaurantDetail;
@@ -119,13 +115,19 @@ selectLocation(){
       this.mservice.getUserDetails()
       .subscribe(
       (udata) => self.setUserDetails(udata));
-    })
-     
+    });
   }
    setUserDetails(d) {
+    let self=this; 
     this.mservice.setStorage('is_login',false);
     this.globals.is_login=false; 
     this.globals.currentUser = d;
-    this.globals.onThemeSet();
+    this.globals.onThemeSet();   
+    self.router.navigate(['/home']); 
+    //this.onThemeSetEvent$Subscription.unsubscribe();
+  }
+  reservetable(){
+    this.globals.dialogType="reservation";
+    this.globals.onDialogSet();
   }
 }

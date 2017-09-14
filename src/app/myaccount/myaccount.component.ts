@@ -40,7 +40,9 @@ getData(){
   this.mservice.getOrderlist('archive',this.restID).subscribe((data) =>this.archiveList=data);
 }
   ngOnDestroy(){
-    this.onThemeSetEvent$Subscription.unsubscribe();
+    if(this.onThemeSetEvent$Subscription){
+      this.onThemeSetEvent$Subscription.unsubscribe();
+    }
   }  
   setData(d){
     this.globals.redeemable_point=this.redeemable_point = d.points - d.redeemed_points;
@@ -54,8 +56,9 @@ getData(){
     this.globals.onDialogSet();
   }
   viewOrder(id){
+    console.log(id);
     this.globals.dialogType="orderDetail";
-    this.globals.onDialogSet();
+    this.globals.onDialogSet({'id':id});
   }
   reOrder(id){
     this.mservice.getReOrderDetails(id).subscribe((data) =>this.setReData(data));

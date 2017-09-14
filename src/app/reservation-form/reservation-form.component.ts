@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 
 @Component({
   selector: 'app-reservation-form',
@@ -6,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reservation-form.component.css']
 })
 export class ReservationFormComponent implements OnInit {
-
-  constructor() { }
-
+  date: DateModel;
+  options: DatePickerOptions;
+  myDate =new Date();
+  constructor() { 
+    this.options = new DatePickerOptions();
+    this.myDate=new Date();
+  }
+ 
   ngOnInit() {
   }
 
