@@ -12,7 +12,7 @@ export class DialogComponent implements OnInit, OnDestroy {
   _id:number;
   constructor(private global:Globals,private mservice: MainService,private changeDetectorRef: ChangeDetectorRef) {
     this.global.onDialogType.subscribe((d?:any)=>{
-      this._id=d.id;
+      this._id=(typeof d!='undefined')?d.id:0;
       changeDetectorRef.detach();
       this.dialogType=this.global.dialogType;
     })
@@ -24,7 +24,7 @@ export class DialogComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (!this.onDialogType$Subscription) {
     this.global.onDialogType.subscribe((d?:any)=>{
-      this._id=d.id;
+     this._id=(typeof d!='undefined')?d.id:0;
       this.changeDetectorRef.detach();
       this.changeDetectorRef.detectChanges();
       this.dialogType=this.global.dialogType;

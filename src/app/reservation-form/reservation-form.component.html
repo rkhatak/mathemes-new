@@ -1,12 +1,12 @@
 <div class="_p30 popup_reservetable">
   <form name="bookform" id="bookform" method="post">
-   <div ng-show="isReservationTime" class="formstep1">
+    <div ng-show="isReservationTime" class="formstep1">
       <p class="sectiontitle _mb40">reserve a table</p>
       <div class="form_bookatable_level1">
         <div class="row">
-         <div class="update_people_bookatable col-md-4 col-sm-4">
+          <div class="update_people_bookatable col-md-4 col-sm-4">
             <div class="reserveinputstyle">
-               <select name="people" id="people">
+              <select name="people" id="people">
                    <option value="2">2 people</option>
                   <option value="3">3 people</option>
                   <option value="4">4 people</option>
@@ -18,29 +18,32 @@
                   <option value="10">10 people</option>
                </select>
             </div>
-         </div>
-            
-         <div class="col-md-4  col-sm-4">
+          </div>
+
+          <div class="col-md-4  col-sm-4">
             <div class="reserveinputstyle">
-                <!--<md-datepicker ng-init="reservationdata.myDate = reservationdata.myDate || 'myDate'" ng-model="myDate" md-min-date="minDate" ng-change="dateChange(myDate)" name="datepicker1" id="datepicker1" md-placeholder="Enter date"></md-datepicker>-->
+               <material-datepicker [(date)]="myDate"></material-datepicker>
+             
+              <!--<md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>-->
+              <!--<md-datepicker ng-init="reservationdata.myDate = reservationdata.myDate || 'myDate'" ng-model="myDate" md-min-date="minDate" ng-change="dateChange(myDate)" name="datepicker1" id="datepicker1" md-placeholder="Enter date"></md-datepicker>-->
             </div>
-         </div>
-         <div class="col-md-4 col-sm-4 position-relative">
+          </div>
+          <div class="col-md-4 col-sm-4 position-relative">
             <div class="reserveinputstyle">
-               <input ng-click="showTimeSlot()" type="text" name="timepicker1" id="timepicker1" readonly >
-               <div class="timepicker_custom outerDIVclose">
-                  <ul class="t_timepicker unstyled clearfix">
-                  </ul>
-               </div>
+              <input ng-click="showTimeSlot()" type="text" name="timepicker1" id="timepicker1" readonly>
+              <div class="timepicker_custom outerDIVclose">
+                <ul class="t_timepicker unstyled clearfix">
+                </ul>
+              </div>
             </div>
-         </div>
+          </div>
+        </div>
+        <div class="text-align-center _mt35">
+          <input type="button" value="Reserve it" name="btnbook" id="btnbook" class="ubtn" ng-click="showReservationForm()">
+        </div>
       </div>
-         <div class="text-align-center _mt35">
-            <input type="button" value="Reserve it" name="btnbook" id="btnbook" class="ubtn" ng-click="showReservationForm()">
-         </div>
-      </div>
-   </div>
-   <!--<div ng-show="isShowReservation" class="formstep2 forreserve">
+    </div>
+    <!--<div ng-show="isShowReservation" class="formstep2 forreserve">
    <p class="sectiontitle _mb40">reserve a table</p>
    <div class="text-align-center">
      <p class="msgreservation _mb15">Your reservation is almost complete</p>
@@ -101,7 +104,7 @@
    </div>
     <p class="text-align-center"><a href="javascript:void(0)" id="btnconfirm" class="ubtn" ng-click="sendReservation()">Request reservation</a><span class="lineloader r_confirm_loader hide"><span></span><span></span><span></span></span></p>
    </div>-->
-   <!--<div class="formstep3 thanku text-align-center hide" id="formstp3">
+    <!--<div class="formstep3 thanku text-align-center hide" id="formstp3">
         <p class="sectiontitle _mb40">reservation summary</p>
         <div class="row box_typeofplace">
             <p class="col-md-4 col-xs-12 col-sm-4"><span id="y-party-size"></span> people</p>
@@ -137,5 +140,5 @@
         <strong class="toBeSendContact _fontarial"></strong></p>
         <p class="txt_yourinvites_expect _fs14 text-align-center">Expect RSVPs soon!</p>
     </div>-->
-</form>
+  </form>
 </div>

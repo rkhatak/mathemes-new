@@ -14,6 +14,7 @@ export class OrderDetailsComponent implements OnInit {
   @Input() _id;
   ngOnInit() {
     let ids=this._id;
+    console.log(ids);
     this.mservice.getOrderDetails(ids).subscribe((data) =>this.getDetail(data));
   }
   getDetail(d){
