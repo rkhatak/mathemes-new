@@ -89,7 +89,7 @@ selectLocation(){
    this.is_login=(varCheckLogin=='true')?true:this.globals.is_login;
    this.headerLogo=this.globals.baseThemeImage+_thime+'/images/';
    this.changeDetectorRef.detectChanges();
-   console.log(this.globals.currentUser);
+   //console.log(this.globals.currentUser);
    this.mservice.getThemeDetails(_thime)
       .subscribe(themedata =>this.headermenu=themedata);        
        
@@ -128,6 +128,6 @@ selectLocation(){
   }
   reservetable(){
     this.globals.dialogType="reservation";
-    this.globals.onDialogSet();
+    this.globals.onDialogSet({"isReservationTime":true,"isShowReservation":false});
   }
 }

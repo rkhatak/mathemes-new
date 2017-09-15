@@ -10,9 +10,12 @@ import { MainService } from '../main.service';
 })
 export class DialogComponent implements OnInit, OnDestroy {
   _id:number;
+  _data:any;
+   myDate =new Date();
   constructor(private global:Globals,private mservice: MainService,private changeDetectorRef: ChangeDetectorRef) {
     this.global.onDialogType.subscribe((d?:any)=>{
       this._id=(typeof d!='undefined')?d.id:0;
+      this._data=(typeof d!='undefined')?d:'';
       changeDetectorRef.detach();
       this.dialogType=this.global.dialogType;
     })
@@ -25,6 +28,7 @@ export class DialogComponent implements OnInit, OnDestroy {
     if (!this.onDialogType$Subscription) {
     this.global.onDialogType.subscribe((d?:any)=>{
      this._id=(typeof d!='undefined')?d.id:0;
+     this._data=(typeof d!='undefined')?d:'';
       this.changeDetectorRef.detach();
       this.changeDetectorRef.detectChanges();
       this.dialogType=this.global.dialogType;

@@ -6,7 +6,6 @@ import {LocalStorageService, LocalStorage} from 'ng2-webstorage';
 import { AppComponent } from './app.component';
 import { MainService } from './main.service';
 import {Globals} from './globals';
-import { DatePickerModule } from 'ng2-datepicker';
 import { DatepickerModule } from 'angular2-material-datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HeaderComponent} from './header/header.component';
@@ -50,6 +49,7 @@ import { FormattedDatePipe } from './formatted-date.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +89,7 @@ import { FormattedDatePipe } from './formatted-date.pipe';
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,
-    HttpModule,Ng2PageScrollModule,PageSliderModule,FormsModule,OwlModule,DatepickerModule,DatePickerModule,
+    HttpModule,Ng2PageScrollModule,PageSliderModule,FormsModule,OwlModule,DatepickerModule,
     RouterModule.forRoot([
       {
         path: 'home',
