@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, Inject } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Inject,ChangeDetectorRef } from '@angular/core';
 import { Globals } from '../globals';
 import { Subscription } from 'rxjs/Subscription';
 import { DOCUMENT } from '@angular/platform-browser';
@@ -30,15 +30,16 @@ export class CardItemComponent implements OnInit, OnDestroy {
   timeEdit: boolean;
   order_type: string = 'takeout';
   private onCartChange$Subscription: Subscription;
-  constructor(public mservice: MainService, private globals: Globals, @Inject(DOCUMENT) private document: any) {
+  constructor(private changeDetectorRef:ChangeDetectorRef,public mservice: MainService, private globals: Globals, @Inject(DOCUMENT) private document: any) {
     this.onCartChange$Subscription = this.globals.onCartChange.subscribe(() => {
       this.cart = this.globals.cart;
-      //console.log(this.cart);
+      
       this.items = this.globals.items;
       this.addonsDisplay = this.globals.addonsDisplay;
       this.sub_total = this.cart.sub_total ? this.cart.sub_total : this.cart.prices[0].value;
       this.total = this.sub_total * this.cart.quantity;
       this.total = (100 * this.total / 100);
+      this.changeDetectorRef.detectChanges();
     })
   }
   changeItemPrice(){
@@ -109,12 +110,14 @@ export class CardItemComponent implements OnInit, OnDestroy {
     this.cart = this.globals.cart;
     this.addonsDisplay = this.globals.addonsDisplay;
     this.items = this.globals.items;
+    this.changeDetectorRef.detectChanges();
   }
 
   addMulti() {
     this.cart.quantity = parseInt(this.cart.quantity) + 1;
     this.total = this.sub_total * this.cart.quantity;
     this.total = (100 * this.total / 100);
+    this.changeDetectorRef.detectChanges();
   }
 
   addToCart() {
@@ -234,6 +237,7 @@ export class CardItemComponent implements OnInit, OnDestroy {
       this.cart.quantity = parseInt(this.cart.quantity) - 1;
       this.total = this.sub_total * this.cart.quantity;
       this.total = (100 * this.total / 100);
+      this.changeDetectorRef.detectChanges();
     }
   }
   selectSubTotal(s) {
@@ -241,6 +245,7 @@ export class CardItemComponent implements OnInit, OnDestroy {
     this.total = this.sub_total * this.cart.quantity;
     this.total = (100 * this.total / 100);
     this.addonSelected = s.addonSelected;
+    this.changeDetectorRef.detectChanges();
   }
 
 

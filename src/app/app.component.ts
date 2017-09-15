@@ -63,6 +63,8 @@ ngOnDestroy() {
     //assign theme & restaurant id to global 
     this.globals.globalRestaurantId = _restaurant;
     this.globals.globalTheme = _thime;
+    this.globals.globalThemeSortKey = data[_host].shortKey;
+    
     let _themeCss = 'assets/template/themes/' + _thime + '/css/app.css';
     this.mservice.getThemeDetails(_thime)
       .subscribe((themedata) => this.thememenu = themedata,

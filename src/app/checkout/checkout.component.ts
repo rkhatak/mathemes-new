@@ -377,6 +377,21 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     $("input[name=first_name]").val(value);
     return hasError;
   };
+  validatePhone() {
+            var hasError = false,
+                    phoneNo = $("input[name=phone_no]"),
+                    phoneVal = $.trim(phoneNo.val().replace(/([*()'-\/ ])/g, ''));
+            if (phoneVal === '') {
+                $(".error-phoneNo").html("We promise; No prank calls").fadeIn("slow").removeClass("hide");
+                hasError = true;
+            } else if (phoneVal.length < 10) {
+                $(".error-phoneNo").html('You know, there\'s a cadence to phone numbers. They usually go xxx-xxx-xxxx').fadeIn("slow").removeClass("hide");
+                hasError = true;
+            } else {
+                $(".error-phoneNo").html("").fadeOut("slow").addClass("hide");
+            }
+            return hasError;
+        };
   validatePhoneR() {
     var hasError = false,
       phoneNo = $("input[name=phone_no_r]"),
@@ -426,6 +441,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   cartEditOrder() {
     this.router.navigate(['/menu']);
   }
+  placeOrder(){
+            this.mservice.placeOrder(this);
+        }
   ngOnDestroy() {
     if (this.onThemeSetEvent$Subscription) {
       this.onThemeSetEvent$Subscription.unsubscribe();

@@ -6,6 +6,8 @@ import {LocalStorageService, LocalStorage} from 'ng2-webstorage';
 import { AppComponent } from './app.component';
 import { MainService } from './main.service';
 import {Globals} from './globals';
+import { DatepickerModule } from 'angular2-material-datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HeaderComponent} from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -46,6 +48,8 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { FormattedDatePipe } from './formatted-date.pipe';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,11 +88,8 @@ import { FormattedDatePipe } from './formatted-date.pipe';
     FormattedDatePipe
   ],
   imports: [
-    BrowserModule,
-    HttpModule,Ng2PageScrollModule,PageSliderModule,FormsModule,OwlModule,
-    // AgmCoreModule.forRoot({
-    //   apiKey: 'AIzaSyCXT_lsfclOy7_1PHp2lFfoM-Ujwb3-cdA'
-    // }),
+    BrowserModule,BrowserAnimationsModule,
+    HttpModule,Ng2PageScrollModule,PageSliderModule,FormsModule,OwlModule,DatepickerModule,
     RouterModule.forRoot([
       {
         path: 'home',

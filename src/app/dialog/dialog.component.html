@@ -5,10 +5,10 @@
       <app-activity-list *ngSwitchCase="'myActivity'"></app-activity-list>
       <app-card-item *ngSwitchCase="'addtocart'"></app-card-item>
       <app-login-source *ngSwitchCase="'login'"></app-login-source>
-      <app-order-details *ngSwitchCase="'orderDetail'"></app-order-details>
+      <app-order-details *ngSwitchCase="'orderDetail'" [_id]="_id"></app-order-details>
       <app-order-link-form *ngSwitchCase="'linkFormOrder'"></app-order-link-form>
       <app-register-source *ngSwitchCase="'register'"></app-register-source>
-      <app-reservation-form *ngSwitchCase="'reservation'"></app-reservation-form>
+      <app-reservation-form *ngSwitchCase="'reservation'" [_data]="_data"></app-reservation-form>
       <app-reservation-link-form *ngSwitchCase="'linkFormReservation'"></app-reservation-link-form>
       <app-search-geoaddress *ngSwitchCase="'searchAddress'"></app-search-geoaddress>
       <app-twitter-register *ngSwitchCase="'twitterlogin'"></app-twitter-register>
