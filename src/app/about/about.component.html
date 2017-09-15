@@ -12,9 +12,11 @@
                                 </a>
                             </li>                           
                         </ul>
+                        <material-datepicker [(date)]="myDate"></material-datepicker>
                         <input type="button" class="ubtn btn_readourstory" (click)="readStory($event)" value="Read our story">
                     </div>            
                 </div>
+                
                 <div *ngIf="showStory" class="_960px storysection">
                   <app-story [showStory]="showStory" id="story"></app-story>
                 </div>

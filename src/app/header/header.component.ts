@@ -90,6 +90,8 @@ selectLocation(){
    this.headerLogo=this.globals.baseThemeImage+_thime+'/images/';
    this.changeDetectorRef.detectChanges();
    console.log(this.globals.currentUser);
+   this.globals.is_login=this.is_login;
+   this.globals.onCart();
    this.mservice.getThemeDetails(_thime)
       .subscribe(themedata =>this.headermenu=themedata);        
        
