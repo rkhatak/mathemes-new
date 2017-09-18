@@ -1026,4 +1026,11 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 @media all and (-ms-high-contrast:none){
 	.reserveinputstyle select{height:38px;}
 }
+.btn_careersubmit, .form_application{margin-top:40px;}
+.form_application textarea{height:100%;min-height:146px;}
+.form_application input, .form_application textarea{font-size:1em;padding:10px;display:block;}
+.form_application .error-input{background-color:#F78080;color:#fff;border-color:red;}
+.btn_careersubmit .ubtn{min-width:200px;}
+.application-success{text-align:center;font-size:0.875em;padding:50px 0;font-weight:700px;}
+.form_application .lineloader{margin-left:15px;}
 

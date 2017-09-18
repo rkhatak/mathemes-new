@@ -3,7 +3,7 @@
              <strong class="txt_delivery_address">{{currentRestaurant.delivery_desc}}</strong></p>
               <div class="m_location_verify">
                 <i class="i_circle i_wrong">+</i>
-                <input type="text" (keydown)="seoAddressSeachByLocation()" #searchTextField id="searchTextField" class="input_delivery_address" value="{{searchAddress}}" placeholder="(Ex: 79 Madison Street, New  York...)"/>
+                <input type="text" (keydown)="seoAddressSeachByLocation()" #searchTextField id="searchTextField" class="input_delivery_address" value="{{setDeliveryAddress}}" placeholder="(Ex: 79 Madison Street, New  York...)"/>
                 <input type="hidden" id="fullAddress" value=""/>
                 <input type="hidden" id="addressLat" value=""/>
                 <input type="hidden" id="addressLng" value=""/>

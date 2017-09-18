@@ -62,6 +62,15 @@ export class OrderItemComponent implements OnInit, OnDestroy {
     });
     self.mservice.setStorage('order_items_' + restId, JSON.stringify(order_items));
     self.cartItems = order_items;
+    var cartCount = 0;
+    var set_order_items = JSON.parse(this.mservice.getStorage('order_items_' + restId));
+    if (set_order_items) {
+      $.each(set_order_items, function (index, item) {
+        cartCount = (cartCount + parseInt(item.quantity));
+      });
+    }
+    this.globals.cartCount = cartCount;
+    this.globals.onCartItem();
     self.mservice.cartCalution();
   }
 

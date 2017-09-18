@@ -1,4 +1,4 @@
-import { ElementRef,Component, OnInit,OnDestroy,NgZone,ViewChild } from '@angular/core';
+import { ElementRef,Component, OnInit,OnDestroy,NgZone,ViewChild,Input } from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import { MainService } from '../main.service';
 import { Globals } from '../globals';
@@ -10,7 +10,8 @@ declare var google: any;
 @Component({
   selector: 'app-search-geoaddress',
   templateUrl: './search-geoaddress.component.html',
-  styleUrls: ['./search-geoaddress.component.css']
+  styleUrls: ['./search-geoaddress.component.css'],
+  inputs: ['_data']
 })
 export class SearchGeoaddressComponent implements OnInit,OnDestroy {
 
@@ -21,6 +22,11 @@ export class SearchGeoaddressComponent implements OnInit,OnDestroy {
           }
         );
    }
+   public set _data(values) {
+    if (!values)
+      return;
+    this.setDeliveryAddress=values.setDeliveryAddress;
+  }
  @ViewChild("searchTextField")
   public searchElementRef: ElementRef;   
 onThemeSetEvent$Subscription:Subscription;
@@ -28,6 +34,7 @@ currentRestaurant:any;
 rightAddress:boolean=false;
 wrongAddress:boolean=false;
 invalidAddress:boolean=false;
+setDeliveryAddress:any;
   ngOnInit() {
     this.currentRestaurant=this.globals.currentRestaurantDetail;
   }

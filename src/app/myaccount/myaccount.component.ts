@@ -62,7 +62,6 @@ getData(){
     this.globals.onDialogSet();
   }
   viewOrder(id){
-    console.log(id);
     this.globals.dialogType="orderDetail";
     this.globals.onDialogSet({'id':id});
   }

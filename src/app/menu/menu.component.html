@@ -99,7 +99,7 @@
                                         <div *ngIf="deliveryOrderCart" class="box_expectedtime _fs12 _mt35 ordertype_location">
                                             <p class="_fontarial txt_minhours t_distance_text"></p>
                                             <p class="_fs14 txt_upper t_delivery_address">{{setDeliveryAddress}}</p>
-                                            <p><a href="javascript:void(0)" class="txtlink t_change_address" title="Edit Address" ng-click="editAddress()">Change</a></p>
+                                            <p><a href="javascript:void(0)" class="txtlink t_change_address" title="Edit Address" (click)="editAddress(setDeliveryAddress)">Change</a></p>
                                         </div>
                                         <p ng-if="deliveryOrderCart" class="_mt10 txt_rightalign _fs12 y-deleiver-yes"><i class="i_right i_circle"></i>Good News! This restaurant will deliver to you.</p>
 <!--                                        <p  ng-if="wrongAddress" class="_mt10 txt_rightalign y-deleiver-no"><i class="i_circle i_wrong">+</i>Sorry, you&#180;re outside this restaurant&#180;s delivery zone.</p>-->
