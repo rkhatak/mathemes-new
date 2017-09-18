@@ -7,11 +7,12 @@ import { Globals } from './globals';
 import { DOCUMENT } from '@angular/platform-browser';
 import * as _ from 'underscore';
 import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Injectable()
 export class MainService implements OnDestroy {
-    constructor(private _http: Http, public globals: Globals, @Inject(DOCUMENT) private document: any) {
+    constructor(private router:Router,private _http: Http, public globals: Globals, @Inject(DOCUMENT) private document: any) {
         this.onCartChange$Subscription = this.globals.onCartChange.subscribe(() => {
             this.cart = this.globals.cart;
             this.items = this.globals.items;
@@ -278,7 +279,7 @@ export class MainService implements OnDestroy {
     cartCalution() {
         var self = this;
         let restId = self.globals.globalRestaurantId;
-        let order_items = JSON.parse(this.getStorage('order_items_' + restId));
+        let order_items = (this.getStorage('order_items_' + restId))?JSON.parse(this.getStorage('order_items_' + restId)):[];
         let orderType = this.getStorage('order_type_' + restId);
         let tax: any = 0, subtotal: any = 0, total: any = 0;
         let delCharge: any = parseFloat(self.globals.currentRestaurantDetail.delivery_charge);
@@ -1381,33 +1382,10 @@ export class MainService implements OnDestroy {
             $('.t-edit_order_link').addClass('hide');
             
             self.newOrder(data).subscribe((res)=>{
-                            self.globals.cartCount = 0;
+                            this.router.navigate(['/payment']);
                             
                             //$rootScope.orderReceipt=res.receipt;
                             
-                            
-                            self.setStorage('order_items_' + restId, []);
-                            //$rootScope.promocode = false;
-                             if (self.getStorage('order_type_' + restId) == "delivery") {
-                                self.setStorage("can_deliver_" + restId, true);
-                             }else{
-                                 self.setStorage("can_deliver_" + restId, false);
-                                 self.setStorage("address_value_" + restId, "");
-                             }
-                           self.setStorage("order_subtotal_" + restId, "");
-                            self.setStorage("order_tax_" + restId, "");
-                            self.setStorage("order_total_" + restId, "");
-                            self.setStorage("takeout_order_date_" + restId, "");
-                            self.setStorage("takeout_order_time_" + restId, "");
-                            self.setStorage("delivery_order_date_" + restId, "");
-                            self.setStorage("delivery_order_time_" + restId, "");
-                            //$.jStorage.set("order_type_" + restId, "");                            
-                            self.setStorage("address_lat_" + restId, "");
-                            self.setStorage("address_lng_" + restId, "");
-                            self.setStorage("address_type_" + restId, "");
-                            self.setStorage("address_distance_" + restId, "");
-                            self.setStorage('order_tip_' + restId, "");
-                           self.setStorage('tip_' + restId, 10);
             },(err)=>{
                 let errObj = JSON.parse(err._body);
                  let msg = errObj.error;

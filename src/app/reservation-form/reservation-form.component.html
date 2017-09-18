@@ -21,8 +21,7 @@
           </div>
 
           <div class="col-md-4  col-sm-4">
-            <div class="reserveinputstyle">
-             
+            <div>
               <material-datepicker #picker [(date)]="myDate"></material-datepicker>
                         <button (click)="picker.onInputClick(); $event.stopPropagation()">Open manually</button>
 

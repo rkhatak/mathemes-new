@@ -128,6 +128,8 @@ getDistance(options) {
                                 $('.t_delivery_address').html(fullAddress);
                                 self.mservice.setStorage("can_deliver_" + restId, true);
                                 self.mservice.setStorage("address_value_" + restId, fullAddress);
+                                self.globals.setDeliveryAddress = self.mservice.getStorage("address_value_" + restId);
+                                self.globals.onCartItem();
                                 self.mservice.setStorage("address_distance_" + restId, distance);
                                 self.mservice.setStorage("address_lat_" + restId, lat);
                                 self.mservice.setStorage("address_lng_" + restId, lng);

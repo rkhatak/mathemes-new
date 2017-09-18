@@ -46,6 +46,7 @@ import { MyaccountComponent } from './myaccount/myaccount.component';
 import { TermComponent } from './term/term.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { FormattedDatePipe } from './formatted-date.pipe';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 
 
 
@@ -85,7 +86,8 @@ import { FormattedDatePipe } from './formatted-date.pipe';
     MyaccountComponent,
     TermComponent,
     PrivacyComponent,
-    FormattedDatePipe
+    FormattedDatePipe,
+    PaymentSuccessComponent
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,
@@ -116,6 +118,10 @@ import { FormattedDatePipe } from './formatted-date.pipe';
         component: CheckoutComponent
       },
       {
+        path: 'payment',
+        component: PaymentSuccessComponent
+      },
+      {
         path: ':id/home',
         component: HomeComponent
       },
@@ -138,6 +144,10 @@ import { FormattedDatePipe } from './formatted-date.pipe';
       {
         path: ':id/checkout',
         component: CheckoutComponent
+      },
+      {
+        path: ':id/payment',
+        component: PaymentSuccessComponent
       },
       {
         path: 'registration/close',

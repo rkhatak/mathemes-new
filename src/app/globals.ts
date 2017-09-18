@@ -30,6 +30,7 @@ export class Globals {
     deliveryOrderCart:boolean;
     cartTime:any;
     cartTimeEdit:any;
+    setDeliveryAddress:any;
     tooltipselecttime:boolean=false;
     loyalty_code:any="";
     onThemeSetEvent = new Subject<object>()

@@ -53,7 +53,8 @@ export class CardItemComponent implements OnInit, OnDestroy {
     this.globals.cart.menuPrices=this.cart.menuPrices;
     this.globals.onCart();
     let id = $("#uid").val(),addons=[];
-    let order_items =JSON.parse(this.mservice.getStorage('order_items_'+restId));
+    let _menu=(this.mservice.getStorage('order_items_'+restId))?JSON.parse(this.mservice.getStorage('order_items_'+restId)):[];
+    let order_items =_menu;
     if(order_items.length>0){
             let arIndex=0;
             for(let i=0;i<order_items.length;i++){
