@@ -42,7 +42,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   payViaPoint: any;
   years:any;
   months:any = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-  constructor(public router: Router, public globals: Globals, private mservice: MainService) { }
+  constructor(public router: Router, public globals: Globals, private mservice: MainService) {
+    this.globals.onThemeSetEvent.subscribe(
+          (data) => {
+            this.getCheckout();
+          }
+    );
+   }
 
   ngOnInit() {
     if (this.globals.globalRestaurantId) {

@@ -29,7 +29,6 @@ constructor(private router:Router,public globals:Globals,private mservice:MainSe
      if(this.globals.globalTheme){
       this.loadTheme();
       this.getContact();
-      alert('test');
     }else{
     if(!this.onThemeSetEventHeader$Subscription){
       this.onThemeSetEventHeader$Subscription = this.globals.onThemeSetEvent.subscribe(

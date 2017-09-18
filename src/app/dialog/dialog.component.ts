@@ -16,8 +16,9 @@ export class DialogComponent implements OnInit, OnDestroy {
     this.global.onDialogType.subscribe((d?:any)=>{
       this._id=(typeof d!='undefined')?d.id:0;
       this._data=(typeof d!='undefined')?d:'';
-      changeDetectorRef.detach();
       this.dialogType=this.global.dialogType;
+      changeDetectorRef.detach();
+      this.changeDetectorRef.detectChanges();
     })
    }
   public dialogType:string='loader';
@@ -29,9 +30,9 @@ export class DialogComponent implements OnInit, OnDestroy {
     this.global.onDialogType.subscribe((d?:any)=>{
      this._id=(typeof d!='undefined')?d.id:0;
      this._data=(typeof d!='undefined')?d:'';
+      this.dialogType=this.global.dialogType;
       this.changeDetectorRef.detach();
       this.changeDetectorRef.detectChanges();
-      this.dialogType=this.global.dialogType;
       this.mservice.showPopUp();
     })
   }  

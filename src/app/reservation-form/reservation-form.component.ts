@@ -34,6 +34,7 @@ export class ReservationFormComponent implements OnInit {
 
   ngOnInit() {
     this._dataDefault=this._data;
+   
   }
   updateCalcs(event){
     console.log(event);
