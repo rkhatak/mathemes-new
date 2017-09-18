@@ -48,6 +48,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { FormattedDatePipe } from './formatted-date.pipe';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 import { CareersComponent } from './careers/careers.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 
 
@@ -89,7 +90,8 @@ import { CareersComponent } from './careers/careers.component';
     PrivacyComponent,
     FormattedDatePipe,
     PaymentSuccessComponent,
-    CareersComponent
+    CareersComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,
