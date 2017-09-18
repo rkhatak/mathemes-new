@@ -1,4 +1,4 @@
-<div class="mymunchado _mt70">
+<div class="mymunchado _mt70 _mb60">
   <div class="_960px">
      <p class="title_mymunchado txt_mypoints">my points</p>
      <div class="row point_panel">
@@ -30,7 +30,7 @@
         <div class="col-md-5">{{order.description}}</div>
         <div class="col-md-2 col-xs-6 _pol">{{order.created_at}} {{order.requested_delivery_time}}</div>
         <strong class="col-md-2 col-xs-6 _m0-xs text-align-xs-right  _pol">$ {{order.total_amount}}</strong>
-        <div class="col-md-3 text-align-md-right text-align-xs-center"><a href="javascript:void(0)" class="ubtn blackbtn" (click)="viewOrder(orders.id)">View</a></div>
+        <div class="col-md-3 text-align-md-right text-align-xs-center"><a href="javascript:void(0)" class="ubtn blackbtn" (click)="viewOrder(order.id)">View</a></div>
      </div>
      
      <div class="row order_list display-flex-none-xs display-flex" *ngFor="let orders of archiveList">

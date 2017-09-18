@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import {MainService} from '../main.service';
 import {Globals} from '../globals';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -11,7 +11,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class VideoSourceComponent implements OnInit {
 
-  constructor(private mservice:MainService,public globals:Globals,public sanitizer: DomSanitizer) { }
+  constructor(private changeDetectorRef:ChangeDetectorRef,private mservice:MainService,public globals:Globals,public sanitizer: DomSanitizer) { }
   public homeVideo:any='';
   onThemeSetEvent$Subscription: Subscription;
   public videoUrl;
@@ -36,7 +36,8 @@ export class VideoSourceComponent implements OnInit {
   }
   loadHomeDetails(d){
     this.homeVideo=d.home.video;
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.homeVideo);    
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.homeVideo);
+    this.changeDetectorRef.detectChanges();    
   } 
   private getHomeDetail(){
     let _thime=this.globals.globalTheme;

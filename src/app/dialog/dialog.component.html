@@ -10,7 +10,7 @@
       <app-register-source *ngSwitchCase="'register'"></app-register-source>
       <app-reservation-form *ngSwitchCase="'reservation'" [_data]="_data"></app-reservation-form>
       <app-reservation-link-form *ngSwitchCase="'linkFormReservation'"></app-reservation-link-form>
-      <app-search-geoaddress *ngSwitchCase="'searchAddress'"></app-search-geoaddress>
+      <app-search-geoaddress *ngSwitchCase="'searchAddress'" [_data]="_data"></app-search-geoaddress>
       <app-twitter-register *ngSwitchCase="'twitterlogin'"></app-twitter-register>
   </div>
 </div>
