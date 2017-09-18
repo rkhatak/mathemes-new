@@ -6,6 +6,7 @@ export class Globals {
     apiBaseUrl :string='http://api.munchado.in/wapi/'; 
     globalRestaurantId :number=0;
     globalTheme :string='';
+    globalThemeSortKey :string='';
     baseThemeImage :string='assets/template/themes/';
     currentRestaurantDetail :any='';
     currentUser:any; 
