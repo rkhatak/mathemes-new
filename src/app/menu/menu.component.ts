@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, Inject,ViewChild} from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Inject,ViewChild,ChangeDetectorRef} from '@angular/core';
 import { MainService } from '../main.service';
 import { Globals } from '../globals';
 import { Subscription } from 'rxjs/Subscription';
@@ -18,12 +18,14 @@ declare var $: any;
 })
 export class MenuComponent implements OnInit, OnDestroy {
 
-  constructor(private router:Router,private mservice: MainService, public globals: Globals, @Inject(DOCUMENT) private document: any, public sanitizer: DomSanitizer,private pageScrollService: PageScrollService) {
-   
+  constructor(private changeDetectorRef:ChangeDetectorRef,private router:Router,private mservice: MainService, public globals: Globals, @Inject(DOCUMENT) private document: any, public sanitizer: DomSanitizer,private pageScrollService: PageScrollService) {
        this.onCartItemChange$Subscription = this.globals.onCartItemChange.subscribe(
           () => {
           this.cartItemDisplay= this.globals.cartItemDisplay;
           this.cartItems=this.globals.cartItems;
+          this.setDeliveryAddress=this.globals.setDeliveryAddress;
+          this.deliveryOrderCart=this.globals.deliveryOrderCart;
+          this.changeDetectorRef.detectChanges();
           }
         );
     
@@ -83,7 +85,8 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   private getMenu() {
     let _currentRestId = this.globals.globalRestaurantId;
-    this.cartItems=(this.cartItems)?this.cartItems:JSON.parse(this.mservice.getStorage('order_items_'+_currentRestId));
+    let _menu=(this.mservice.getStorage('order_items_'+_currentRestId))?JSON.parse(this.mservice.getStorage('order_items_'+_currentRestId)):[];
+    this.cartItems=(this.cartItems)?this.cartItems:_menu;
     this.order_type=(this.mservice.getStorage(`order_type_${_currentRestId}`))?this.mservice.getStorage(`order_type_${_currentRestId}`):'takeout';    
     if(this.cartItems){
 
@@ -283,7 +286,8 @@ export class MenuComponent implements OnInit, OnDestroy {
                 self.searchAddress = (self.mservice.getStorage('address_value_' + restId) != null) ? self.mservice.getStorage('address_value_' + restId) : '';
                 self.globals.onDialogSet();
             }else {
-                if (JSON.parse(self.mservice.getStorage('order_items_' + restId)).length == 0) {
+              let _menu=(self.mservice.getStorage('order_items_' + restId))?JSON.parse(self.mservice.getStorage('order_items_' + restId)):[];
+                if (_menu.length == 0) {
                     self.cartLenth=false;
                     $(".t-no-order").css('border','solid 1px red');
                     return false;
@@ -306,7 +310,7 @@ checkoutValidate() {
             let self=this; 
             let restId = this.globals.globalRestaurantId;
             var flag=false;
-            if (self.mservice.getStorage('order_type_' + restId) == 'delivery' && (self.mservice.getStorage('delivery_order_date_' + restId) !== "" && self.mservice.getStorage('delivery_order_time_' + restId !== "") && self.mservice.getStorage('address_value_' + restId) !== "") && (self.mservice.getStorage('delivery_order_date_' + restId) !== null && self.mservice.getStorage('delivery_order_time_' + restId) !== null && self.mservice.getStorage('address_value_' + restId) !== null)) {
+            if (self.mservice.getStorage('order_type_' + restId) == 'delivery' && (self.mservice.getStorage('delivery_order_date_' + restId) !== "" && self.mservice.getStorage('delivery_order_time_' + restId !== "") && self.mservice.getStorage('address_value_' + restId) !== "") || (self.mservice.getStorage('delivery_order_date_' + restId) !== null && self.mservice.getStorage('delivery_order_time_' + restId) !== null && self.mservice.getStorage('address_value_' + restId) !== null)) {
                 flag = true;
                 self.deliveryIns=true;
             }
