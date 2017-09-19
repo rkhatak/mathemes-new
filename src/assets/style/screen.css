@@ -165,6 +165,8 @@ select:focus, input:focus{outline:0;}
 /*error message*/
 .error-message-dine-in, .error-invalid-register, .error-message{color:red;font-style:italic;font-size:0.75rem;}
 .error-color{color:red;}
+/*error message*/
+.c-error-message{color:red;font-style:italic;font-size:0.75rem;}
 /*global width*/
 ._960px{margin:0px auto;max-width:1300px;width:96.7262%;padding:100px 0;}
 /***title***/
@@ -440,7 +442,7 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 ._paneladdtocalendar ul a i{margin-right:5px;float:left}
 /***Home***/
 .homebgblack, .home{min-height:calc(100vh);}
-.homepagevideo{height:100vh;min-height:100px;}
+.homepagevideo{height:99.30vh;min-height:100px;}/*100vh*/
 .homebgblack{background:#000;position:relative;}
 .home{/*background:#000;*/color:#fff;display:flex;justify-content:center;flex-direction:column;text-align:center;align-items:center;background-repeat:no-repeat;background-size:cover;padding:124px 0 80px;position:relative;background-position:center center;}
 .home .txt_homepage{max-width:665px;margin:0 auto;}
@@ -526,9 +528,9 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 .greenP_kids_Menu_Icon{background-position:-237px -710px}
 .storysection{font:0.875em/24px arial;max-width:960px;padding-bottom:110px;}
 .storydividedtxt{-moz-column-count:2;-webkit-column-count:2;column-count:2;-moz-column-gap:30px;-webkit-column-gap:30px;column-gap:30px;}
-[ng-repeat="story in stories"]:nth-child(2n) .display-flex{flex-direction: row-reverse;}
-[ng-repeat="story in stories"]:nth-child(2n) .display-flex > *:first-child{margin-right:0;}
-[ng-repeat="story in stories"]:nth-child(2n) .display-flex > *:last-child{margin-right:1.05263%;}
+.story_in_stories:nth-child(2n) .display-flex{flex-direction: row-reverse;}
+.story_in_stories:nth-child(2n) .display-flex > *:first-child{margin-right:0;}
+.story_in_stories:nth-child(2n) .display-flex > *:last-child{margin-right:1.05263%;}
 /***Gallery Page***/
 .psection{padding:60px 60px 0;}
 /*.about.psection.active .aboutsection{margin-top:75px;-webkit-transition:margin-top 0.3s;-moz-transition:margin-top 0.3s;transition:margin-top 0.3s;}*/
@@ -716,6 +718,16 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 #promocode { padding-top:11px;padding-bottom: 10px; }
 .t-menu-render.menutab { padding-top: 20px; }
 
+/* career*/
+.btn_careersubmit, .form_application{margin-top:40px;}
+.form_application textarea{height:100%;min-height:146px;}
+.form_application input, .form_application textarea{font-size:1em;padding:10px;display:block;}
+.form_application .error-input{background-color:#F78080;color:#fff;border-color:red;}
+.btn_careersubmit .ubtn{min-width:200px;}
+.application-success{text-align:center;font-size:0.875em;padding:50px 0;font-weight:700px;}
+.form_application .lineloader{margin-left:15px;}
+/* career */
+
 /***Target small screen***/
 @media (max-width: 991px){
 	._960px{width:100%;padding:70px 10px;}	
@@ -861,6 +873,8 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 	.mymunchado .order_list ._pol{padding:5px 0 20px;}
 	.mymunchado a.txtlink.hidden{display:none;}
 
+	.form_application input{margin-top:10px;}
+
 }
 /***Target small screen***/
 @media (min-width: 992px){
@@ -920,8 +934,12 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 
 	.list-save-address{width:50%;float:left;padding-top: 0;}
 
-	
-}	
+	.form_application input:not(:first-child){margin-top:10px;}
+
+}
+@media (max-width: 992px){
+    #c_message{margin-top:10px;}
+}
 /*** Target 768 or tablet above ***/
 @media (min-width: 768px) and (max-width: 991px){
 	/**Global Grid**/
@@ -1026,4 +1044,3 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 @media all and (-ms-high-contrast:none){
 	.reserveinputstyle select{height:38px;}
 }
-
