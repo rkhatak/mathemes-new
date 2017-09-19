@@ -918,19 +918,19 @@ export class MainService implements OnDestroy {
         return self._http.post(apiUrl, data, options)
             .map((response: Response) => <any>response.json());
     }
-    reserveTableNow(rDate) {
+    reserveTableNow(rDate,seat,time) {
         let self = this;
         var host = window.location.host;
         var restId = self.globals.globalRestaurantId;
         var resData = self.globals.currentRestaurantDetail;
-        var reserve_seat = $("#people").val(),
+        var reserve_seat = seat,
             date = rDate,
-            time = $("#timepicker1").val(),
+            time =time,
             firstName = $("input[name=first_name_r]"),
             lastName = $("input[name=last_name_r]"),
             phoneNo = $("input[name=phone_no_r]"),
             email = $("input[name=email_r]"),
-            instructions = [];
+            instructions = [];    
         $("input[name='instructions[]']:checked").each(function () {
             instructions.push($(this).val());
         });
@@ -967,7 +967,6 @@ export class MainService implements OnDestroy {
             "restshortkey": self.globals.globalThemeSortKey,
             "host_name": host
         };
-        console.log(data);
         var dt = this.parseDate(date);
         var dayArray = ['Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat', 'Sun'];
         var day = dayArray[dt.getDay()];
@@ -1005,7 +1004,7 @@ export class MainService implements OnDestroy {
                 $('.error_time_slot').removeClass('hide');
             }
         });
-        $('.r_confirm_loader').addClass('hide');
+        //$('.r_confirm_loader').addClass('hide');
         $('.popup_reservetable').removeClass('form_disable');
     };
     validateAddress1() {
@@ -1414,5 +1413,58 @@ export class MainService implements OnDestroy {
         return self._http.post(apiUrl, data, options)
             .map((response: Response) => <any>response.json());
     }
+    formatDate(d) {
+            return [d.getFullYear(), ('0' + (d.getMonth() + 1)).slice(-2), ('0' + d.getDate()).slice(-2)].join('-');
+        };
+    filterArray(d) {
+            return d.status == 1;
+        };    
+
+    populateTime = function (d) {
+            //$('#timepicker1, #btnbook').addClass('disabled');
+            var self = this;
+            $('.error_time_slot').addClass('hide');
+            var people = $("#people").val();
+            var format_date = d;
+            var self = this;
+            let restId=this.globals.globalRestaurantId;
+            let apiUrl = self.getApiUrl('restaurant/timeslot/' + restId + '?date=' + format_date + '&partysize=' + people + '&type=reservation');
+            return self._http.get(apiUrl)
+                .map((response: Response) => <any>response.json()).subscribe((data)=>{
+                    $('.t_timepicker').empty();
+                        if (data.timeslots != null) {
+                            var timeslots = data.timeslots.filter(self.filterArray);
+
+                            if (timeslots.length === 0) {
+                                $('#timepicker1').val('');
+                                $('.error_time_slot').removeClass('hide').empty().html('Sorry, we are fully booked for this day.');
+                                $('#timepicker1, #btnbook').addClass('disabled');
+                            } else {
+                                $.each(data.timeslots, function (key, value) {
+                                    if (value['status'] === 1) {
+                                        $('.t_timepicker').append('<li timeslot_book="' + self.get12HourTime(value['time']) + '">' + self.get12HourTime(value['time']) + '</li>');
+                                    }
+                                });
+                                $('#timepicker1').val($('.t_timepicker li:first-child').attr('timeslot_book'));
+                                $('.t_timepicker li:first-child').addClass('current');
+                                $('#timepicker1').val($('.t_timepicker li:first-child').attr('timeslot_book'));
+                                $('.error_time_slot').addClass('hide');
+                                $('#timepicker1, #btnbook').removeClass('disabled');
+                                $('.popform.bookform').removeClass('disabledform');
+                                $('.t_timepicker li').on('click', function () {
+                                    var crrtimeslot = $(this).attr('timeslot_book');
+                                    $('.t_timepicker li').removeClass('current');
+                                    $('#timepicker1').val(crrtimeslot);
+                                    $(this).addClass('current');
+                                    $('.timepicker_custom').hide();
+                                });
+                            }
+                        } else {
+                            $('#timepicker1').val('');
+                            $('.error_time_slot').removeClass('hide').empty().html('Sorry, we do not accept reservations at this time.');
+                            $('#timepicker1, #btnbook').addClass('disabled');
+                        }
+                })
+        };    
 
 }

@@ -14,7 +14,10 @@
 .popup_reservetable {
   background: #fff;
   width: 600px;
-  margin: 70px auto 0;
+  margin: 5vh auto 0;
+  max-height:90%;
+  min-height:100px;
+  overflow-y: auto  
 }
 #closebtn {
   background: #000;

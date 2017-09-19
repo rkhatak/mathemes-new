@@ -154,6 +154,7 @@ selectLocation(){
   }
   reservetable(){
     $('.popup_reservetable_overlay').show();
+    $('.formstep1').show();
     //this.globals.dialogType="reservation";
     //this.globals.onDialogSet({"isReservationTime":true,"isShowReservation":false});
   }
