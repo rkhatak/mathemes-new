@@ -38,7 +38,7 @@ export class ReservationFormComponent implements OnInit {
     this._dataDefault = this._data;
 
   }
-  updateCalcs(event) {
+  dateDetect(event) {
     console.log(event);
   }
   hideReservationForm() {
