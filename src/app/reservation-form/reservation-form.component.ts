@@ -11,6 +11,8 @@ declare var $: any;
 })
 export class ReservationFormComponent implements OnInit {
   myDate = new Date();
+  _defaultReserveSeat:number=2;
+   _defaultReserveTime:any="";
   isReservationTime: boolean = true;
   isShowReservation: boolean = false;
   currentRestaurant = "";
@@ -36,22 +38,40 @@ export class ReservationFormComponent implements OnInit {
 
   ngOnInit() {
     this._dataDefault = this._data;
-
   }
-  updateCalcs(event) {
-    console.log(event);
+  formetDate:any="";
+  dateDetect(date) {
+    this.formetDate = this.mservice.formatDate(date);
+    this.mservice.populateTime(this.formetDate);
   }
+  setReserveSeat(e){
+    this._defaultReserveSeat=e.currentTarget.value;
+    this.changeDetectorRef.detectChanges();
+  }
+  showTimeSlot() {
+            if ($('#timepicker1').hasClass('active')) {
+                $('.timepicker_custom').hide();
+                $('#timepicker1').removeClass('active');
+            } else {
+                $('#timepicker1').addClass('active');
+                $('.timepicker_custom').show();
+                $('.t_timepicker li').removeClass('current');
+                var aa = $('#timepicker1').val();
+                $('.t_timepicker li[timeslot_book="' + aa + '"]').addClass('current');
+            }
+        }
   hideReservationForm() {
     this.isShowReservation = false;
     this.isReservationTime = true;
     this.changeDetectorRef.detectChanges();
   }
   sendReservation() {
-    this.mservice.reserveTableNow('2017-09-15');
+    this.mservice.reserveTableNow(this.formetDate,this._defaultReserveSeat,this._defaultReserveTime);
   }
   showReservationForm() {
     this.isShowReservation = true;
     this.isReservationTime = false;
+   this._defaultReserveTime=$("#timepicker1").val();
     this.currentRestaurant = this.globals.currentRestaurantDetail;
     if (this.globals.is_login) {
       this.redata.first_name_r = this.globals.currentUser.first_name;
@@ -61,6 +81,27 @@ export class ReservationFormComponent implements OnInit {
     }
     this.changeDetectorRef.detectChanges();
   }
+
+  calendarClick() {
+            var container = $(".hasICalendar");
+            container.show();
+            container.removeClass("hide");
+            var currentTarget = $('#calendarClick-1');
+            var currentData = currentTarget.data();
+            // var calendarStartDate = currentData.starttime;
+            var calendarEndDate = currentData.endtime;
+            var calendarTitle = currentData.title;
+            var calendarDescription = currentData.description;
+            var calendarLocation = currentData.location;
+            $('.googleCalender').icalendar({sites: ['google', 'icalendar', 'outlook'],
+                start: new Date(calendarEndDate),
+                end: new Date(calendarEndDate),
+                title: calendarTitle,
+                description: calendarDescription,
+                location: calendarLocation,
+                count: 1});
+            $('.googleCalender ul').addClass('unstyled');
+        };
   hideReservation(){
     $(".popup_reservetable_overlay").hide();
   }
