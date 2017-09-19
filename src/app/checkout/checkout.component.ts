@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy,ChangeDetectorRef } from '@angular/core';
 import { Globals } from '../globals';
 import { MainService } from '../main.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -35,6 +35,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     cvv: "",
     pin: ""
   }
+  
+  checkoutAddress: boolean = false;
   varWhatsThisShow: boolean = false;
   pointRedeem: any;
   showPayment: boolean;
@@ -42,7 +44,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   payViaPoint: any;
   years:any;
   months:any = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-  constructor(public router: Router, public globals: Globals, private mservice: MainService) {
+  constructor(private changeDetectorRef:ChangeDetectorRef,public router: Router, public globals: Globals, private mservice: MainService) {
     this.globals.onThemeSetEvent.subscribe(
           (data) => {
             this.getCheckout();
@@ -281,13 +283,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
   currentMonth:any;
   currentYear:any;
+  checkoutAddressData:any;
   private getCheckout() {
     let self = this;
     let restId = self.globals.globalRestaurantId;
     this.currentRestaurant = self.globals.currentRestaurantDetail;
     this.currentUser = self.globals.currentUser;
     this.currentUser.points = 0;
-    console.log(this.currentUser);
     let cartItem = this.cartItem = JSON.parse(self.mservice.getStorage('order_items_' + restId));
     let cartTotal = this.cartTotal = self.mservice.getStorage('order_total_' + restId);
     let cartSubTotal = this.cartSubTotal = self.mservice.getStorage('order_subtotal_' + restId);
@@ -315,7 +317,17 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     var currentMonth = d.getMonth() + 1;
     self.currentMonth = currentMonth;
     self.currentYear = year;
-
+     if (self.mservice.getStorage('order_type_' + restId) == "delivery") {
+                self.checkoutAddress = true;
+                self.checkoutAddressData = self.getFormattedAddress(self.mservice.getStorage('address_value_' + restId));
+                self.changeDetectorRef.detach();
+                self.changeDetectorRef.detectChanges();
+                // if ($rootScope.is_logged_in) {
+                // serverUtilityService.getSavedAddress();
+                // }
+            } else {
+                self.checkoutAddress = false;
+            }
 
 
 
@@ -455,5 +467,23 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.onThemeSetEvent$Subscription.unsubscribe();
     }
   }
+
+  getFormattedAddress(fullAddress) {
+            var formattedAddress = [];
+            if (fullAddress !== "") {
+                var address = fullAddress.split(',');
+                formattedAddress['addressValue'] = address[0];
+                formattedAddress['city'] = $.trim(address[1]);
+                if (address[2] !== "") {
+                    formattedAddress['zipCode'] = address[2].replace(/[a-zA-Z-&\/\s]/gi, '');
+                } else {
+                    formattedAddress['zipCode'] = "";
+                }
+                formattedAddress['stateCode'] = "NY";
+                return formattedAddress;
+            } else {
+                return formattedAddress;
+            }
+        }
 
 }

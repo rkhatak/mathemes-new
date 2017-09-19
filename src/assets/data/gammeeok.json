@@ -5,31 +5,31 @@
         {
             "tabname": "Home",
             "tabslug": "home",
-            "file": "home.html",
             "filepath": "common"
         },
         {
             "tabname": "About",
             "tabslug": "about",
-            "file": "about.html",
             "filepath": "common"
         },
         {
             "tabname": "Menu",
             "tabslug": "menu",
-            "file": "menu.html",
             "filepath": "common"
         },
         {
             "tabname": "Gallery",
             "tabslug": "gallery",
-            "file": "gallery.html",
             "filepath": "common"
         },
         {
             "tabname": "Contact",
             "tabslug": "contact",
-            "file": "contact.html",
+            "filepath": "common"
+        },
+        {
+            "tabname": "Careers",
+            "tabslug": "careers",
             "filepath": "common"
         }
     ],

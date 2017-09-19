@@ -12,11 +12,13 @@ import { DOCUMENT } from '@angular/platform-browser';
 })
 export class AboutComponent implements OnInit, OnDestroy {
   public overview:any='';
+  myDate=new Date();
   showStory:boolean=false;
   onThemeSetEvent$Subscription: Subscription;
-  myDate =new Date();
-  constructor(private mservice:MainService,public globals:Globals,@Inject(DOCUMENT) private document: any,private pageScrollService: PageScrollService) { }
+  constructor(private mservice:MainService,public globals:Globals,@Inject(DOCUMENT) private document: any,private pageScrollService: PageScrollService) {
 
+   }
+  
   ngOnInit() {
     if(this.globals.globalRestaurantId){
       this.getRestaurantOverview();
