@@ -49,6 +49,7 @@ import { FormattedDatePipe } from './formatted-date.pipe';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 import { CareersComponent } from './careers/careers.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
+import { DeliveryAddressComponent } from './delivery-address/delivery-address.component';
 
 
 
@@ -91,7 +92,8 @@ import { SafeHtmlPipe } from './safe-html.pipe';
     FormattedDatePipe,
     PaymentSuccessComponent,
     CareersComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    DeliveryAddressComponent
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,

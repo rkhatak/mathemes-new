@@ -22,8 +22,7 @@
 
           <div class="col-md-4  col-sm-4">
             <div>
-              <material-datepicker #picker [(date)]="myDate"></material-datepicker>
-                        <button (click)="picker.onInputClick(); $event.stopPropagation()">Open manually</button>
+              <material-datepicker [(date)]="myDate"></material-datepicker>
 
               <!--<md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>-->
               <!--<md-datepicker ng-init="reservationdata.myDate = reservationdata.myDate || 'myDate'" ng-model="myDate" md-min-date="minDate" ng-change="dateChange(myDate)" name="datepicker1" id="datepicker1" md-placeholder="Enter date"></md-datepicker>-->
