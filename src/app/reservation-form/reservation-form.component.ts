@@ -64,5 +64,10 @@ export class ReservationFormComponent implements OnInit {
   hideReservation(){
     $(".popup_reservetable_overlay").hide();
   }
+  selectedDate(date){
+   // ngModel still returns the old value
+      console.log("ngModel: " + date);
+      
+  }
 
 }
