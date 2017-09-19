@@ -4,7 +4,7 @@ import {Globals} from '../globals';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
-import * as $ from 'jquery';
+declare var $: any;
 
 @Component({
     selector: 'header-app',
@@ -23,7 +23,21 @@ private lat:any;
 private long:any;
 public rootId:any;
 public rootPage:any;   
+cartCount:any;
 constructor(private router:Router,public globals:Globals,private mservice:MainService,@Inject(DOCUMENT) private document: any, private changeDetectorRef: ChangeDetectorRef) {
+this.globals.onCartItemChange.subscribe(
+        (data) => {
+          let restId=this.globals.globalRestaurantId;
+          var cartCount = 0;
+          let cartItems=(this.mservice.getStorage('order_items_' + restId))?JSON.parse(this.mservice.getStorage('order_items_' + restId)):[];
+          if (cartItems.length>0) {
+            $.each(cartItems, function (index, item) {
+              cartCount = (cartCount + parseInt(item.quantity));
+            });
+          }
+          this.cartCount=(this.globals.cartCount>0)?this.globals.cartCount:cartCount;
+        }
+      );
 }
 
  ngOnInit() {
@@ -83,13 +97,25 @@ location.reload();
 selectLocation(){
   this.document.querySelector('.multipleAdd').classList.toggle('hide');
 }
+
   loadTheme(){
    let _thime=this.globals.globalTheme;
+   let restId=this.globals.globalRestaurantId;
+          var cartCount = 0;
+          let cartItems=(this.mservice.getStorage('order_items_' + restId))?JSON.parse(this.mservice.getStorage('order_items_' + restId)):[];
+          if (cartItems.length>0) {
+            $.each(cartItems, function (index, item) {
+              cartCount = (cartCount + parseInt(item.quantity));
+            });
+          }
+          this.cartCount=(this.globals.cartCount>0)?this.globals.cartCount:cartCount;
+  
    let varCheckLogin:any =this.mservice.getStorage('is_login');
    this.is_login=(varCheckLogin=='true')?true:this.globals.is_login;
    this.headerLogo=this.globals.baseThemeImage+_thime+'/images/';
    this.changeDetectorRef.detectChanges();
-   //console.log(this.globals.currentUser);
+   this.globals.is_login=this.is_login;
+   this.globals.onCart();
    this.mservice.getThemeDetails(_thime)
       .subscribe(themedata =>this.headermenu=themedata);        
        

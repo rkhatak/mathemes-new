@@ -47,6 +47,9 @@ import { TermComponent } from './term/term.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { FormattedDatePipe } from './formatted-date.pipe';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import { CareersComponent } from './careers/careers.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
+import { DeliveryAddressComponent } from './delivery-address/delivery-address.component';
 
 
 
@@ -87,7 +90,10 @@ import { PaymentSuccessComponent } from './payment-success/payment-success.compo
     TermComponent,
     PrivacyComponent,
     FormattedDatePipe,
-    PaymentSuccessComponent
+    PaymentSuccessComponent,
+    CareersComponent,
+    SafeHtmlPipe,
+    DeliveryAddressComponent
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,
@@ -177,6 +183,10 @@ import { PaymentSuccessComponent } from './payment-success/payment-success.compo
         path: 'privacy',
         component: PrivacyComponent
       },
+      {
+        path: 'careers',
+        component: CareersComponent
+      },      
       {
         path: '',
         component: HomeComponent

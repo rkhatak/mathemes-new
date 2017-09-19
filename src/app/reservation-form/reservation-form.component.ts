@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { Globals } from '../globals';
 import { MainService } from '../main.service';
+declare var $: any;
 
 @Component({
   selector: 'app-reservation-form',

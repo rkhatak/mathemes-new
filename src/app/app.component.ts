@@ -66,6 +66,7 @@ ngOnDestroy() {
     this.globals.globalThemeSortKey = data[_host].shortKey;
     
     let _themeCss = 'assets/template/themes/' + _thime + '/css/app.css';
+    let _themeFavicon = 'assets/template/themes/' + _thime + '/images/favicon.ico';
     this.mservice.getThemeDetails(_thime)
       .subscribe((themedata) => this.thememenu = themedata,
       (err) => this.themeNotFound());
@@ -80,6 +81,7 @@ ngOnDestroy() {
      
 
     this.document.getElementById('appCSS').setAttribute("href", _themeCss);
+    this.document.getElementById('r_favicon').setAttribute("href", _themeFavicon);
   }
 
   afterSetLocation(){

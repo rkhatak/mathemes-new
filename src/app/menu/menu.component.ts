@@ -248,6 +248,16 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.addons(model.item_id, model.price_id, model.addons);
     this.globals.cart=this.cart;
     this.globals.onCart();
+    var cartCount = 0;
+    var set_order_items = JSON.parse(this.mservice.getStorage('order_items_' + restId));
+    if (set_order_items) {
+      $.each(set_order_items, function (index, item) {
+        cartCount = (cartCount + parseInt(item.quantity));
+      });
+    }
+    this.globals.cartCount = cartCount;
+    this.globals.onCartItem();
+
     this.globals.dialogType="addtocart";
     this.globals.onDialogSet();
   }
@@ -320,5 +330,9 @@ checkoutValidate() {
             }
             return flag;
         };
+ editAddress(add){
+  this.globals.dialogType="searchAddress";
+  this.globals.onDialogSet({'setDeliveryAddress':add});
+ }
 
 }

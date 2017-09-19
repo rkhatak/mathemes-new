@@ -455,13 +455,10 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 .mobilemenutabs a:after, .i_downarrow:after{color:#fff;font-weight:700;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg);transform: rotate(45deg);display:block;border:2px solid #fff;width:9px;height:9px;border-left: 0;border-top: 0;content:'';margin:0 auto;}
 .videoclose{position:fixed;z-index:1;top:20px;right: 5.5%;color:#fff;text-shadow: 2px 1px 0px rgba(0,0,0,0.16);}
 /**About***/
-.about.psection { padding:0; }
-.aboutsection{background-size:cover;padding:5% 5% 0!important;/*background-color:#000;*/}
+.aboutsection{background-size:cover;padding:5%!important;background-color:#000;}
 .aboutsection:before{content:"";display:block;clear:both;}
 .aboutsection:after{content:"";display:block;clear:both;}
-.aboutsection .about_content{background:#fff;width:50%;float: left;margin:0;padding:29px;}
-.aboutsection .about_imgsec{width:50%; float: left;padding:29px;}
-.aboutsection .about_imgsec img {margin:10px;}
+.aboutsection .about_content{background:#fff;max-width:600px;margin:0 auto;padding:29px;}
 .about_content .txt_about{font:0.875em arial;line-height:24px;padding:27px 0;}
 .about_content .txt_typeplace{font-size:11px;font-weight:700;color:#b1aeae;letter-spacing:2px;padding:0 0 13px;text-transform:uppercase;}
 .typeofplace{max-width:313px;margin:0 auto;padding-left:13px;}
@@ -864,9 +861,6 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 	.mymunchado .order_list ._pol{padding:5px 0 20px;}
 	.mymunchado a.txtlink.hidden{display:none;}
 
-	.aboutsection .about_content,
-	.aboutsection .about_imgsec { width: 100%; }
-
 }
 /***Target small screen***/
 @media (min-width: 992px){
@@ -1032,4 +1026,11 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 @media all and (-ms-high-contrast:none){
 	.reserveinputstyle select{height:38px;}
 }
+.btn_careersubmit, .form_application{margin-top:40px;}
+.form_application textarea{height:100%;min-height:146px;}
+.form_application input, .form_application textarea{font-size:1em;padding:10px;display:block;}
+.form_application .error-input{background-color:#F78080;color:#fff;border-color:red;}
+.btn_careersubmit .ubtn{min-width:200px;}
+.application-success{text-align:center;font-size:0.875em;padding:50px 0;font-weight:700px;}
+.form_application .lineloader{margin-left:15px;}
 

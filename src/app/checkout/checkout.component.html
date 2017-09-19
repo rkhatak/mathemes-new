@@ -27,8 +27,8 @@
                   <p class="error-message hide">Sorry, We don't talk to strangers</p>
                 </div>
               </div>
-              <div ng-if="checkoutAddress" class="y_checkout_delivery_address">
-                <div ng-include="getPartial('common', 'checkoutDeliveryAddress.html')"></div>
+              <div *ngIf="checkoutAddress" class="y_checkout_delivery_address">
+                <app-delivery-address [checkoutAddressData]="checkoutAddressData"></app-delivery-address>
               </div>
               <div class="row">
                 <div class="col-md-5 text-align-md-right txt_checkoutlabel">phone<span class="error-color">*</span></div>
