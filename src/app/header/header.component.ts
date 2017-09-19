@@ -4,6 +4,7 @@ import {Globals} from '../globals';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'header-app',
@@ -126,7 +127,8 @@ selectLocation(){
     //this.onThemeSetEvent$Subscription.unsubscribe();
   }
   reservetable(){
-    this.globals.dialogType="reservation";
-    this.globals.onDialogSet({"isReservationTime":true,"isShowReservation":false});
+    $('.popup_reservetable_overlay').show();
+    //this.globals.dialogType="reservation";
+    //this.globals.onDialogSet({"isReservationTime":true,"isShowReservation":false});
   }
 }
