@@ -526,9 +526,9 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 .greenP_kids_Menu_Icon{background-position:-237px -710px}
 .storysection{font:0.875em/24px arial;max-width:960px;padding-bottom:110px;}
 .storydividedtxt{-moz-column-count:2;-webkit-column-count:2;column-count:2;-moz-column-gap:30px;-webkit-column-gap:30px;column-gap:30px;}
-[ng-repeat="story in stories"]:nth-child(2n) .display-flex{flex-direction: row-reverse;}
-[ng-repeat="story in stories"]:nth-child(2n) .display-flex > *:first-child{margin-right:0;}
-[ng-repeat="story in stories"]:nth-child(2n) .display-flex > *:last-child{margin-right:1.05263%;}
+.story_in_stories:nth-child(2n) .display-flex{flex-direction: row-reverse;}
+.story_in_stories:nth-child(2n) .display-flex > *:first-child{margin-right:0;}
+.story_in_stories:nth-child(2n) .display-flex > *:last-child{margin-right:1.05263%;}
 /***Gallery Page***/
 .psection{padding:60px 60px 0;}
 /*.about.psection.active .aboutsection{margin-top:75px;-webkit-transition:margin-top 0.3s;-moz-transition:margin-top 0.3s;transition:margin-top 0.3s;}*/
@@ -1026,4 +1026,11 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 @media all and (-ms-high-contrast:none){
 	.reserveinputstyle select{height:38px;}
 }
+.btn_careersubmit, .form_application{margin-top:40px;}
+.form_application textarea{height:100%;min-height:146px;}
+.form_application input, .form_application textarea{font-size:1em;padding:10px;display:block;}
+.form_application .error-input{background-color:#F78080;color:#fff;border-color:red;}
+.btn_careersubmit .ubtn{min-width:200px;}
+.application-success{text-align:center;font-size:0.875em;padding:50px 0;font-weight:700px;}
+.form_application .lineloader{margin-left:15px;}
 

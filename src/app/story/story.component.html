@@ -1,5 +1,5 @@
  <div *ngIf="story" class="storydividedtxt _mt50" [innerHtml]="story.story_title"></div>
-<div *ngFor="let s of story.section_list">
+<div class="story_in_stories" *ngFor="let s of story.section_list">
     <p class="sectiontitle _mt70">{{s.title}}</p>
     <div class="row _pt50 _pt15-xs display-flex display-flex-none-xs">
         <div class="col-md-6 col-xs-12">
