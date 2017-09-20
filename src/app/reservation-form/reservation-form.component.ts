@@ -82,8 +82,11 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
     this.formetDate = this.mservice.formatDate(date);
     this.mservice.populateTime(this.formetDate, this._defaultReserveSeat);
   }
-  setReserveSeat(e) {
-    this._defaultReserveSeat = e.currentTarget.value;
+  addClass(){
+    $('.popup_reservetable').toggleClass('ofa');
+  }
+  setReserveSeat(e){
+    this._defaultReserveSeat=e.currentTarget.value;
     this.changeDetectorRef.detectChanges();
   }
   showTimeSlot() {

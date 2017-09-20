@@ -1,7 +1,6 @@
 <div class="popup_reservetable_overlay">
 <div class="_p30 popup_reservetable">
-  <span id="closebtn" (click)="hideReservation()">close</span>
-  
+  <span id="closebtn" class="i_close" (click)="hideReservation()">+</span>
     <div *ngIf="isReservationTime" class="formstep1">
       <p class="sectiontitle _mb40">reserve a table</p>
       <div class="form_bookatable_level1">
@@ -22,8 +21,8 @@
             </div>
           </div>
           <div class="col-md-4  col-sm-4">
-            <div>
-              <input [ngModel]="myDate" ngui-datetime-picker date-only="true" (valueChanged)="dateDetect($event)" />
+            <div class="maindatepick">
+              <input [ngModel]="myDate" ngui-datetime-picker date-only="true" (focus)="addClass()" (valueChanged)="dateDetect($event)" class="date_pick" />
             </div>
           </div>
           <div class="col-md-4 col-sm-4 position-relative">
