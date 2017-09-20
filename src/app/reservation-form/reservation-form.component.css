@@ -13,12 +13,47 @@
 }
 .popup_reservetable {
   background: #fff;
-  width: 600px;
-  margin: 70px auto 0;
+  width: 700px;
+  margin: 5vh auto 0;
+  max-height: 90%;
+  min-height: 100px;
+  overflow-y: auto;
+  position: relative;
 }
-#closebtn {
-  background: #000;
-  float: right;
-  width: 20px;
-  height: 20px;
+.popup_reservetable.ofa {
+  overflow-y: initial;
+}
+.popup_reservetable .i_close {
+    position: absolute;
+    top: 0;
+    right: 11px;
+}
+.maindatepick {
+  position: relative;
+}
+.date_pick {
+  border: 2px solid #d7d7d7;
+    color: #000;
+    font: 0.75em arial;
+        padding: 10px;
+    font-family: "Raleway", "Adobe Blank", sans-serif;
+    font-weight: 700;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 100%;
+}
+.maindatepick:after{
+  content: '>';
+    font-weight: 700;
+    font-size: 14px;
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -8px;
+    color: #000;
 }

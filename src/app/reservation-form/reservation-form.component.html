@@ -1,15 +1,14 @@
 <div class="popup_reservetable_overlay">
 <div class="_p30 popup_reservetable">
-  <span id="closebtn" (click)="hideReservation()">close</span>
-  <form name="bookform" id="bookform" method="post">
+  <span id="closebtn" class="i_close" (click)="hideReservation()">+</span>
     <div *ngIf="isReservationTime" class="formstep1">
       <p class="sectiontitle _mb40">reserve a table</p>
       <div class="form_bookatable_level1">
         <div class="row">
           <div class="update_people_bookatable col-md-4 col-sm-4">
             <div class="reserveinputstyle">
-              <select name="people" id="people">
-                   <option value="2" [selected]="true">2 people</option>
+              <select name="people" id="people" [ngModel]="_defaultReserveSeat" (change)="setReserveSeat($event)">
+                   <option value="2" [selected]="_defaultReserveSeat==2">2 people</option>
                   <option value="3">3 people</option>
                   <option value="4">4 people</option>
                   <option value="5">5 people</option>
@@ -21,17 +20,14 @@
                </select>
             </div>
           </div>
-
           <div class="col-md-4  col-sm-4">
-            <div>
-              <material-datepicker #picker [(date)]="myDate"  (selectedChanged)="selectedDate($event)"></material-datepicker>
-              <!--<md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>-->
-              <!--<md-datepicker ng-init="reservationdata.myDate = reservationdata.myDate || 'myDate'" ng-model="myDate" md-min-date="minDate" ng-change="dateChange(myDate)" name="datepicker1" id="datepicker1" md-placeholder="Enter date"></md-datepicker>-->
+            <div class="maindatepick">
+              <input [ngModel]="myDate" ngui-datetime-picker date-only="true" (focus)="addClass()" (valueChanged)="dateDetect($event)" class="date_pick" />
             </div>
           </div>
           <div class="col-md-4 col-sm-4 position-relative">
             <div class="reserveinputstyle">
-              <input ng-click="showTimeSlot()" type="text" name="timepicker1" id="timepicker1" readonly>
+              <input (click)="showTimeSlot()" type="text" name="timepicker1" id="timepicker1" readonly>
               <div class="timepicker_custom outerDIVclose">
                 <ul class="t_timepicker unstyled clearfix">
                 </ul>
@@ -109,8 +105,7 @@
         </div>
       </div>
       <p class="text-align-center"><a href="javascript:void(0)" id="btnconfirm" class="ubtn" (click)="sendReservation()">Request reservation</a>
-        <span
-          class="lineloader r_confirm_loader hide"><span></span><span></span><span></span></span>
+        <span class="lineloader r_confirm_loader hide"><span></span><span></span><span></span></span>
       </p>
     </div>
     <div class="formstep3 thanku text-align-center hide" id="formstp3">
@@ -126,12 +121,12 @@
       <p class="txt_receiptmes _fs12">We will review your request and send you confirmation after checking availability. If you have any issues or want help,
         feel free to call us at {{currentRestaurant.phone_no}}</p>
 
-      <div class="_paneladdtocalendar">
+      <!--<div class="_paneladdtocalendar">
         <a href="javascript:void(0)" class="ubtn blackbtn calendarClick" id="calendarClick-1" data-id="1" data-starttime="2017-4-10"
-          data-endtime="2017-4-12" data-title="tedt" data-description="nn" data-location="qbc" ng-click="calendarClick()">add to calender</a>
+          data-endtime="2017-4-12" data-title="tedt" data-description="nn" data-location="qbc" (click)="calendarClick()">add to calender</a>
         <div class="googleCalender"></div>
-      </div>
-      <div class="send_invites">
+      </div>-->
+      <!--<div class="send_invites">
         <p class="txt_ordersummary _mt70 _p0">Let Your Friends Know About Your Culinary Discovery!</p>
         <em class="_fs10 display-block">You found a great spot. Invite your friends to bask in the glory that is your reservation and to dine with the God (or Goddess) of fine food.</em>
         <div class="text-align-left">
@@ -145,13 +140,13 @@
           <p class="text-align-center _mt30"><a href="javascript:void(0)" class="ubtn blackbtn y-send-invitation" (click)="sendInvitation()">SEND</a><span class="lineloader confirm_loader hide"><span></span><span></span><span></span></span>
           </p>
         </div>
-      </div>
+      </div>-->
     </div>
     <div class="sendinvite-thank hide">
       <p class="txt_yourinvites txt_ordersummary _mt70 text-align-center">Your invite(s) have gone out to<br />
         <strong class="toBeSendContact _fontarial"></strong></p>
       <p class="txt_yourinvites_expect _fs14 text-align-center">Expect RSVPs soon!</p>
     </div>
-  </form>
+
 </div>
 </div>
