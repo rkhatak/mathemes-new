@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { MainService } from './main.service';
 import {Globals} from './globals';
 import { DatepickerModule } from 'angular2-material-datepicker';
-import { DatePickerModule } from 'ng2-datepicker';
 import { NguiDatetimePickerModule } from '@ngui/datetime-picker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HeaderComponent} from './header/header.component';
@@ -99,7 +98,7 @@ import { DeliveryAddressComponent } from './delivery-address/delivery-address.co
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,
-    HttpModule,Ng2PageScrollModule,PageSliderModule,FormsModule,OwlModule,DatepickerModule,DatePickerModule,NguiDatetimePickerModule,
+    HttpModule,Ng2PageScrollModule,PageSliderModule,FormsModule,OwlModule,NguiDatetimePickerModule,
     RouterModule.forRoot([
       {
         path: 'home',

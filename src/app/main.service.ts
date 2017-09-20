@@ -82,7 +82,7 @@ export class MainService implements OnDestroy {
     }
 
     getTheme() {
-        let themeUrl = 'assets/theme.require.json'
+        let themeUrl = '/assets/theme.require.json'
         let self = this;
         return self._http.get(themeUrl)
             .map((response: Response) => <any>response.json());
@@ -278,6 +278,7 @@ export class MainService implements OnDestroy {
 
     cartCalution() {
         var self = this;
+        self.promocode = self.globals.promocode;
         let restId = self.globals.globalRestaurantId;
         let order_items = (this.getStorage('order_items_' + restId)) ? JSON.parse(this.getStorage('order_items_' + restId)) : [];
         let orderType = this.getStorage('order_type_' + restId);
@@ -309,9 +310,10 @@ export class MainService implements OnDestroy {
                     promoDiscount = this.getNumber((subtotal * parseInt(self.promocode.discount)) / 100, 2);
                 }
                 this.setStorage("promocode_status", "valid");
+                $('.promo_code .error-message-promocode').addClass('hide');
             } else {
                 this.setStorage("promocode_status", "invalid");
-                $('.promo_code .error-message').removeClass('hide').html(`Minimum order must exceed ${self.promocode.minimum_order_amount}to redeem this Promo Code`);
+                $('.promo_code .error-message-promocode').removeClass('hide').html(`Minimum order must exceed ${self.promocode.minimum_order_amount} to redeem this Promo Code`);
             }
         }
 
@@ -855,7 +857,6 @@ export class MainService implements OnDestroy {
         }
         return hasError;
     };
-
     newRegister(data) {
         let self = this;
         let apiUrl = self.globals.apiBaseUrl + 'user/details';
@@ -918,19 +919,19 @@ export class MainService implements OnDestroy {
         return self._http.post(apiUrl, data, options)
             .map((response: Response) => <any>response.json());
     }
-    reserveTableNow(rDate,seat,time) {
+    reserveTableNow(rDate, seat, time) {
         let self = this;
         var host = window.location.host;
         var restId = self.globals.globalRestaurantId;
         var resData = self.globals.currentRestaurantDetail;
         var reserve_seat = seat,
             date = rDate,
-            time =time,
+            time = time,
             firstName = $("input[name=first_name_r]"),
             lastName = $("input[name=last_name_r]"),
             phoneNo = $("input[name=phone_no_r]"),
             email = $("input[name=email_r]"),
-            instructions = [];    
+            instructions = [];
         $("input[name='instructions[]']:checked").each(function () {
             instructions.push($(this).val());
         });
@@ -1398,10 +1399,10 @@ export class MainService implements OnDestroy {
     }
 
     getCareerFile(_theme) {
-         let themeUrl = 'assets/template/themes/' + _theme + '/careers.html'
+        let themeUrl = 'assets/template/themes/' + _theme + '/careers.html'
         let self = this;
         return self._http.get(themeUrl)
-            .map((html:any) => <any>html);
+            .map((html: any) => <any>html);
     }
 
     sendCareer(data) {
@@ -1413,13 +1414,18 @@ export class MainService implements OnDestroy {
         return self._http.post(apiUrl, data, options)
             .map((response: Response) => <any>response.json());
     }
+    getUserPromocode(restId, promocode) {
+        let self = this;
+        let apiUrl = self.getApiUrl('home/promocode' + '?restaurantid=' + restId + '&promocode=' + promocode);
+        return self._http.get(apiUrl)
+            .map((response: Response) => <any>response.json());
+    }
     formatDate(d) {
-            return [d.getFullYear(), ('0' + (d.getMonth() + 1)).slice(-2), ('0' + d.getDate()).slice(-2)].join('-');
-        };
+        return [d.getFullYear(), ('0' + (d.getMonth() + 1)).slice(-2), ('0' + d.getDate()).slice(-2)].join('-');
+    };
     filterArray(d) {
-            return d.status == 1;
-        };    
-
+        return d.status == 1;
+    };
     populateTime = function (d,size) {
             //$('#timepicker1, #btnbook').addClass('disabled');
             var self = this;
@@ -1445,26 +1451,26 @@ export class MainService implements OnDestroy {
                                         $('.t_timepicker').append('<li timeslot_book="' + self.get12HourTime(value['time']) + '">' + self.get12HourTime(value['time']) + '</li>');
                                     }
                                 });
-                                $('#timepicker1').val($('.t_timepicker li:first-child').attr('timeslot_book'));
-                                $('.t_timepicker li:first-child').addClass('current');
-                                $('#timepicker1').val($('.t_timepicker li:first-child').attr('timeslot_book'));
-                                $('.error_time_slot').addClass('hide');
-                                $('#timepicker1, #btnbook').removeClass('disabled');
-                                $('.popform.bookform').removeClass('disabledform');
-                                $('.t_timepicker li').on('click', function () {
-                                    var crrtimeslot = $(this).attr('timeslot_book');
-                                    $('.t_timepicker li').removeClass('current');
-                                    $('#timepicker1').val(crrtimeslot);
-                                    $(this).addClass('current');
-                                    $('.timepicker_custom').hide();
-                                });
-                            }
-                        } else {
-                            $('#timepicker1').val('');
-                            $('.error_time_slot').removeClass('hide').empty().html('Sorry, we do not accept reservations at this time.');
-                            $('#timepicker1, #btnbook').addClass('disabled');
-                        }
-                })
-        };    
+                        $('#timepicker1').val($('.t_timepicker li:first-child').attr('timeslot_book'));
+                        $('.t_timepicker li:first-child').addClass('current');
+                        $('#timepicker1').val($('.t_timepicker li:first-child').attr('timeslot_book'));
+                        $('.error_time_slot').addClass('hide');
+                        $('#timepicker1, #btnbook').removeClass('disabled');
+                        $('.popform.bookform').removeClass('disabledform');
+                        $('.t_timepicker li').on('click', function () {
+                            var crrtimeslot = $(this).attr('timeslot_book');
+                            $('.t_timepicker li').removeClass('current');
+                            $('#timepicker1').val(crrtimeslot);
+                            $(this).addClass('current');
+                            $('.timepicker_custom').hide();
+                        });
+                    }
+                } else {
+                    $('#timepicker1').val('');
+                    $('.error_time_slot').removeClass('hide').empty().html('Sorry, we do not accept reservations at this time.');
+                    $('#timepicker1, #btnbook').addClass('disabled');
+                }
+            })
+    };
 
 }
