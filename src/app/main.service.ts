@@ -1420,11 +1420,11 @@ export class MainService implements OnDestroy {
             return d.status == 1;
         };    
 
-    populateTime = function (d) {
+    populateTime = function (d,size) {
             //$('#timepicker1, #btnbook').addClass('disabled');
             var self = this;
             $('.error_time_slot').addClass('hide');
-            var people = $("#people").val();
+            var people = size;
             var format_date = d;
             var self = this;
             let restId=this.globals.globalRestaurantId;

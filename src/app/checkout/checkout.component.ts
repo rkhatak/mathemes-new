@@ -35,7 +35,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     cvv: "",
     pin: ""
   }
-  
+  is_logged_in:boolean=false;
   checkoutAddress: boolean = false;
   varWhatsThisShow: boolean = false;
   pointRedeem: any;

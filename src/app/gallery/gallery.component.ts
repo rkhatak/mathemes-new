@@ -13,7 +13,7 @@ import { DomSanitizer,SafeResourceUrl, SafeUrl } from '@angular/platform-browser
 export class GalleryComponent implements OnInit {
 
   constructor(private mservice: MainService, public globals: Globals, public sanitizer: DomSanitizer) { }
-  private galleries: object;
+  public galleries: object;
   onThemeSetEvent$Subscription: Subscription;
   public pageNumber : number = 0;
     public pageCount : number = 0;
