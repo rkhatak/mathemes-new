@@ -21,8 +21,8 @@
             </div>
           </div>
           <div class="col-md-4  col-sm-4">
-            <div>
-              <input [ngModel]="myDate" ngui-datetime-picker date-only="true" (valueChanged)="dateDetect($event)" />
+            <div class="maindatepick">
+              <input [ngModel]="myDate" ngui-datetime-picker date-only="true" (focus)="addClass()" (valueChanged)="dateDetect($event)" class="date_pick" />
             </div>
           </div>
           <div class="col-md-4 col-sm-4 position-relative">

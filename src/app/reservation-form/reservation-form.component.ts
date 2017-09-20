@@ -44,6 +44,9 @@ export class ReservationFormComponent implements OnInit {
     this.formetDate = this.mservice.formatDate(date);
     this.mservice.populateTime(this.formetDate);
   }
+  addClass(){
+    $('.popup_reservetable').toggleClass('ofa');
+  }
   setReserveSeat(e){
     this._defaultReserveSeat=e.currentTarget.value;
     this.changeDetectorRef.detectChanges();
