@@ -51,6 +51,9 @@ export class MenuComponent implements OnInit, OnDestroy {
   flag:boolean=false;
   deliveryIns:boolean=false;
  takeoutIns:boolean=false;
+ validPromo:boolean = false;
+ promoError:string;
+ promocode: any;
  public checkoutAddress:any;
   public checkoutAddressData:any;
   @ViewChild(CartTimeComponent) timeChild:CartTimeComponent;
@@ -334,5 +337,29 @@ checkoutValidate() {
   this.globals.dialogType="searchAddress";
   this.globals.onDialogSet({'setDeliveryAddress':add});
  }
-
+ applyPromocode(){
+    let self = this;
+    let restId = this.globals.globalRestaurantId;
+    if(!this.promocode){
+      this.promoError = 'Invalid Promocode';
+    }else{
+      this.mservice.getUserPromocode(restId,this.promocode)
+      .subscribe((data) =>{
+        if(data.success == true){
+          console.log(data.success);
+          this.validPromo = true;
+          this.changeDetectorRef.detectChanges();
+          self.mservice.setStorage("promocode",this.promocode);
+          self.globals.promocode = data;
+          self.globals.setPromocode();
+          self.mservice.cartCalution();
+        }else{
+          this.promoError = data.message;
+        }
+        },(error)=>{
+          console.log(error);
+        });
+ }
+  } 
+  
 }

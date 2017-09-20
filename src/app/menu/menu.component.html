@@ -147,14 +147,15 @@
                                             <div class="promo_code _mt35">
                                               <p class="title_bs_order _pb10">your promo code</p>
                                               <div class="row y-promocode">
-                                                  <div class="col-md-8 col-xs-8"><input type="text" id="promocode" value=""></div>
-                                                  <div class="col-md-4 col-xs-4"><a href="javascript:void(0)" class="ubtn" ng-click="promocode()">Enter</a></div>
+                                                  <div class="col-md-8 col-xs-8"><input  type="text" [(ngModel)]="promocode" id="promocode" value=""></div>
+                                                  <div class="col-md-4 col-xs-4"><a href="javascript:void(0)" class="ubtn" (click)="applyPromocode()">Enter</a></div>
                                               </div>
                                               <div class="row y-promocode-apply _fs14 hide">
                                                 <strong class="col-md-8 col-xs-8 y-promocode-coupan text-uppercase"></strong>
                                                 <strong class="col-md-4 col-xs-8 text-align-right">- $<span class="y-promocode-amount"></span></strong>
                                               </div>
-                                              <p class="error-message hide">Invalid Promo code</p>
+                                              <p *ngIf="!validPromo" class="error-message">{{promoError}}</p>
+                                              <p class="error-message-promocode hide"></p>
                                             </div>
                                             <div class="row txt_bs_total totalCls">
                                                 <div class="col-md-8 col-xs-8 text-uppercase">Total</div>
