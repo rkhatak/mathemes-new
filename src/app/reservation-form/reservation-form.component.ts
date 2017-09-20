@@ -16,7 +16,7 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
   _defaultReserveTime: any = "";
   isReservationTime: boolean = true;
   isShowReservation: boolean = false;
-  currentRestaurant = "";
+  currentRestaurant:any= "";
   _dataDefault: any;
   redata = {
     first_name_r: "",
@@ -39,6 +39,7 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
           (data) => {
             this.formetDate = this.mservice.formatDate(this.myDate);
             this.mservice.populateTime(this.formetDate, this._defaultReserveSeat);
+            this.currentRestaurant = this.globals.currentRestaurantDetail;
           }
         );
       }
@@ -67,6 +68,7 @@ export class ReservationFormComponent implements OnInit, OnDestroy {
         (data) => {
            this.formetDate = this.mservice.formatDate(this.myDate);
           this.mservice.populateTime(this.formetDate,this._defaultReserveSeat);
+          this.currentRestaurant = this.globals.currentRestaurantDetail;
         }
       );
     }

@@ -10,7 +10,7 @@ declare var $: any;
   styleUrls: ['./careers.component.css']
 })
 export class CareersComponent implements OnInit, OnDestroy {
-  private myTemplate: any = "";
+  public myTemplate: any = "";
   onThemeSetEventHeader$Subscription: Subscription;
   constructor(private elRef: ElementRef, private cdRef: ChangeDetectorRef, public globals: Globals, private mservice: MainService) {
     this.myTemplate = `<div style="position: fixed;left: calc(50% - 50px);top: calc(50% - 50px);"><img src="assets/img/with_hand.gif"><br/>Please wait...</div>`;
