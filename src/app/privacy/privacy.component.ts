@@ -11,6 +11,7 @@ export class PrivacyComponent implements OnInit,OnDestroy {
   constructor(public globals:Globals) { }
   onThemeSetEvent$Subscription: Subscription;
   currentRes:any;
+  resname:any;
   ngOnInit() {
      if(this.globals.globalTheme){
       this.getPrivacy();
@@ -27,6 +28,7 @@ export class PrivacyComponent implements OnInit,OnDestroy {
 
   getPrivacy(){
     this.currentRes=this.globals.currentRestaurantDetail;  
+    this.resname=this.currentRes.name;
   }
   ngOnDestroy() {
     if(this.onThemeSetEvent$Subscription){

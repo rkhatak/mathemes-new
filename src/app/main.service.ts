@@ -82,7 +82,7 @@ export class MainService implements OnDestroy {
     }
 
     getTheme() {
-        let themeUrl = 'assets/theme.require.json'
+        let themeUrl = '/assets/theme.require.json'
         let self = this;
         return self._http.get(themeUrl)
             .map((response: Response) => <any>response.json());
@@ -1426,32 +1426,31 @@ export class MainService implements OnDestroy {
     filterArray(d) {
         return d.status == 1;
     };
+    populateTime = function (d,size) {
+            //$('#timepicker1, #btnbook').addClass('disabled');
+            var self = this;
+            $('.error_time_slot').addClass('hide');
+            var people = size;
+            var format_date = d;
+            var self = this;
+            let restId=this.globals.globalRestaurantId;
+            let apiUrl = self.getApiUrl('restaurant/timeslot/' + restId + '?date=' + format_date + '&partysize=' + people + '&type=reservation');
+            return self._http.get(apiUrl)
+                .map((response: Response) => <any>response.json()).subscribe((data)=>{
+                    $('.t_timepicker').empty();
+                        if (data.timeslots != null) {
+                            var timeslots = data.timeslots.filter(self.filterArray);
 
-    populateTime = function (d) {
-        //$('#timepicker1, #btnbook').addClass('disabled');
-        var self = this;
-        $('.error_time_slot').addClass('hide');
-        var people = $("#people").val();
-        var format_date = d;
-        var self = this;
-        let restId = this.globals.globalRestaurantId;
-        let apiUrl = self.getApiUrl('restaurant/timeslot/' + restId + '?date=' + format_date + '&partysize=' + people + '&type=reservation');
-        return self._http.get(apiUrl)
-            .map((response: Response) => <any>response.json()).subscribe((data) => {
-                $('.t_timepicker').empty();
-                if (data.timeslots != null) {
-                    var timeslots = data.timeslots.filter(self.filterArray);
-
-                    if (timeslots.length === 0) {
-                        $('#timepicker1').val('');
-                        $('.error_time_slot').removeClass('hide').empty().html('Sorry, we are fully booked for this day.');
-                        $('#timepicker1, #btnbook').addClass('disabled');
-                    } else {
-                        $.each(data.timeslots, function (key, value) {
-                            if (value['status'] === 1) {
-                                $('.t_timepicker').append('<li timeslot_book="' + self.get12HourTime(value['time']) + '">' + self.get12HourTime(value['time']) + '</li>');
-                            }
-                        });
+                            if (timeslots.length === 0) {
+                                $('#timepicker1').val('');
+                                $('.error_time_slot').removeClass('hide').empty().html('Sorry, we are fully booked for this day.');
+                                $('#timepicker1, #btnbook').addClass('disabled');
+                            } else {
+                                $.each(data.timeslots, function (key, value) {
+                                    if (value['status'] === 1) {
+                                        $('.t_timepicker').append('<li timeslot_book="' + self.get12HourTime(value['time']) + '">' + self.get12HourTime(value['time']) + '</li>');
+                                    }
+                                });
                         $('#timepicker1').val($('.t_timepicker li:first-child').attr('timeslot_book'));
                         $('.t_timepicker li:first-child').addClass('current');
                         $('#timepicker1').val($('.t_timepicker li:first-child').attr('timeslot_book'));

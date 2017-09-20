@@ -34,8 +34,9 @@
                 <div class="col-md-5 text-align-md-right txt_checkoutlabel">phone<span class="error-color">*</span></div>
                 <div class="col-md-7">
                   <div class="phoneno_code">
-                    <input (blur)="validatePhone($event)" (keyup)="phoneNumberFormat($event)" name="phone_no" maxLength="10" type="text" [value]="formData.phone"
-                      pattern="[0-9]" [ngModel]="formData.phone"></div>
+                    <input (blur)="validatePhone()" (keyup)="phoneNumberFormat($event)" name="phone_no" maxLength="10" type="text" value="formData.phone"
+                      pattern="[0-9]" [ngModel]="formData.phone">
+                  </div>
                   <em class="_fs10 txt_checkout_notification">We only call in case of food emergencies (i.e. Order and reservation changes, clarifications or cancellations)</em>
                   <p class="error-message error-phoneNo hide">We promise; No prank calls</p>
                 </div>
@@ -43,7 +44,7 @@
               <div class="row">
                 <div class="col-md-5 text-align-md-right txt_checkoutlabel">email<span class="error-color">*</span></div>
                 <div class="col-md-7">
-                  <input (blur)="validateEmail($event)" name="email" type="text" [value]="formData.email" [ngModel]="formData.email">
+                  <input (blur)="validateEmail()" name="email" type="text" [value]="formData.email" [ngModel]="formData.email">
                   <p class="error-message hide">Hey, you forgot something</p>
                 </div>
               </div>
@@ -138,7 +139,7 @@
                 <div class="row">
                   <p class="col-md-5 text-align-md-right txt_checkoutlabel">Name on Card <span class="error-color astrickCheckout">*</span></p>
                   <div class="col-md-7">
-                    <input (blur)="validateCardName($event)" name="card_name" class="capitalize" autocomplete="off" type="text" [ngModel]="formData.cardname"
+                    <input (blur)="validateCardName()" name="card_name" class="capitalize" autocomplete="off" type="text" [ngModel]="formData.cardname"
                       [value]="formData.cardname">
                     <em class="_fs10 txt_checkout_notification">As it appears on your credit card</em>
                     <p class="error-message new-card-msg hide">And whose card is this?</p>
@@ -155,7 +156,7 @@
                 <div class="row">
                   <p class="col-md-5 text-align-md-right txt_checkoutlabel">Card Number <span class="error-color astrickCheckout">*</span></p>
                   <div class="col-md-7">
-                    <input (blur)="validateCardNumber($event)" (keyup)="detectCardType($event)" name="card_number" type="text" maxLength="19"
+                    <input (blur)="validateCardNumber()" (keyup)="detectCardType($event)" name="card_number" type="text" maxLength="19"
                       [ngModel]="formData.cardNo" [value]="formData.cardNo">
                     <em class="_fs10 txt_checkout_notification">Up to 16 digits on the front of your card. No spaces or dashes</em>
                     <p class="error-message new-card-msg hide">Try rubbing your fingers over the numbers, that helps us get 'em right</p>
@@ -180,7 +181,7 @@
                 <div class="row position_relative">
                   <p class="col-md-5 text-align-md-right txt_checkoutlabel">CVV Code <span class="error-color astrickCheckout">*</span></p>
                   <div class="col-md-7">
-                    <input (blur)="validateCVVCode($event)" (keyup)="onlyNumber($event)" class="creditcard-cvv" name="cvv_code" type="password"
+                    <input (blur)="validateCVVCode()" (keyup)="onlyNumber($event)" class="creditcard-cvv" name="cvv_code" type="password"
                       maxlength="4" [ngModel]="formData.cvv" [value]="formData.cvv">
                     <div class="link_cvvpanel">
                       <a href="javascript:void(0)" class="link_cvvmessage" (click)="whatsThisShow()">What's this?</a>
@@ -251,7 +252,7 @@
                 <div class="row">
                   <p class="col-md-5 column hidden-sm hidden-xs">&nbsp;</p>
                   <div class="col-md-7 text-align-center">
-                    <a href="javascript:void(0);" class="ubtn blackbtn placemyorder" (click)="placeOrder($event)">place my order</a>
+                    <a href="javascript:void(0);" class="ubtn blackbtn placemyorder" (click)="placeOrder()">place my order</a>
                     <span class="lineloader confirm_loader hide">  <span></span><span></span><span></span></span>
                   </div>
                 </div>

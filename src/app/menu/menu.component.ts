@@ -30,7 +30,7 @@ export class MenuComponent implements OnInit, OnDestroy {
         );
     
    }
-  private dishes: any;
+  public dishes: any;
   private restaurantDeal: object;
   public order_type: any;
   public deliveryOrderCart: boolean = false;
