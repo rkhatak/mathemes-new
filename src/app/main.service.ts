@@ -82,7 +82,7 @@ export class MainService implements OnDestroy {
     }
 
     getTheme() {
-        let themeUrl = 'assets/theme.require.json'
+        let themeUrl = '/assets/theme.require.json'
         let self = this;
         return self._http.get(themeUrl)
             .map((response: Response) => <any>response.json());
