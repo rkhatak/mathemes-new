@@ -46,10 +46,15 @@ export class ContactComponent implements OnInit, OnDestroy {
     let _theme = this.globals.globalTheme;
     this._currentRestaurant = this.globals.currentRestaurantDetail;
     this.renderMap(this._currentRestaurant);
-    this.mservice.getChainRestaurant(_theme)
+    let rootId=parseInt(this.mservice.chainRes().rootId);
+    if(isNaN(rootId)==true){
+       this.mservice.getChainRestaurant(_theme)
       .subscribe(
-      (data) => this.setContacts(data),
-      (err) => this.getResError());
+      (data) =>this.setContacts(data),
+      (err)=>this.getResError());
+    }else{
+    this.multipleAddress=false;
+  }
   }
 
   private getResError(): void {
