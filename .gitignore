@@ -12,7 +12,6 @@ package.json
 tslint.json
 tsconfig.json
 protractor.conf.js
-package-lock.json
 
 # IDEs and editors
 /.idea

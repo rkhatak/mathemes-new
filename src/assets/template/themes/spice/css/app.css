@@ -14,8 +14,6 @@
 .txt_typeplace, .typeofplace{display:none;}
 .owl-dots{display:none;}
 
-
-
 .promo_homepage{
     font:1.1875em 'Merriweather', serif, arial;
     border-top: 1px solid #fff;
@@ -67,10 +65,14 @@
 .springcocktail .owl-item .owl-lazy{opacity:0;transition:opacity .4s ease}
 .springcocktail .owl-item img.owl-lazy{transform-style:preserve-3d}
 
+.col-md-4 { margin-right: 0; }
+.landing_list_contact { margin: 0 10px; }
 
 .contact_resname{font:30px 'Merriweather', serif, arial;font-style:italic;}
 .contact_resaddress{min-height:17px;}
-.contact_resphoneno{font-weight:normal;color:#666666;display:inline-block;text-decoration:none;}
+.contact_resphoneno{font-weight:normal;color:#666666;display:block;text-decoration:none;}
+
+.landing_listpanel:after, .landing_listpanel:before{content:" ";clear:both;display:block;}
 
 /**About page
 .typeofplace{max-width:305px;}
