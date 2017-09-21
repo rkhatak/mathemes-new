@@ -1,0 +1,42 @@
+{
+    "status": "success",
+    "message": "Details of Gammeeok theme",
+    "data": [
+        {
+            "tabname": "Home",
+            "tabslug": "home",
+            "filepath": "common"
+        },
+        {
+            "tabname": "About",
+            "tabslug": "about",
+            "filepath": "common"
+        },
+        {
+            "tabname": "Menu",
+            "tabslug": "menu",
+            "filepath": "common"
+        },
+        {
+            "tabname": "Gallery",
+            "tabslug": "gallery",
+            "filepath": "common"
+        },
+        {
+            "tabname": "Contact",
+            "tabslug": "contact",
+            "filepath": "common"
+        },
+        {
+            "tabname": "Careers",
+            "tabslug": "careers",
+            "filepath": "common"
+        }
+    ],
+    "home": {
+            "title": "KOREATOWN&#8217;S FAVORITE DINING HOT SPOT",
+            "homebg": "https://player.vimeo.com/video/208439283?background=1",
+            "video": "https://player.vimeo.com/video/208439283?background=1",
+            "nextpage": "about"
+        }
+}
