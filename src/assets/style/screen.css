@@ -108,8 +108,8 @@ p, body{margin:0;}
 .a_modal .i_close{position:absolute;top:5px;right:11px;}
 .modalwatchvideo iframe{width:95%;background-color:#000;background-repeat:no-repeat;background-size:cover;}
 /**icons**/
-.ac{background-image:url('../../../../images/icalendar.png');display:inline-block;}
-.gi{background-image:url('../../../../images/i_global.png');display:inline-block;}
+.ac{background-image:url('../images/icalendar.png');display:inline-block;}
+.gi{background-image:url('../images/i_global.png');display:inline-block;}
 .gi span{background:rgb(237, 28, 36);border-radius:100%;font-size:9px;font-weight:700;text-align:center;width:14px;height:14px;display:block;color:#fff;float:right;line-height:14px;margin:8px -6px 0 0;font-style:normal;}
 .gi.disabledcard span{background:#fff;color:#000;}
 .price-select {
@@ -132,7 +132,7 @@ p, body{margin:0;}
 .i_calendar{width:16px;height:16px;background-position:0 0;}
 .i_icalendar{width:16px;height:16px;background-position:-16px 0;}
 .i_outlook{width:16px;height:16px;background-position:-32px 0;}
-.i_card_munchado{width:43px;height:30px;background: url(../../../../images/card_munch.png) no-repeat;position:absolute;top:0;left:0;}
+.i_card_munchado{width:43px;height:30px;background: url(../images/card_munch.png) no-repeat;position:absolute;top:0;left:0;}
 /* Pencil */
 .i_pencil,.i_pencil:after{width:6px;background:rgb(237, 28, 36);}
 .i_pencil:after,.i_pencil:before{content:'';position:absolute}
@@ -427,7 +427,7 @@ a.txtlink:hover{color:#000}
 .cvvmessagebox .cvvcontent {padding: 10px;margin: 0px !important;}
 /**credit_cards list**/
 ul.credit_cards{margin-top:15px;}
-ul.credit_cards li {list-style: outside none none;display: inline-block;float: left;margin-left: 10px;background-image: url("../../../../images/credit_cards.png");width: 32px;height: 21px;opacity: 0.25;transition: all 0.5s linear 0s;}
+ul.credit_cards li {list-style: outside none none;display: inline-block;float: left;margin-left: 10px;background-image: url("../images/credit_cards.png");width: 32px;height: 21px;opacity: 0.25;transition: all 0.5s linear 0s;}
 ul.credit_cards li:first-child {margin-left: 0px;}
 ul.credit_cards li.visa {background-position: 0px 0px;}
 ul.credit_cards li.master_card {background-position: -32px 0px;}
@@ -472,7 +472,7 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 .typeofplace li a{text-decoration:none;cursor:default;}
 .typeofplace li p{font:9px/11px arial;color:#666;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-top:2px;width:37px;}
 .typeofplace li:hover, .typeofplace li a:hover p{white-space:normal;overflow:visible;}
-.typeofplace li i{background-image:url(../../../../images/i_typeplacewidth.png);background-color:#7f7f7f;width:37px;height:37px;border-radius:3px;display:block;}
+.typeofplace li i{background-image:url(../images/i_typeplacewidth.png);background-color:#7f7f7f;width:37px;height:37px;border-radius:3px;display:block;}
 .typeofplace li:last-child{margin-right:0;}
 .greenP_Casual_Dining_Icon,.greenP_Casual_Icon{background-position:1px 4px}
 .greenP_Fine_Dining_Icon{background-position:-49px 3px}
@@ -582,8 +582,8 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 .owl-nav .owl-prev{left:30px;border-bottom:0;border-right:0;-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);-ms-transform: rotate(-45deg);-o-transform: rotate(-45deg);transform: rotate(-45deg);}
 .storysection .vm{display:flex;justify-content:center;/*flex-direction:column;*/align-items:center;}
 /***Dine more**/
-.dine-more > ._960px{background:url(../../../../images/bg_dinein.jpg);color:#323232;padding-top:30px;}
-.dine-more .title_dine{width:361px;height:53px;background-size:100% auto;background-image:url(../../../../images/i_dinemore.png);margin:0 auto 10px;text-indent:-999px;overflow:hidden;background-repeat:no-repeat;}
+.dine-more > ._960px{background:url(../images/bg_dinein.jpg);color:#323232;padding-top:30px;}
+.dine-more .title_dine{width:361px;height:53px;background-size:100% auto;background-image:url(../images/i_dinemore.png);margin:0 auto 10px;text-indent:-999px;overflow:hidden;background-repeat:no-repeat;}
 .dine-more .txt_makeevery{font:1em 'Libre Baskerville', serif;font-weight:700;padding:5px 0 0;}
 .dine-more .txt_joinourdine{font-size:1em;font-weight:700;letter-spacing:2px}
 .dine-more .txt_savor{font:2.3937em 'Libre Baskerville', serif;padding-top:66px;}
@@ -605,7 +605,7 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 .dine-more .vip_benefit{width:210px}
 .dine-more .vip_benefit > span{font:0.9375em 'an_medium';display: block;margin-bottom: 37px;}
 .dine-more .vip_benefit > span > span{font-weight:bold;background:#f1df17;padding:0 10px;}
-.dine-more .i_vip{background:url(../../../../images/i_vip.png);display:inline-block;}
+.dine-more .i_vip{background:url(../images/i_vip.png);display:inline-block;}
 .dine-more .i_reg{width:24px;height:29px;}
 .dine-more .i_uplo{width:30px;height:29px;background-position:0 -764px;}
 .dine-more .i_ord{width: 30px;height: 29px;background-position:0 -266px;}
@@ -683,7 +683,7 @@ ul.credit_cards li.correct{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(O
 ._popupregister .sectiontitle ._fs12 {padding-top:17px;}
 ._popupregister .blackbtn{width:100%;max-width:300px;text-align:center;}
 .panel_captch{max-width:300px;overflow:hidden;}
-.panel_captch > div:first-child{background: url(../../../../images/bg-captcha.jpg);width:48%;height: 28px;text-align: center;margin-right: 10px;float: left;font: bold 1.3em/28px arial;letter-spacing:13px;color:#000;}
+.panel_captch > div:first-child{background: url(../images/bg-captcha.jpg);width:48%;height: 28px;text-align: center;margin-right: 10px;float: left;font: bold 1.3em/28px arial;letter-spacing:13px;color:#000;}
 .panel_captch input{width:48%;float:right;}
 .border_login{border-right:1px solid #000;padding-bottom:40px;}
 .loginpopup{padding-left:0;padding-right:0;}
