@@ -13,8 +13,9 @@
           <div *ngIf="multipleAddress">
             <a href="javascript:void(0)" class="hl pagejump madd" (click)="selectLocation()">Select Location</a>
           <div class="multipleAdd hide">
+            <p>Spice Thai Restaurant</p>
             <div *ngFor="let resAddress of restaurantAddress">
-                <a href="javascript:void()" (click)="goLocation(resAddress.id,rootPage)" class="ubtn r_location" [innerHtml]="resAddress.name"></a>
+                <a href="javascript:void()" (click)="goLocation(resAddress.id,rootPage)" class="ubtn whitebtn r_location" [innerHtml]="resAddress.name"></a>
             </div>
           </div>
           </div>

@@ -1,10 +1,23 @@
 .multipleAdd {
     position: absolute;
-    width:100%;
-    padding: 20px 10px;
-    background: #fff;
+    right: -50px;
+    top: 28px;
+    width:280px;
+    padding: 20px 30px;
+    background: #404851;
     margin-top:10px;
+}
+.multipleAdd p {
+	font-size: 10px;
+	line-height: 14px;
+	color: #fff;
+	padding-bottom: 10px;
 }
 .r_location{
     margin-top:10px; 
+    display: block;
+}
+.ubtn.whitebtn:hover{
+	background:#fff;
+	color:#000;
 }
