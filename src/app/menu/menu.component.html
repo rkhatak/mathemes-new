@@ -1,5 +1,5 @@
 <div template="ngIf !dishes"  style="position: fixed;left: calc(50% - 50px);top: calc(50% - 50px);"><img src="assets/img/with_hand.gif"><br/>Please wait...</div>
-<div class="_960px" *ngIf="dishes">
+<div [class]="multipleAddress?'landingsite _960px':'_960px'" *ngIf="dishes">
                     <p class="sectiontitle">menu</p>            
                     
                     <div class="t-menu-render menutab">
