@@ -10,7 +10,7 @@
           <p class="contact_resphoneno">{{resAddress.phone}}</p>
           <a [href]="resAddress.reservationurl | safeUrl" target="_blank" *ngIf="_currentRestaurant.has_reservation" class="ubtn blackbtn _mb15"
             (click)="action('r',restaurant.id)" target="_blank">reserve a table</a><br>
-          <a href="javascript:void(0)" class="ubtn" (click)="chainRestaurantOrder(resAddress.name,resAddress.id)" target="_blank">order online</a>
+          <a href="javascript:void(0)" class="ubtn" (click)="goLocation(resAddress.id,'menu')" target="_blank">order online</a>
         </div>
       </div>
     </div>

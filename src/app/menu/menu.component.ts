@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, Inject,ViewChild,ChangeDetectorRef} from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Inject,ViewChild,ChangeDetectorRef,ElementRef} from '@angular/core';
 import { MainService } from '../main.service';
 import { Globals } from '../globals';
 import { Subscription } from 'rxjs/Subscription';
@@ -18,7 +18,7 @@ declare var $: any;
 })
 export class MenuComponent implements OnInit, OnDestroy {
 
-  constructor(private changeDetectorRef:ChangeDetectorRef,private router:Router,private mservice: MainService, public globals: Globals, @Inject(DOCUMENT) private document: any, public sanitizer: DomSanitizer,private pageScrollService: PageScrollService) {
+  constructor(private elRef: ElementRef,private changeDetectorRef:ChangeDetectorRef,private router:Router,private mservice: MainService, public globals: Globals, @Inject(DOCUMENT) private document: any, public sanitizer: DomSanitizer,private pageScrollService: PageScrollService) {
        this.onCartItemChange$Subscription = this.globals.onCartItemChange.subscribe(
           () => {
           this.cartItemDisplay= this.globals.cartItemDisplay;
@@ -56,6 +56,7 @@ export class MenuComponent implements OnInit, OnDestroy {
  promocode: any;
  public checkoutAddress:any;
   public checkoutAddressData:any;
+  multipleAddress:boolean=false;
   @ViewChild(CartTimeComponent) timeChild:CartTimeComponent;
  
 
@@ -76,7 +77,10 @@ export class MenuComponent implements OnInit, OnDestroy {
       }
     }
   }
-
+ 
+  selectLocation(){
+     this.document.querySelector('.multipleAdd').classList.remove('hide');
+  }
   ngOnDestroy() {
     if (this.onThemeSetEvent$Subscription) {
       this.onThemeSetEvent$Subscription.unsubscribe();
@@ -110,10 +114,31 @@ export class MenuComponent implements OnInit, OnDestroy {
     }else{
       this.mservice.getCheckTakeout();
     }
+    let _theme = this.globals.globalTheme;
+    let rootId=parseInt(this.mservice.chainRes().rootId);
+    if(isNaN(rootId)==true){
+       this.mservice.getChainRestaurant(_theme)
+      .subscribe(
+      (data) =>this.setContacts(data),
+      (err)=>this.getResError());
+    }else{
+    this.multipleAddress=false;
+    this.changeDetectorRef.detectChanges();
+  }
+  
     this.globalObj=this.globals;
     this.mservice.setStorage('order_type_' + _currentRestId, 'takeout');
     this.mservice.getRestaurantMenu(_currentRestId)
       .subscribe(data => this.prepareMenu(data.menu));
+  }
+  
+  private getResError() :void{
+     this.multipleAddress=false;
+    this.changeDetectorRef.detectChanges();
+  }
+  private setContacts(d):void{
+    this.multipleAddress=true;
+    this.changeDetectorRef.detectChanges();
   }
   getCheckTakeout(){
     this.mservice.getCheckTakeout();
@@ -128,6 +153,9 @@ export class MenuComponent implements OnInit, OnDestroy {
     setTimeout(function(){
     var el = this.document.querySelectorAll('.r_menu_navbar>li');
     el[0].classList.add('active');
+    if(self.multipleAddress==true){
+     self.elRef.nativeElement.querySelector('.landingsite').addEventListener('click', self.selectLocation.bind(this));
+    }
     },1000);
    
   }
