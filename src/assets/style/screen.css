@@ -134,11 +134,11 @@ p, body{margin:0;}
 .i_outlook{width:16px;height:16px;background-position:-32px 0;}
 .i_card_munchado{width:43px;height:30px;background: url(../images/card_munch.png) no-repeat;position:absolute;top:0;left:0;}
 /* Pencil */
-.i_pencil,.i_pencil:after{width:6px;background:rgb(237, 28, 36);}
+.i_pencil,.i_pencil:after{width:6px;background:#c7c3c3;}
 .i_pencil:after,.i_pencil:before{content:'';position:absolute}
 .i_pencil{height:6px;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:absolute;left:8px;top:8px}
 .i_pencil:after{height:4px;-webkit-border-radius:2px 2px 0 0;-moz-border-radius:2px 2px 0 0;border-radius:2px 2px 0 0;top:-5px;left:0}
-.i_pencil:before{width:0;height:0;border-width:5px 3px 0;border-style:solid;border-color:rgb(237, 28, 36) transparent transparent;bottom:-6px;left:0;}
+.i_pencil:before{width:0;height:0;border-width:5px 3px 0;border-style:solid;border-color:#c7c3c3 transparent transparent;bottom:-6px;left:0;}
 
 .i_people{width:12px;height:12px;overflow:hidden;display:block;float:left;margin:2px 10px 0 0;}
 .i_people:after, .i_people:before{content:'';border-radius:100%;background:#ff3921;width:13px;display:block;margin:0 auto;}
@@ -313,10 +313,17 @@ a.txtlink:hover{color:#000}
 .box_ordersummary .btn_service:checked ~ .btn_service{cursor:initial;pointer-events:none;}
 [value="takeout"]:checked ~ .ordersummary_takeout, [value="delivery"]:checked ~ .ordersummary_delivery{display:block;}
 .yourorder_box:empty + .txt_bs_item{margin-top:0;}
+.yourorder_box .txt_bs_item { padding-right:20% !important; position:relative; }
+.rel { position: relative; }
+.yourorder_box .link_edit { position: absolute; right:6px; top:0; }
+
 .panel_selectexpectedtime select{font-size:1em;width:inherit;min-width:100px;margin-top:5px;}
-.box_ordersummary .box_expectedtime{font-weight:700;line-height:17px;position:relative;}
+.box_ordersummary .box_expectedtime{ font-weight: 700; line-height: 18px; color: #666666; position: relative; font-size: 12px;}
+.box_ordersummary .box_expectedtime p._fontarial {}
 .box_ordersummary .title_bs_order{color:#b1aeae;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;}
-.box_ordersummary .txt_bs_item{font:0.875em arial;padding-top:10px;}
+.box_ordersummary .title_bs_order .text-capitalize { text-transform: uppercase; }
+.box_ordersummary .box_expectedtime .txt_minhours { font-weight: 300; }
+.box_ordersummary .txt_bs_item{font-size: 0.75rem;font-weight: normal;padding-top: 10px; color: #000000; position: relative;}
 .box_ordersummary .txt_bs_item select{font-size:1em;padding:0 2px}
 .box_ordersummary .txt_bs_total{color:rgb(237, 28, 36);font-weight:700;margin-top:20px;font-size:0.875em;}
 .box_ordersummary .txt_bs_noorder{border:1px solid rgba(0, 0, 0, 0.05);background:rgba(0, 0, 0, 0.05);padding:10px;font-size:11px;font-weight:700;line-height:16px;text-transform:uppercase;-moz-transition:all 1s ease;-webkit-transition:all 1s ease;transition:all 1s ease;transform: scale3d(1, 1, 1);}
@@ -326,8 +333,87 @@ a.txtlink:hover{color:#000}
 .box_ordersummary .subtitle_first{font-weight:700;font-size:0.75em;}
 .ordersummarystep2 .link_edit{display:none;}
 .box_ordersummary a.txtlink{margin-top:7px;display:inline-block;}
+.box_ordersummary a.txtlink { margin-top: 7px; display: inline-block; background:#c7c3c3; color:#fff; font-size:8px; padding:0 5px; }
+.box_ordersummary a.txtlink:hover { background:rgb(237, 28, 36); }
 .txt_rightalign{position:relative;padding:4px 0 4px 30px;font-family:arial;font-weight:normal;}
 .txt_rightalign > i{position:absolute;left:0;top:0;-ms-transform: rotate(-135deg);-webkit-transform: rotate(-135deg);transform: rotate(-135deg);}
+
+.box_orderitem { border-top: solid 1px #c7c3c3; padding-top: 25px;}
+.box_orderitem .container > .txt_bs_item {padding-right: 20%;}  
+.box_orderitem .container > .txt_bs_item._mt35 { border-top: solid 1px #c7c3c3; margin-top: 25px; padding-top: 20px; }
+
+/* */
+.link_edit {
+  padding-top: 6px;
+}
+.link_edit a {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  display: block;
+  float: left;
+  margin-left: 4px;
+  text-align: center;
+  border: none;
+  background: transparent;
+}
+.link_edit a:hover {
+  background: transparent !important;
+}
+.link_edit a i {
+  display: block;
+}
+.link_edit a:hover .i_pencil {
+  background: red;
+}
+.link_edit a:hover .i_pencil:after {
+  background: red;
+}
+.link_edit a:hover .i_pencil:before {
+  border-top-color: red;
+}
+.link_edit a i.i_wrong {
+  line-height: 24px;
+  width: initial;
+  font-size: 35px;
+}
+.link_edit a:hover i.i_wrong {
+  color: red;
+}
+.link_edit .tooltip {
+  top: 41px;
+  right: -10px;
+  width: 280px;
+}
+.link_edit .tooltip .txt {
+  padding: 10px;
+}
+.link_edit .tooltip .txt:before {
+  margin: -18px 0 10px 245px;
+}
+.link_edit .blackbtn {
+  padding: 5px;
+  letter-spacing: normal;
+  margin-top: 10px;
+  width: 110px;
+  font-size: 12px;
+  padding: 7px 0;
+}
+.link_edit .blackbtn.t-confirm-delete-order {
+  margin-right: 10px;
+}
+.link_edit .blackbtn.t-cancel-delete-order {
+  border-color: white;
+  background: transparent;
+  color: #fff;
+}
+.link_edit .blackbtn.t-cancel-delete-order:hover {
+  opacity: 0.5;
+}
+
+/* */
+
 /**popup add to order**/
 .txt_addonradio{font:0.75em arial;}
 .txt_addonradio .custom_radio{padding-top:3px;display:block;}
@@ -352,14 +438,13 @@ a.txtlink:hover{color:#000}
 .slider_quantity .decrease:after{display:none;}
 .item-total-txt{padding-top:3px;}
 .link_edit{padding-top:6px;}
-.link_edit a{border-radius:100%;position:relative;width:25px;height:25px;padding: 0;display: block;float: left;margin-right:5px;text-align:center;}
+.link_edit a{border-radius:100%;position:relative;width:18px;height:18px;padding: 0;display: block;float: left;margin-right:0px;text-align:center;}
 .link_edit a i{display:block;}
-.link_edit a:hover .i_pencil, .link_edit a:hover .i_pencil:after{background:#fff;}
-.link_edit a:hover .i_pencil:before{border-top-color:#fff;}
-.link_edit a i.i_wrong{line-height:24px;width:initial;font-size:35px}
-.link_edit a:hover i.i_wrong{color:#fff;}
+.link_edit a:hover .i_pencil, .link_edit a:hover .i_pencil:after{background:#ef2028;}
+.link_edit a:hover .i_pencil:before{border-top-color:#ef2028;}
+.link_edit a i.i_wrong{line-height:24px;width:initial;font-size:35px;color: #c7c3c3;}
+.link_edit a:hover i.i_wrong{color:#ef2028;}
 .link_edit .tooltip{top:41px;}
-.link_edit .tooltip .txt:before{margin:-18px 0 10px 25px;}
 .link_edit .tooltip{width:280px}
 .link_edit .tooltip .txt{padding:10px;}
 .link_edit .blackbtn{padding:5px;letter-spacing:normal;margin-top:10px;width:110px;font-size:0.875em;padding:7px 0;}

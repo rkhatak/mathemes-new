@@ -21,3 +21,24 @@
 	background:#fff;
 	color:#000;
 }
+.multipleAdd .i_close {
+    position: absolute;
+    top: 0px;
+    right: 11px;
+    color:#fff;
+}
+.multipleAdd .i_close:hover { 
+    color: #000; 
+}
+
+@media (max-width: 991px){
+    .multipleAdd {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        margin-top: 0;
+    }
+}

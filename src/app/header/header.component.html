@@ -13,7 +13,8 @@
           <div *ngIf="multipleAddress">
             <a href="javascript:void(0)" class="hl pagejump madd" (click)="selectLocation()">Select Location</a>
           <div class="multipleAdd hide">
-            <p>Spice Thai Restaurant</p>
+            <a class="i_close close" href="javascript:void(0)">+</a>
+            <p>Select a location to place your delivery or takeout order</p>
             <div *ngFor="let resAddress of restaurantAddress">
                 <a href="javascript:void()" (click)="goLocation(resAddress.id,rootPage)" class="ubtn whitebtn r_location" [innerHtml]="resAddress.name"></a>
             </div>
@@ -30,7 +31,7 @@
                <a routerLink="{{rootId}}/{{tabs.tabslug}}">{{tabs.tabname}}</a>
             </li>
 
-             <li *ngIf="is_login">
+            <li *ngIf="is_login">
                <a routerLink="/myaccount" class="hl">My Account</a>
             </li>
              <li *ngIf="is_login">
@@ -42,7 +43,6 @@
              <li *ngIf="!is_login">
                <a href="javascript:void(0)" data-popup="login" class="hl y-login" (click)="userlogin()">login</a>
             </li>
-            
             
             <li class="xs-hide line-orderonline" *ngIf="!multipleAddress">
                <a routerLink="{{rootId}}/menu" class="hl y-go-to-menu">order online</a>
