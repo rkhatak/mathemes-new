@@ -8,8 +8,8 @@
         <strong>{{addon['name']}}</strong>
     </p>
     <p class="addon-error-message error-message hide">Please select an option from below</p>
-    <ul *ngFor="let option of addon['options']" class="unstyled box panel_popupaddon txt_addonradio clearfix">
-       <li class="has-pretty-child">
+    <ul  class="unstyled box panel_popupaddon txt_addonradio clearfix">
+       <li class="has-pretty-child" *ngFor="let option of addon['options']">
           <div class="custom_checkbox">
             <div class="row">
               <div class="col-md-10 col-xs-10">
