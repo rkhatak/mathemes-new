@@ -197,6 +197,10 @@ import { SpringComponent } from './spring/spring.component';
       {
         path: 'careers',
         component: CareersComponent
+      }, 
+      {
+        path: ':id/careers',
+        component: CareersComponent
       },      
       {
         path: '',
