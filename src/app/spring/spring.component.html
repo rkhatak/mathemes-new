@@ -1,0 +1,21 @@
+<div id="newspringcocktail" class="bg_section psection">
+  <!--New Spring Cocktail List-->
+  <div class="_960px">
+    <p class="sectiontitle">new spring cocktail list</p>
+    <div class="row panel_spring_cocktail">
+      <div class="col-md-4 col-xs-12">
+        <div class="txt_spring_cocktail">
+          <a *ngFor="let imgs of sprImage ;let i = index" class="url {{i==0?'active':''}}" (click)="navigateSlider(imgs.slice(0, -4),$event)" href="javascript:void(0)">{{imgs.replace('_',' ').slice(0, -4).charAt(0).toUpperCase()}}{{imgs.replace('_',' ').slice(0, -4).slice(1)}}</a>
+        </div>
+      </div>
+      <div class="col-md-8 col-xs-12">
+        <owl-carousel [options]="{items:1,loop:true,center:true,nav:false,margin:0,URLhashListener:true,autoplayHoverPause:true,startPosition: 'URLHash'}" [items]="sprImage" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+          <div *ngFor="let imgs of sprImage" class="item" [attr.data-hash]="imgs.slice(0, -4)">
+            <div [style.background]="menuImageSafe('/assets/template/themes/spice/images/cocktail_list/',imgs)" class="img-springcocktail"></div>
+          </div>
+        </owl-carousel>
+      </div>
+    </div>
+  </div>
+  <!--New Spring Cocktail List-->
+</div>

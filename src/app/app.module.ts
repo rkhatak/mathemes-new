@@ -51,6 +51,7 @@ import { PaymentSuccessComponent } from './payment-success/payment-success.compo
 import { CareersComponent } from './careers/careers.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
 import { DeliveryAddressComponent } from './delivery-address/delivery-address.component';
+import { SpringComponent } from './spring/spring.component';
 
 
 
@@ -94,7 +95,8 @@ import { DeliveryAddressComponent } from './delivery-address/delivery-address.co
     PaymentSuccessComponent,
     CareersComponent,
     SafeHtmlPipe,
-    DeliveryAddressComponent
+    DeliveryAddressComponent,
+    SpringComponent
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,
@@ -127,6 +129,14 @@ import { DeliveryAddressComponent } from './delivery-address/delivery-address.co
       {
         path: 'payment',
         component: PaymentSuccessComponent
+      },
+      {
+        path: 'spring_cocktail',
+        component: SpringComponent
+      },
+      {
+        path: ':id/spring_cocktail',
+        component: SpringComponent
       },
       {
         path: ':id/home',

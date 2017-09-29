@@ -5,19 +5,30 @@
         {
             "tabname": "Home",
             "tabslug": "home",
-            "file": "home.html",
             "filepath": "common"
         },
         {
             "tabname": "About",
             "tabslug": "about",
-            "file": "about.html",
             "filepath": "common"
         },
         {
             "tabname": "Menu",
             "tabslug": "menu",
-            "file": "menu.html",
+            "filepath": "common"
+        },
+        {
+            "tabname": "New Spring Cocktail",
+            "tabslug": "spring_cocktail",
+            "filepath": "common"
+        },
+        {
+            "tabname": "Gallery",
+            "tabslug": "gallery"
+        },
+        {
+            "tabname": "Careers",
+            "tabslug": "careers",
             "filepath": "common"
         },
         {
