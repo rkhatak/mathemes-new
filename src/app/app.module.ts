@@ -6,7 +6,6 @@ import {LocalStorageService, LocalStorage} from 'ng2-webstorage';
 import { AppComponent } from './app.component';
 import { MainService } from './main.service';
 import {Globals} from './globals';
-import { DatepickerModule } from 'angular2-material-datepicker';
 import { NguiDatetimePickerModule } from '@ngui/datetime-picker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HeaderComponent} from './header/header.component';
@@ -16,7 +15,6 @@ import { MenuComponent } from './menu/menu.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ContactComponent } from './contact/contact.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { ReplaceTagDirective } from '../directives/replace-tag.directive';
 import { FooterComponent } from './footer/footer.component';
 import { SafePipe } from './safe.pipe';
 import { StoryComponent } from './story/story.component';
@@ -38,7 +36,6 @@ import { ActivityListComponent } from './activity-list/activity-list.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { OrderLinkFormComponent } from './order-link-form/order-link-form.component';
 import { AddonsComponent } from './addons/addons.component';
-import { TemplateVaribaleDirective } from './template-varibale.directive';
 import { OrderItemComponent } from './order-item/order-item.component';
 import { CartTimeComponent } from './cart-time/cart-time.component';
 import { OwlModule } from 'ng2-owl-carousel';
@@ -65,7 +62,6 @@ import { SpringComponent } from './spring/spring.component';
     MenuComponent,
     GalleryComponent,
     ContactComponent,
-    ReplaceTagDirective,
     FooterComponent,
     SafePipe,
     StoryComponent,
@@ -83,7 +79,6 @@ import { SpringComponent } from './spring/spring.component';
     OrderDetailsComponent,
     OrderLinkFormComponent,
     AddonsComponent,
-    TemplateVaribaleDirective,
     OrderItemComponent,
     CartTimeComponent,
     CheckoutComponent,
