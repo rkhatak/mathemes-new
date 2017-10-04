@@ -1,6 +1,6 @@
 {
     "status": "success",
-    "message": "Details of Gammeeok theme",
+    "message": "Details of Spice theme",
     "data": [
         {
             "tabname": "Home",
@@ -21,12 +21,29 @@
             "filepath": "common"
         },
         {
+            "tabname": "New Spring Cocktail",
+            "tabslug": "newspringcocktail",
+            "file": "spring-cocktail.html",
+            "filepath": "themes"
+        },
+        {
+            "tabname": "Gallery",
+            "tabslug": "gallery",
+            "file": "gallery.html",
+            "filepath": "common"
+        },
+        {
+            "tabname": "Careers",
+            "tabslug": "careers",
+            "file": "careers.html",
+            "filepath": "common"
+        },
+        {
             "tabname": "Contact",
             "tabslug": "contact",
             "file": "contact.html",
-	    "filepath": "common"		
+	        "filepath": "common"		
         }
-        
     ],
     "home": {
             "title": "Spice is New York City’s Choice for Authentic Thai Cuisine since 1997.",

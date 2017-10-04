@@ -41,6 +41,7 @@
 .txt_spring_cocktail a span{color:#b0afaf;font-style:normal; font:0.875em arial;display:none;}
 .txt_spring_cocktail a:hover span{color:#ffffff;}
 
+.no-js .springcocktail,.owl-carousel.owl-loaded{display:block}
 .springcocktail,.springcocktail .owl-item{-webkit-tap-highlight-color:transparent;position:relative}
 .springcocktail .owl-stage{position:relative;-ms-touch-action:pan-Y;-moz-backface-visibility:hidden}
 .springcocktail .owl-stage:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
@@ -49,8 +50,13 @@
 .springcocktail .owl-item{min-height:1px;float:left;-webkit-backface-visibility:hidden;-webkit-touch-callout:none}
 .springcocktail .owl-item img{display:inline-block;max-width:initial}
 .springcocktail .owl-dots.disabled{display:none}
-.no-js .springcocktail,.owl-carousel.owl-loaded{display:block}
 .springcocktail .owl-dot,.owl-carousel .owl-nav .owl-next,.owl-carousel .owl-nav .owl-prev{cursor:pointer;cursor:hand;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.springcocktail .animated{animation-duration:1s;animation-fill-mode:both}
+.springcocktail .owl-animated-in{z-index:0}
+.springcocktail .owl-animated-out{z-index:1}
+.springcocktail .fadeOut{animation-name:fadeOut}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}
+.springcocktail .owl-item .owl-lazy{opacity:0;transition:opacity .4s ease}
+.springcocktail .owl-item img.owl-lazy{transform-style:preserve-3d}
 .springcocktail.owl-loading{opacity:0;display:block}
 .springcocktail.owl-hidden{opacity:0}
 .springcocktail.owl-refresh .owl-item{visibility:hidden}
@@ -58,12 +64,6 @@
 .springcocktail.owl-grab{cursor:move;cursor:grab}
 .springcocktail.owl-rtl{direction:rtl}
 .springcocktail.owl-rtl .owl-item{float:right}
-.springcocktail .animated{animation-duration:1s;animation-fill-mode:both}
-.springcocktail .owl-animated-in{z-index:0}
-.springcocktail .owl-animated-out{z-index:1}
-.springcocktail .fadeOut{animation-name:fadeOut}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}
-.springcocktail .owl-item .owl-lazy{opacity:0;transition:opacity .4s ease}
-.springcocktail .owl-item img.owl-lazy{transform-style:preserve-3d}
 
 .col-md-4 { margin-right: 0; }
 .landing_list_contact { margin: 0 10px; }
@@ -80,13 +80,13 @@
 
 .res_menu .item_contentpanel .txt_restitle{font-size:1.125em;}
 
-@media (max-width: 767px){
+@media (max-width: 767px) {
     .promo_homepage{
-    font:0.875em 'Merriweather', serif, arial;
+        font:0.875em 'Merriweather', serif, arial;
     }
     .validity{
-    font:0.575em 'Merriweather', serif, arial;
-}
+        font:0.575em 'Merriweather', serif, arial;
+    }
 	.videotitle_homepage{font-size: 1.375em;}
 	.res_menu .item_contentpanel .txt_restitle{font-size:0.875em;}
 	.sectiontitle{font-size:1.25em;color:#000;}
@@ -101,16 +101,32 @@
 	.pageheader ._brandname img{margin:7px}
 	.txt_spring_cocktail{padding:20px;}
     .promo_homepage{
-    margin-top: 40px;
-    padding: 20px 10px 0px;;
-   
-}
+        margin-top: 40px;
+        padding: 20px 10px 0px;
+    }
     .validity{
-    padding: 0px 10px;
-}
+        padding: 0px 10px;
+    }
 }
 @media (min-width: 992px){
 	#spring_cocktail ._960px{width:initial;}
-	.navbar a[data-target="spring_cocktail"]{border:1px solid rgba(255, 255, 255, 0.5);line-height:24px;padding:0 10px;margin-right:24px;}
+	.navbar li:nth-child(4) a{border:1px solid rgba(255, 255, 255, 0.5);line-height:24px;padding:0 10px;margin-right:24px;}
+    .navbar li.tabs:nth-child(4) a { padding: 0; border: none; }
 	.springcocktail .owl-nav{display:none}
+}
+
+@media (min-width: 991px) and (max-width: 1280px) {
+    .navbar a {
+        font-size: 9px;
+        letter-spacing: 1px
+    }
+    .navbar li:nth-child(4) a {
+        margin-right: 8px;
+    }
+    .navbar {
+        padding-right: 150px;
+    }
+    .pageheader.smallheight .headerlink_topright {
+        top: 19px;
+    }
 }

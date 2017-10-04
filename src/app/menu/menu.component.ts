@@ -342,7 +342,14 @@ export class MenuComponent implements OnInit, OnDestroy {
                     $(".t-min-order").css('border','solid 1px red');
                     return false;
                 }  
-               this.router.navigate(['/checkout']);
+                let rootId=parseInt(self.mservice.chainRes().rootId);
+                
+                if(isNaN(rootId)==true){
+                  this.router.navigate(['/checkout']);
+                }else{
+                  this.router.navigate([`/${rootId}/checkout`]);
+                }
+               
             }
             
         }

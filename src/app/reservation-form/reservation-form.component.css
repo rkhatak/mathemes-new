@@ -13,7 +13,8 @@
 }
 .popup_reservetable {
   background: #fff;
-  width: 700px;
+  max-width: 700px;
+  width: 90%;
   margin: 5vh auto 0;
   max-height: 90%;
   min-height: 100px;
@@ -30,6 +31,7 @@
 }
 .maindatepick {
   position: relative;
+  margin-bottom: 10px;
 }
 .date_pick {
   border: 2px solid #d7d7d7;

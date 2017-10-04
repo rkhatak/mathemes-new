@@ -27,11 +27,11 @@
               </div>
           </div>
           <div *ngIf="!toLoginUser && !forgotSuccess">
-              <div class="leftBox box fleft"><h3 class="padBtm6px">Oh no, You Forgot<br class="hidden-xs"> Your Password<b class="font_arial">?</b></h3>
-                  <p class="mrgT10 mrgB10">We’ll start looking for it, just enter the email address you used to register and we’ll send it, or a temporary one over right away so you can reset your password and get back into Munch Ado!</p>
-                  <div class="RegisterationForm fleft width100p">
+              <div class="leftBox box fleft"><p class="sectiontitle">Oh no, You Forgot<br class="hidden-xs"> Your Password<b class="font_arial">?</b></p>
+                  <p class="txt_loginsubtitle">We’ll start looking for it, just enter the email address you used to register and we’ll send it, or a temporary one over right away so you can reset your password and get back into Munch Ado!</p>
+                  <div class="RegisterationForm fleft width100p forgetbox">
                           <div class="errorinputglobal">
-                              <div class="label">Email Address</div>
+                              <div class="txt_checkoutlabel">Email Address</div>
                               <input name="email" id="forgot_email" class="medium width95p mrgT5" type="text">
                               <span class="error-message user_forgotemail_error hide">Hey, you forgot something</span>
                           </div>
@@ -39,9 +39,9 @@
                               <div class="error-message" id="invalid-forgotpass"></div>
                           </div>
                           <span id="invalid-forgot-password" class="error-message hide"></span>
-                          <div class="fleft width100p">
+                          <div class="fleft width100p _mt17">
                               <a href="javascript:void(0)" class="ubtn y-btn-signIn" (click)="forgotPassSubmit()">SUBMIT</a>
-                              <a href="javascript:void(0);" class="custom-login" (click)="backToLogin()"> Go Back</a>
+                              <a href="javascript:void(0);" class="custom-login goback" (click)="backToLogin()"> Go Back</a>
                               <span class="processing loadmargin"></span>
                           </div>
                           

@@ -457,7 +457,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     return hasError;
   };
   cartEditOrder() {
-    this.router.navigate(['/menu']);
+    let rootId=parseInt(this.mservice.chainRes().rootId);    
+    if(isNaN(rootId)==true){
+      this.router.navigate(['/menu']);
+    }else{
+      this.router.navigate([`/${rootId}/menu`]);
+    }
+    
   }
   placeOrder(){
             this.mservice.placeOrder(this);

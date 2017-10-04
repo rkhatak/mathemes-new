@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { MainService } from '../main.service';
 import { Globals } from '../globals';
 
@@ -14,15 +14,17 @@ function windowRef(): any {
 export class LoginSourceComponent implements OnInit {
   public toLoginUser: boolean = true;
   public forgotSuccess: boolean = false;
-  constructor(private mservice: MainService, public globals: Globals) { }
+  constructor(private mservice: MainService, public globals: Globals,private changeDetectorRef:ChangeDetectorRef) { }
 
   ngOnInit() {
   }
   forgotPassword() {
     this.toLoginUser = false;
+    this.changeDetectorRef.detectChanges();
   }
   backToLogin() {
     this.toLoginUser = true;
+    this.changeDetectorRef.detectChanges();
   }
    userRegister(){
     this.globals.dialogType="register";
