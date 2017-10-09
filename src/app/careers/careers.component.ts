@@ -11,6 +11,7 @@ declare var $: any;
 })
 export class CareersComponent implements OnInit, OnDestroy {
   public myTemplate: any = "";
+  fired: number = 0;
   onThemeSetEventHeader$Subscription: Subscription;
   constructor(private elRef: ElementRef, private cdRef: ChangeDetectorRef, public globals: Globals, private mservice: MainService) {
     this.myTemplate = `<div style="position: fixed;left: calc(50% - 50px);top: calc(50% - 50px);"><img src="assets/img/with_hand.gif"><br/>Please wait...</div>`;
@@ -46,7 +47,7 @@ export class CareersComponent implements OnInit, OnDestroy {
       self.myTemplate = `<div style="position: fixed;left: calc(50% - 50px);top: calc(50% - 50px);"><img src="assets/img/with_hand.gif"><br/>Please wait...</div>`;
     })
   }
-  fired: number = 0;
+ 
   careersubmit(e) {
     let self = this;
     self.fired += 1;
