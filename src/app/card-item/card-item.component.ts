@@ -6,6 +6,9 @@ import { MainService } from '../main.service';
 import * as _ from 'underscore';
 
 declare var $: any;
+function windowRef(): any {
+  return window;
+}
 
 @Component({
   selector: 'app-card-item',
@@ -197,6 +200,10 @@ export class CardItemComponent implements OnInit, OnDestroy {
       order_items.push(items);
       this.mservice.setStorage('order_items_' + restId, JSON.stringify(order_items));
       this.showTooltip(items.item_name);
+      let res_name=this.globals.currentRestaurantDetail.name;
+      let selfWindow = windowRef();
+      selfWindow.ga('send', 'event', `Menu Item ${res_name}`, "Add to Order" , "Click_on_Add_to_Order_Button", 1, true);
+
     }
     self.cartItems = order_items;
     self.globals.cartItems=order_items;

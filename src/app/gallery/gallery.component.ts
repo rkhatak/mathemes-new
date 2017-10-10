@@ -3,7 +3,9 @@ import { MainService } from '../main.service';
 import { Globals } from '../globals';
 import { Subscription } from 'rxjs/Subscription';
 import { DomSanitizer,SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
-
+function windowRef(): any {
+  return window;
+}
 
 @Component({
   selector: 'app-gallery',
@@ -46,6 +48,9 @@ export class GalleryComponent implements OnInit {
     let _currentRestId = this.globals.globalRestaurantId;
     this.mservice.getRestaurantGallery(_currentRestId)
       .subscribe(data => this.setGalleryImage(data));
+      let res_name=this.globals.currentRestaurantDetail.name;
+      let selfWindow = windowRef();
+      selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, 'Gallery Click' , 'Click_on_gallery_in_Top_Menu', 1, true);
   }
 
   setGalleryImage(d): any {

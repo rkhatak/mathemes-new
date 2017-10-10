@@ -4,7 +4,9 @@ import {Globals} from '../globals';
 import {Subscription} from 'rxjs/Subscription';
 import { PageScrollConfig, PageScrollService, PageScrollInstance } from 'ng2-page-scroll';
 import { DOCUMENT } from '@angular/platform-browser';
-
+function windowRef(): any {
+  return window;
+}
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -52,12 +54,18 @@ export class AboutComponent implements OnInit, OnDestroy {
         let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(self.document, '#story');
         self.pageScrollService.start(pageScrollInstance);
     },500);
+    let selfWindow = windowRef();
+    selfWindow.ga('send', 'event', 'About', "Read our story" , "Click_on_Read_our_Story_Button", 1, true);
   }
 
   private getRestaurantOverview(){
     let _currentRestId=this.globals.globalRestaurantId;
+  
     this.mservice.getRestaurantOverview(_currentRestId)
       .subscribe(overviewdata =>this.overview=overviewdata);
+      let res_name=this.globals.currentRestaurantDetail.name;
+      let selfWindow = windowRef();
+      selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, 'About Click' , 'Click_on_about_in_Top_Menu', 1, true);
   }
 
 }

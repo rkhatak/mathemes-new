@@ -1,7 +1,9 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {Globals} from '../globals';
-
+function windowRef(): any {
+  return window;
+}
 @Component({
   selector: 'app-term',
   templateUrl: './term.component.html',
@@ -28,6 +30,9 @@ export class TermComponent implements OnInit,OnDestroy {
   }
   getTerms(){
     this.currentRes=this.globals.currentRestaurantDetail;  
+    let res_name=this.globals.currentRestaurantDetail.name;
+    let selfWindow = windowRef();
+    selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, 'Term Click' , 'Click_on_term_in_Top_Menu', 1, true);
   }
  ngOnDestroy() {
     if(this.onThemeSetEvent$Subscription){

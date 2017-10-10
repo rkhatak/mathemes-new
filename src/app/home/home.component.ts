@@ -3,6 +3,9 @@ import {MainService} from '../main.service';
 import {Globals} from '../globals';
 import { DomSanitizer } from '@angular/platform-browser';
 import {Subscription} from 'rxjs/Subscription';
+function windowRef(): any {
+  return window;
+}
 
 @Component({
   selector: 'app-home',
@@ -47,11 +50,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     let _thime=this.globals.globalTheme;
     this.mservice.getThemeDetails(_thime)
     .subscribe(themedata =>this.loadHomeDetails(themedata));
+    let res_name=this.globals.currentRestaurantDetail.name;
+    let selfWindow = windowRef();
+    selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, 'Home Click' , 'Click_on_home_in_Top_Menu', 1, true);
   }
 
    loadVideo(){
     this.globals.dialogType="video";
     this.globals.onDialogSet();
+    let selfWindow = windowRef();
+    selfWindow.ga('send', 'event', 'Video', "Watch Video" , "Click_on_Watch_Video_Button", 1, true);
   }
 
 }

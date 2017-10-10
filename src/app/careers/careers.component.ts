@@ -3,6 +3,9 @@ import { MainService } from '../main.service';
 import { Globals } from '../globals';
 import { Subscription } from 'rxjs/Subscription';
 declare var $: any;
+function windowRef(): any {
+  return window;
+}
 
 @Component({
   selector: 'app-careers',
@@ -39,10 +42,13 @@ export class CareersComponent implements OnInit, OnDestroy {
   loadCareer() {
     let _theme = this.globals.globalTheme;
     let self = this;
+    let res_name=this.globals.currentRestaurantDetail.name;
     self.mservice.getCareerFile(_theme).subscribe((data) => {
       self.myTemplate = data._body;
       self.cdRef.detectChanges();
       self.elRef.nativeElement.querySelector('.r_career_Submit').addEventListener('click', this.careersubmit.bind(this));
+      let selfWindow = windowRef();
+      selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, 'Career Click' , 'Click_on_career_in_Top_Menu', 1, true);
     }, (err) => {
       self.myTemplate = `<div style="position: fixed;left: calc(50% - 50px);top: calc(50% - 50px);"><img src="assets/img/with_hand.gif"><br/>Please wait...</div>`;
     })

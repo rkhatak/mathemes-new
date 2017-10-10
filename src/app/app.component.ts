@@ -51,6 +51,14 @@ ngOnDestroy() {
     
     let _host = document.location.host;
     let _thime = data[_host].theme;
+    let _analyticJs = 'assets/template/themes/' + _thime + '/analytic.js';
+    
+    let node = document.createElement('script');
+    node.src = _analyticJs;
+    node.type = 'text/javascript';
+    document.getElementsByTagName('head')[0].appendChild(node);
+
+    //this.document.getElementById('appAnalytics').setAttribute("src", _analyticJs);
     
     let rootId:number=parseInt(this.mservice.chainRes().rootId);
     if(isNaN(rootId)==true){
@@ -58,8 +66,6 @@ ngOnDestroy() {
     }else{
       var _restaurant =(typeof rootId!=='undefined')?rootId: data[_host].restaurant_id;
     }
-    
-    console.log(_restaurant);
     //assign theme & restaurant id to global 
     this.globals.globalRestaurantId = _restaurant;
     this.globals.globalTheme = _thime;
@@ -67,6 +73,7 @@ ngOnDestroy() {
     
     let _themeCss = 'assets/template/themes/' + _thime + '/css/app.css';
     let _themeFavicon = 'assets/template/themes/' + _thime + '/images/favicon.ico';
+    
     this.mservice.getThemeDetails(_thime)
       .subscribe((themedata) => this.thememenu = themedata,
       (err) => this.themeNotFound());
@@ -82,6 +89,7 @@ ngOnDestroy() {
 
     this.document.getElementById('appCSS').setAttribute("href", _themeCss);
     this.document.getElementById('r_favicon').setAttribute("href", _themeFavicon);
+    
   }
 
   afterSetLocation(){

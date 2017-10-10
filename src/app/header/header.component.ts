@@ -5,6 +5,9 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 declare var $: any;
+function windowRef(): any {
+  return window;
+}
 
 @Component({
     selector: 'header-app',
@@ -157,5 +160,13 @@ selectLocation(){
     $('.formstep1').show();
     //this.globals.dialogType="reservation";
     //this.globals.onDialogSet({"isReservationTime":true,"isShowReservation":false});
+    let res_name=this.globals.currentRestaurantDetail.name;
+    let selfWindow = windowRef();
+    selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, "Reserve a table Click" , "Click_Reserve_a_table_in_Top_Menu", 1, true);
   }
+  orderOnline(){
+    let res_name=this.globals.currentRestaurantDetail.name;
+    let selfWindow = windowRef();
+    selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, "Order Online Click" , "Click_Order_Online_in_Top_Menu", 1, true);
+   }
 }

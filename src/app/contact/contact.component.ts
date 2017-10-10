@@ -6,6 +6,9 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 declare var google: any;
+function windowRef(): any {
+  return window;
+}
 
 @Component({
   selector: 'app-contact',
@@ -55,6 +58,9 @@ export class ContactComponent implements OnInit, OnDestroy {
     }else{
     this.multipleAddress=false;
   }
+  let selfWindow = windowRef();
+  let res_name=this.globals.currentRestaurantDetail.name;
+  selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, 'Contact Click' , 'Click_on_contact_in_Top_Menu', 1, true);
   }
 
   private getResError(): void {
@@ -65,9 +71,14 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.restaurantAddress = d;
   }
   goLocation(id, page) {
+    let selfWindow = windowRef();
+    let res_name=this.globals.currentRestaurantDetail.name;
+    selfWindow.ga('send', 'event', `${res_name}` , "Order Online Click" , "Click_on_order_online_button_contact", 1, true);
+
     let url = `/${id}/${page}`;
     this.router.navigate([url]);
     location.reload();
+
   }
 
   renderMap(res) {
@@ -98,6 +109,12 @@ export class ContactComponent implements OnInit, OnDestroy {
       map.setCenter(myLatLong);
       infowindow.open(map, marker);
     }, 5000);
+  }
+
+  action(){
+    let selfWindow = windowRef();
+    let res_name=this.globals.currentRestaurantDetail.name;
+    selfWindow.ga('send', 'event', `${res_name}` , "Reserve a table Click" , "Click_on_reserve_a_table_button_contact", 1, true);
   }
 
 }

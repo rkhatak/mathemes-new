@@ -9,7 +9,9 @@ import {CartTimeComponent} from '../cart-time/cart-time.component';
 import { Router } from '@angular/router';
 import * as _ from 'underscore';
 declare var $: any;
-
+function windowRef(): any {
+  return window;
+}
 
 @Component({
   selector: 'app-menu',
@@ -92,6 +94,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   private getMenu() {
     let _currentRestId = this.globals.globalRestaurantId;
+    let res_name=this.globals.currentRestaurantDetail.name;
     let _menu=(this.mservice.getStorage('order_items_'+_currentRestId))?JSON.parse(this.mservice.getStorage('order_items_'+_currentRestId)):[];
     this.cartItems=(this.cartItems)?this.cartItems:_menu;
     this.order_type=(this.mservice.getStorage(`order_type_${_currentRestId}`))?this.mservice.getStorage(`order_type_${_currentRestId}`):'takeout';    
@@ -130,6 +133,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.mservice.setStorage('order_type_' + _currentRestId, 'takeout');
     this.mservice.getRestaurantMenu(_currentRestId)
       .subscribe(data => this.prepareMenu(data.menu));
+      let selfWindow = windowRef();
+      selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, 'Menu Click' , 'Click_on_menu_in_Top_Menuest', 1, true);
   }
   
   private getResError() :void{
@@ -150,7 +155,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.dishes.minDelivery = this.globals.currentRestaurantDetail.minimum_delivery;
     this.order_type = this.mservice.getStorage('order_type_' + this.globals.globalRestaurantId);
     this.imagePath = this.globals.currentRestaurantDetail.base_url + this.globals.currentRestaurantDetail.res_code + "/thumb/";
-    setTimeout(function(){
+    setTimeout(function(){      
     var el = this.document.querySelectorAll('.r_menu_navbar>li');
     el[0].classList.add('active');
     if(self.multipleAddress==true){
@@ -223,6 +228,9 @@ export class MenuComponent implements OnInit, OnDestroy {
       ml[i].style.display = "none";
     }
     this.document.querySelector('.menu_' + cid).style.display = "block";
+    let res_name=this.globals.currentRestaurantDetail.name;
+    let selfWindow = windowRef();
+    selfWindow.ga('send', 'event', `Menu ${res_name}`, cName+" Click", "Click_on_"+cName+"_in_Menu", 1, true);
   }
 
   menuImageSafe(url, image) {
@@ -256,6 +264,9 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.globals.onCart();
     this.globals.dialogType="addtocart";
     this.globals.onDialogSet();
+    let selfWindow = windowRef();
+    let res_name=this.globals.currentRestaurantDetail.name;
+    selfWindow.ga('send', 'event', `Menu Item ${res_name}`, "Add to Cart" , "Click_on_Add_to_Cart_Button", 1, true);
   }
 
   updateToOrder(model){
