@@ -3,6 +3,9 @@ import {MainService} from '../main.service';
 import { Globals } from '../globals';
 import {Subscription} from 'rxjs/Subscription';
 import { Router } from '@angular/router';
+function windowRef(): any {
+  return window;
+}
 @Component({
   selector: 'app-myaccount',
   templateUrl: './myaccount.component.html',
@@ -44,6 +47,9 @@ getData(){
   this.mservice.getPointDetails('points').subscribe((data) =>this.setData(data));
   this.mservice.getOrderlist('live',this.restID).subscribe((data) =>this.liveList=data);
   this.mservice.getOrderlist('archive',this.restID).subscribe((data) =>this.archiveList=data);
+  let res_name=this.globals.currentRestaurantDetail.name;
+  let selfWindow = windowRef();
+  selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, 'My account Click' , 'Click_on_my_account_in_Top_Menu', 1, true);
 }
   ngOnDestroy(){
     if(this.onThemeSetEvent$Subscription){

@@ -4,7 +4,7 @@
       <a href="javascript:void()" (click)="goHome()" class="_brandname pagejump"><img src="{{headerLogo}}brandlogo.png" alt=""><span>brandName</span></a>
       <div class="headerlink_topright y-resraurant-services">
           <div *ngIf="!multipleAddress">
-            <a routerLink="{{rootId}}/menu" class="hl y-go-to-menu pagejump">order online</a>
+            <a routerLink="{{rootId}}/menu" class="hl y-go-to-menu pagejump" (click)="orderOnline()">order online</a>
             <a href="javascript:void(0)" ng-show="currentRestaurant.has_reservation" data-popup="reserve_a_table" class="hl y-reserveTable _m0" (click)="reservetable()">reserve a table</a>
             <a routerLink="{{rootId}}/menu" class="i_addtocard pagejump y-go-to-checkout">
                 <i *ngIf="cartCount>0" class="gi i_cart y-no-item"><span class="cartCount">{{cartCount}}</span></i>
@@ -45,7 +45,7 @@
             
             
             <li class="xs-hide line-orderonline" *ngIf="!multipleAddress">
-               <a routerLink="{{rootId}}/menu" class="hl y-go-to-menu">order online</a>
+               <a routerLink="{{rootId}}/menu" class="hl y-go-to-menu" (click)="orderOnline()">order online</a>
             </li>
             
             <li class="xs-hide" *ngIf="!multipleAddress">

@@ -5,6 +5,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 import * as _ from 'underscore';
 declare var $: any;
+function windowRef(): any {
+  return window;
+}
 
 @Component({
   selector: 'app-checkout',
@@ -328,8 +331,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
             } else {
                 self.checkoutAddress = false;
             }
-
-
+            let res_name=this.globals.currentRestaurantDetail.name;
+            let selfWindow = windowRef();
+            selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, 'Checkout Click' , 'Click_on_checkout_in_Top_Menu', 1, true);
 
   }
   setDeliveryTakeoutTime() {

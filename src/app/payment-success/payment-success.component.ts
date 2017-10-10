@@ -2,7 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MainService } from '../main.service';
 import { Globals } from '../globals';
 import { Subscription } from 'rxjs/Subscription';
-
+function windowRef(): any {
+  return window;
+}
 @Component({
   selector: 'app-payment-success',
   templateUrl: './payment-success.component.html',
@@ -70,6 +72,9 @@ export class PaymentSuccessComponent implements OnInit, OnDestroy {
     self.setStorage('tip_' + restId, 10);
     this.globals.cartCount = 0;
     this.globals.onCartItem();
+    let res_name=this.globals.currentRestaurantDetail.name;
+    let selfWindow = windowRef();
+    selfWindow.ga('send', 'event', `Top Menu Bar ${res_name}`, 'Payment success Click' , 'Click_on_payment_success_in_Top_Menu', 1, true);
 
   }
 
